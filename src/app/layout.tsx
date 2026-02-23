@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "Community Luxe. A bridge between a high-end creative agency and a dedicated NGO.",
 };
 
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function RootLayout({
     children,
@@ -30,14 +30,25 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body
-                className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} antialiased`}
-            >
-                <div className="noise-overlay" />
-                <Navbar />
-                {children}
-            </body>
-        </html>
+        <ClerkProvider>
+            <html lang="en">
+                <body
+                    className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} antialiased`}
+                >
+                    <header>
+                        <SignedOut>
+                            <SignInButton />
+                            <SignUpButton />
+                        </SignedOut>
+                        <SignedIn>
+                            <UserButton />
+                        </SignedIn>
+                    </header>
+                    <div className="noise-overlay" />
+                    <Navbar />
+                    {children}
+                </body>
+            </html>
+        </ClerkProvider>
     );
 }
