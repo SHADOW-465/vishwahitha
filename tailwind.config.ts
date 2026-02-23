@@ -11,7 +11,7 @@ export default {
             colors: {
                 primary: "#0A0A14",
                 "accent-cranberry": "#D91B5C",
-                "accent-gold": "#C9A84C",
+                "accent-gold": "#FBD300",
                 surface: "rgba(255, 255, 255, 0.03)",
                 "text-primary": "#FAF8F5",
                 "text-secondary": "#A1A1AA",

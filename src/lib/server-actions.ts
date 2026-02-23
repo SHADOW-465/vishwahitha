@@ -2,8 +2,12 @@
 
 import { supabase } from "@/lib/supabase";
 import { revalidatePath } from "next/cache";
+import { auth } from "@clerk/nextjs/server";
 
 export async function createBroadcast(formData: FormData) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
     const isUrgent = formData.get("isUrgent") === "on";
@@ -13,7 +17,7 @@ export async function createBroadcast(formData: FormData) {
         .insert([{
             title: isUrgent ? `[URGENT] ${title}` : title,
             content,
-            author_id: "00000000-0000-0000-0000-000000000000" // placeholder for production auth
+            author_id: userId
         }])
         .select();
 
@@ -23,6 +27,9 @@ export async function createBroadcast(formData: FormData) {
 }
 
 export async function createEvent(formData: FormData) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+
     const title = formData.get("title") as string;
     const date = formData.get("date") as string;
     const location = formData.get("location") as string;
@@ -40,14 +47,17 @@ export async function createEvent(formData: FormData) {
     return { success: true, data };
 }
 
-export async function toggleRSVP(event_id: string, member_id: string, currentStatus: string | null) {
+export async function toggleRSVP(event_id: string, currentStatus: string | null) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+
     const newStatus = currentStatus === "attending" ? "apologies" : "attending";
 
     const { data, error } = await supabase
         .from("event_rsvps")
         .upsert({
             event_id,
-            member_id,
+            member_id: userId,
             status: newStatus
         }, { onConflict: "event_id,member_id" })
         .select();
@@ -58,19 +68,24 @@ export async function toggleRSVP(event_id: string, member_id: string, currentSta
 }
 
 export async function submitFeedback(formData: FormData) {
+    const { userId } = await auth();
     const content = formData.get("content") as string;
     const category = formData.get("category") as string || "General";
+    const type = formData.get("type") as string || "suggestion";
+    const isAnonymous = formData.get("isAnonymous") === "on";
 
     const { data, error } = await supabase
         .from("feedback")
         .insert([{
             content,
             category,
-            member_id: "00000000-0000-0000-0000-000000000000" // placeholder
+            type,
+            member_id: isAnonymous ? null : userId,
+            is_anonymous: isAnonymous
         }])
         .select();
 
     if (error) return { error: error.message };
-    revalidatePath("/admin");
+    revalidatePath("/hub");
     return { success: true, data };
 }

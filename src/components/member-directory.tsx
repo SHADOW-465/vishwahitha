@@ -10,21 +10,14 @@ type Member = {
     contact: string;
 };
 
-// Mock data for initial implementation, to be replaced by server-side fetching
-const mockMembers: Member[] = [
-    { id: "1", name: "Alex K", role: "President", contact: "alex@rotaract.org" },
-    { id: "2", name: "Sonia M", role: "Secretary", contact: "sonia@rotaract.org" },
-    { id: "3", name: "Rahul D", role: "Treasurer", contact: "rahul@rotaract.org" },
-    { id: "4", name: "Priya S", role: "Director", contact: "priya@rotaract.org" },
-];
-
-export const MemberDirectory = () => {
+export const MemberDirectory = ({ members }: { members: Member[] }) => {
     const [search, setSearch] = useState("");
 
-    const filteredMembers = mockMembers.filter(m =>
+    const filteredMembers = members.filter(m =>
         m.name.toLowerCase().includes(search.toLowerCase()) ||
         m.role.toLowerCase().includes(search.toLowerCase())
     );
+
 
     return (
         <div className="space-y-8">

@@ -27,13 +27,18 @@ export const Navbar = () => {
 
             <nav className="flex items-center gap-6">
                 <MagneticButton>
+                    <Link href="/about" className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors inline-block hover:-translate-y-[1px]">
+                        About Us
+                    </Link>
+                </MagneticButton>
+                <MagneticButton>
                     <Link href="/gallery" className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors inline-block hover:-translate-y-[1px]">
                         Gallery
                     </Link>
                 </MagneticButton>
                 <MagneticButton>
                     <Link href="/hub" className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors inline-block hover:-translate-y-[1px]">
-                        Hub
+                        Member Hub
                     </Link>
                 </MagneticButton>
             </nav>

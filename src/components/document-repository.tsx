@@ -2,13 +2,22 @@
 
 import { FileText, Download, Briefcase, FileCode } from "lucide-react";
 
-const documents = [
-    { id: "1", title: "Club Bylaws 2025", category: "Governance", icon: <Briefcase size={18} /> },
-    { id: "2", title: "Q3 Meeting Minutes", category: "Records", icon: <FileText size={18} /> },
-    { id: "3", title: "GRM Official PPT", category: "Resources", icon: <FileCode size={18} /> },
-];
+type Document = {
+    id: string;
+    title: string;
+    category: string;
+    file_url: string;
+};
 
-export const DocumentRepository = () => {
+const getIconForCategory = (category: string) => {
+    switch (category.toLowerCase()) {
+        case "governance": return <Briefcase size={18} />;
+        case "resources": return <FileCode size={18} />;
+        default: return <FileText size={18} />;
+    }
+};
+
+export const DocumentRepository = ({ documents }: { documents: Document[] }) => {
     return (
         <div className="space-y-8">
             <div>
@@ -21,7 +30,7 @@ export const DocumentRepository = () => {
                     <div key={doc.id} className="glass-panel group flex items-center justify-between p-4 rounded-2xl hover:bg-white/5 transition-all duration-300">
                         <div className="flex items-center gap-4">
                             <div className="bg-white/10 p-3 rounded-xl text-text-secondary group-hover:text-text-primary transition-colors">
-                                {doc.icon}
+                                {getIconForCategory(doc.category)}
                             </div>
                             <div>
                                 <h4 className="font-heading font-medium text-text-primary">{doc.title}</h4>

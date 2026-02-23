@@ -1,8 +1,30 @@
 import { MemberDirectory } from "@/components/member-directory";
 import { DocumentRepository } from "@/components/document-repository";
 import { EventRSVP } from "@/components/event-rsvp";
+import { auth } from "@clerk/nextjs/server";
+import { supabase } from "@/lib/supabase";
+import { redirect } from "next/navigation";
 
-export default function HubPage() {
+export default async function HubPage() {
+    const { userId } = await auth();
+    if (!userId) {
+        redirect("/sign-in");
+    }
+
+    // Fetch live data
+    const [{ data: members }, { data: documents }] = await Promise.all([
+        supabase.from("users").select("id, first_name, last_name, email").order("first_name"),
+        supabase.from("documents").select("*").order("created_at", { ascending: false })
+    ]);
+
+    // Map members to the required prop shape
+    const mappedMembers = (members || []).map(m => ({
+        id: m.id,
+        name: `${m.first_name || ""} ${m.last_name || ""}`.trim() || m.email.split("@")[0],
+        role: "Member", // Currently flat, could be extended later
+        contact: m.email
+    }));
+
     return (
         <div className="min-h-screen pt-32 pb-24 px-6 max-w-7xl mx-auto space-y-12">
             <div className="glass-panel rounded-[2.5rem] p-8 md:p-12">
@@ -26,7 +48,7 @@ export default function HubPage() {
                                 Recent Announcements
                             </h3>
 
-                            {/* Static Event for Demo */}
+                            {/* Static Event for Demo until Events table is populated */}
                             <div className="space-y-6">
                                 <div className="p-6 rounded-2xl bg-white/5 border border-white/5">
                                     <div className="flex justify-between items-start mb-4">
@@ -37,17 +59,17 @@ export default function HubPage() {
                                     <p className="text-sm text-text-secondary leading-relaxed">
                                         Join us for the final phase launch ceremony. All directors must be present in official club attire.
                                     </p>
-                                    <EventRSVP eventId="demo-1" memberId="user-1" initialStatus={null} />
+                                    <EventRSVP eventId="00000000-0000-0000-0000-000000000000" memberId={userId} initialStatus={null} />
                                 </div>
                             </div>
                         </section>
 
-                        <MemberDirectory />
+                        <MemberDirectory members={mappedMembers} />
                     </div>
 
                     {/* Sidebar */}
                     <div className="space-y-8">
-                        <DocumentRepository />
+                        <DocumentRepository documents={documents || []} />
 
                         <form action={async (formData) => {
                             "use server";
@@ -57,6 +79,7 @@ export default function HubPage() {
                         }} className="glass-panel p-8 rounded-[2rem] bg-accent-cranberry/5 border-accent-cranberry/20">
                             <h3 className="font-heading text-xl font-bold text-text-primary mb-2">Direct Suggestion</h3>
                             <p className="text-xs font-mono text-text-secondary mb-6">Your ideas go directly to the Board for Weekly Pulse.</p>
+                            <input type="hidden" name="type" value="pulse" />
                             <textarea
                                 name="content"
                                 required
