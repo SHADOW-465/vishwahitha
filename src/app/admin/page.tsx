@@ -1,11 +1,11 @@
 import { BroadcastCenter } from "@/components/broadcast-center";
 import { WeeklyPulseAggregator } from "@/components/weekly-pulse-aggregator";
+import { EventManager } from "@/components/event-manager";
 import { getFeedback } from "@/lib/actions";
 
 export default async function AdminPage() {
     const initialFeedback = await getFeedback();
 
-    // Stub data if db isn't wired up correctly yet
     const feedbackData = initialFeedback && initialFeedback.length > 0 ? initialFeedback : [
         {
             id: "FB-001",
@@ -31,22 +31,23 @@ export default async function AdminPage() {
     ];
 
     return (
-        <div className="min-h-screen pt-32 px-6 max-w-7xl mx-auto pb-32">
-            <div className="mb-12">
-                <h1 className="font-heading text-4xl font-bold text-text-primary">
+        <div className="min-h-screen pt-32 px-6 max-w-7xl mx-auto pb-40 space-y-12">
+            <div className="mb-4">
+                <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-primary">
                     Control <span className="text-accent-cranberry italic font-drama font-light text-5xl">Panel</span>
                 </h1>
-                <p className="font-mono text-text-secondary mt-2">
-                    Restricted access. Role: Admin. Manage community artifacts and broadcasts.
+                <p className="font-mono text-text-secondary mt-4">
+                    Restricted access. Role: Admin. Manage community engagements and artifacts.
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <div className="lg:col-span-4 max-h-[600px] flex flex-col">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+                <div className="xl:col-span-4 space-y-8">
                     <BroadcastCenter />
+                    <EventManager />
                 </div>
 
-                <div className="lg:col-span-8">
+                <div className="xl:col-span-8">
                     <WeeklyPulseAggregator initialData={feedbackData} />
                 </div>
             </div>
