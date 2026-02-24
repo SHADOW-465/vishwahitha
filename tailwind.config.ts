@@ -11,7 +11,7 @@ export default {
             colors: {
                 primary: "#0A0A14",
                 "accent-cranberry": "#D91B5C",
-                "accent-gold": "#FBD300",
+                "accent-gold": "#C9A84C",
                 surface: "rgba(255, 255, 255, 0.03)",
                 "text-primary": "#FAF8F5",
                 "text-secondary": "#A1A1AA",
@@ -25,6 +25,9 @@ export default {
                 '2xl': '2rem',
                 '3xl': '3rem',
             },
+            dropShadow: {
+                'glow-gold': '0 0 10px rgba(201, 168, 76, 0.6)',
+            }
         },
     },
     plugins: [],
