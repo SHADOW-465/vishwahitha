@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useUser } from "@clerk/nextjs";
+import { useUser, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { MagneticButton } from "./ui/magnetic-button";
 
 export const Navbar = () => {
@@ -53,11 +53,28 @@ export const Navbar = () => {
                 )}
             </nav>
 
-            <MagneticButton>
-                <Link href="/sign-up" className="bg-text-primary text-primary px-5 py-2 rounded-full text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block">
-                    Join Us
-                </Link>
-            </MagneticButton>
+            <div className="flex items-center gap-4">
+                <SignedOut>
+                    <MagneticButton>
+                        <Link href="/sign-up" className="bg-text-primary text-primary px-5 py-2 rounded-full text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block">
+                            Join Us
+                        </Link>
+                    </MagneticButton>
+                </SignedOut>
+
+                <SignedIn>
+                    <MagneticButton>
+                        <div className="hover:scale-[1.05] transition-transform duration-300">
+                            <UserButton
+                                appearance={{
+                                    variables: { colorPrimary: '#FBD300' },
+                                    elements: { userButtonAvatarBox: "w-9 h-9 border-2 border-white/10" }
+                                }}
+                            />
+                        </div>
+                    </MagneticButton>
+                </SignedIn>
+            </div>
         </motion.header>
     );
 };

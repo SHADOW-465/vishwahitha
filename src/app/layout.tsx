@@ -4,7 +4,6 @@ import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { AuthHeader } from "@/components/auth-header";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
     subsets: ["latin"],
@@ -37,7 +36,6 @@ export default function RootLayout({
                 <body
                     className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} antialiased`}
                 >
-                    <AuthHeader />
                     <div className="noise-overlay" />
                     <Navbar />
                     {children}
