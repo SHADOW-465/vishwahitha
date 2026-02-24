@@ -18,7 +18,7 @@ export const Navbar = () => {
 
     return (
         <motion.header
-            className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 rounded-[3rem] px-6 py-3 flex items-center justify-between gap-8 min-w-[320px] sm:min-w-[480px] mix-blend-difference ${scrolled ? "bg-white/5 border border-white/10 shadow-2xl" : "bg-transparent border-transparent"
+            className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 rounded-[3rem] px-6 py-3 flex items-center justify-between gap-8 min-w-[320px] sm:min-w-[480px] mix-blend-difference text-white ${scrolled ? "bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl" : "bg-transparent border-transparent"
                 }`}
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
