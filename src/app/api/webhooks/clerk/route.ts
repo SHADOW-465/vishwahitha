@@ -26,10 +26,10 @@ export async function POST(req: Request) {
         })
     }
 
-    // Get body
-    const payload = await req.json()
-    const body = JSON.stringify(payload)
+    // Get raw body for Svix verification
+    const body = await req.text()
 
+    // We will parse the body into payload after verification is successful
     let evt: WebhookEvent
 
     // Verify payload with headers
