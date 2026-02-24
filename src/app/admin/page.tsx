@@ -1,15 +1,21 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { EventManager } from "@/components/event-manager";
 
 export default async function AdminPage() {
-    const { sessionClaims, userId } = await auth();
+    const { userId } = await auth();
 
-    // Strict RBAC using session metadata
-    const role = (sessionClaims?.metadata as any)?.role;
+    if (!userId) {
+        redirect("/");
+    }
 
-    if (!userId || role !== "admin") {
+    // Strict RBAC fetching directly from Clerk to avoid Session JWT template requirements
+    const client = await clerkClient();
+    const user = await client.users.getUser(userId);
+    const role = user.publicMetadata?.role;
+
+    if (role !== "admin") {
         redirect("/");
     }
 
