@@ -4,12 +4,16 @@ import { EventRSVP } from "@/components/event-rsvp";
 import { auth } from "@clerk/nextjs/server";
 import { supabase } from "@/lib/supabase";
 import { redirect } from "next/navigation";
+import { syncUserToSupabase } from "@/lib/sync-user";
 
 export default async function HubPage() {
     const { userId } = await auth();
     if (!userId) {
         redirect("/sign-in");
     }
+
+    // Sync the current user to Supabase on every hub visit
+    await syncUserToSupabase();
 
     // Fetch live data
     const [{ data: members }, { data: documents }] = await Promise.all([

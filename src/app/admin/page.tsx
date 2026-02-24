@@ -2,6 +2,7 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { EventManager } from "@/components/event-manager";
+import { syncUserToSupabase } from "@/lib/sync-user";
 
 export default async function AdminPage() {
     const { userId } = await auth();
@@ -18,6 +19,9 @@ export default async function AdminPage() {
     if (role !== "admin") {
         redirect("/");
     }
+
+    // Sync admin user into Supabase as well
+    await syncUserToSupabase();
 
     // Fetch dynamic content
     const [{ data: feedback }, { data: gallery }] = await Promise.all([
