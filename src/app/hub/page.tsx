@@ -59,7 +59,7 @@ export default async function HubPage() {
                                     <p className="text-sm text-text-secondary leading-relaxed">
                                         Join us for the final phase launch ceremony. All directors must be present in official club attire.
                                     </p>
-                                    <EventRSVP eventId="00000000-0000-0000-0000-000000000000" memberId={userId} initialStatus={null} />
+                                    <EventRSVP eventId="00000000-0000-0000-0000-000000000000" initialStatus={null} />
                                 </div>
                             </div>
                         </section>
