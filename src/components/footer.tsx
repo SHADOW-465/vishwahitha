@@ -4,9 +4,7 @@ import { Mail, Instagram, Twitter, Linkedin, MapPin, ExternalLink } from "lucide
 export const Footer = () => {
     return (
         <footer className="w-full bg-primary border-t border-white/5 pt-20 pb-10 px-6 mt-32 relative overflow-hidden">
-            <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
-                <div className="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-accent-gold blur-[150px] mix-blend-screen" />
-            </div>
+
 
             <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                 <div className="md:col-span-2 space-y-6">

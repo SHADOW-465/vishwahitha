@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 };
 
 import { ClerkProvider, SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { BackgroundWrapper } from "@/components/ui/background-wrapper";
 
 export default function RootLayout({
     children,
@@ -36,7 +37,7 @@ export default function RootLayout({
                 <body
                     className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} antialiased`}
                 >
-                    <div className="noise-overlay" />
+                    <BackgroundWrapper />
                     <Navbar />
                     {children}
                     <Footer />

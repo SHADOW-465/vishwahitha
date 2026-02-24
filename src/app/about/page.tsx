@@ -13,7 +13,7 @@ export default async function AboutPage() {
 
             {/* Mission Section */}
             <section className="glass-panel rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-accent-cranberry/10 rounded-full blur-[80px] -z-10" />
+
                 <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-primary mb-6">
                     Our <span className="text-accent-gold italic font-drama font-light">Story</span>
                 </h1>

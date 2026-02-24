@@ -11,7 +11,9 @@
     "dependencies": {
         "@clerk/nextjs": "^6.3.3",
         "@supabase/supabase-js": "^2.46.1",
-        "framer-motion": "^11.11.17",
+        "@tsparticles/engine": "^3.9.1",
+        "@tsparticles/react": "^3.0.0",
+        "framer-motion": "^11.18.2",
         "gsap": "^3.12.5",
         "lucide-react": "^0.460.0",
         "next": "16.1.1",
@@ -19,6 +21,7 @@
         "react-dom": "19.0.0-rc-69d4b800-20241021",
         "resend": "^6.9.2",
         "svix": "^1.86.0",
+        "tsparticles": "^3.9.1",
         "twilio": "^5.12.2"
     },
     "devDependencies": {

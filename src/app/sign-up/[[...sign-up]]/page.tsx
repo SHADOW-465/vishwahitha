@@ -3,10 +3,7 @@ import { SignUp } from "@clerk/nextjs";
 export default function SignUpPage() {
     return (
         <main className="min-h-screen flex items-center justify-center p-6 bg-primary pt-40">
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-0">
-                <div className="absolute top-1/4 right-1/4 w-[40vw] h-[40vw] rounded-full bg-accent-gold blur-[120px] mix-blend-screen" />
-                <div className="absolute bottom-1/4 left-1/4 w-[30vw] h-[30vw] rounded-full bg-accent-cranberry blur-[120px] mix-blend-screen" />
-            </div>
+
 
             <div className="relative z-10 w-full max-w-md">
                 <div className="flex flex-col items-center mb-10">
