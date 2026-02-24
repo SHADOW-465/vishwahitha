@@ -2,7 +2,7 @@ import { SignIn } from "@clerk/nextjs";
 
 export default function SignInPage() {
     return (
-        <main className="min-h-screen flex items-center justify-center p-6 bg-primary">
+        <main className="min-h-screen flex items-center justify-center p-6 bg-primary pt-40">
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-0">
                 <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] rounded-full bg-accent-gold blur-[120px] mix-blend-screen" />
                 <div className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] rounded-full bg-accent-cranberry blur-[120px] mix-blend-screen" />
@@ -28,6 +28,7 @@ export default function SignInPage() {
                                 colorInputBackground: 'rgba(255, 255, 255, 0.05)',
                                 colorInputText: '#FAF8F5',
                                 colorDanger: '#D91B5C', // accent-cranberry
+                                colorTextOnPrimaryBackground: '#FAF8F5',
                             },
                             elements: {
                                 rootBox: "w-full",
@@ -36,6 +37,7 @@ export default function SignInPage() {
                                 headerTitle: "font-heading text-xl font-bold tracking-tight",
                                 headerSubtitle: "font-mono text-xs",
                                 socialButtonsBlockButton: "border border-white/10 hover:bg-white/5 transition-colors",
+                                socialButtonsBlockButtonText: "text-white font-mono font-medium",
                                 dividerLine: "bg-white/10",
                                 dividerText: "text-text-secondary font-mono text-xs uppercase tracking-widest",
                                 formFieldLabel: "font-mono text-[10px] uppercase tracking-widest text-text-secondary",

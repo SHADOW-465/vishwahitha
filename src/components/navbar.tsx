@@ -3,11 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useUser } from "@clerk/nextjs";
 import { MagneticButton } from "./ui/magnetic-button";
 
 export const Navbar = () => {
     const { scrollY } = useScroll();
     const [scrolled, setScrolled] = useState(false);
+    const { user } = useUser();
+    const isAdmin = user?.publicMetadata?.role === "admin";
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         setScrolled(latest > 50);
@@ -41,6 +44,13 @@ export const Navbar = () => {
                         Member Hub
                     </Link>
                 </MagneticButton>
+                {isAdmin && (
+                    <MagneticButton>
+                        <Link href="/admin" className="text-sm font-medium text-accent-gold hover:text-white transition-colors inline-block hover:-translate-y-[1px]">
+                            Admin
+                        </Link>
+                    </MagneticButton>
+                )}
             </nav>
 
             <MagneticButton>

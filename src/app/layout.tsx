@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { AuthHeader } from "@/components/auth-header";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
     subsets: ["latin"],
@@ -36,15 +37,7 @@ export default function RootLayout({
                 <body
                     className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} antialiased`}
                 >
-                    <header className="absolute top-4 right-6 z-[60]">
-                        <SignedOut>
-                            <SignInButton />
-                            <SignUpButton />
-                        </SignedOut>
-                        <SignedIn>
-                            <UserButton appearance={{ variables: { colorPrimary: '#FBD300' } }} />
-                        </SignedIn>
-                    </header>
+                    <AuthHeader />
                     <div className="noise-overlay" />
                     <Navbar />
                     {children}

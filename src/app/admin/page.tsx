@@ -4,14 +4,14 @@ import { supabase } from "@/lib/supabase";
 import { EventManager } from "@/components/event-manager";
 
 export default async function AdminPage() {
-    const { sessionClaims } = await auth();
-    // In production, configure Clerk to pass `publicMetadata.role` into the session token claims
-    // const role = (sessionClaims?.metadata as any)?.role;
-    // if (role !== "admin") redirect("/");
-    // For development, we allow access to anyone hitting this page if we haven't configured the JWT template yet.
-    // We will still require them to be logged in at least:
-    const { userId } = await auth();
-    if (!userId) redirect("/sign-in");
+    const { sessionClaims, userId } = await auth();
+
+    // Strict RBAC using session metadata
+    const role = (sessionClaims?.metadata as any)?.role;
+
+    if (!userId || role !== "admin") {
+        redirect("/");
+    }
 
     // Fetch dynamic content
     const [{ data: feedback }, { data: gallery }] = await Promise.all([
