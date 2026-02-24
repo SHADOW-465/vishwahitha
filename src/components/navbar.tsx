@@ -54,7 +54,7 @@ export const Navbar = () => {
             </nav>
 
             <MagneticButton>
-                <Link href="/hub" className="bg-text-primary text-primary px-5 py-2 rounded-full text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block">
+                <Link href="/sign-up" className="bg-text-primary text-primary px-5 py-2 rounded-full text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block">
                     Join Us
                 </Link>
             </MagneticButton>
