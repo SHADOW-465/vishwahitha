@@ -143,6 +143,27 @@ export async function submitPulseResponse(formData: FormData) {
     return { success: true, data };
 }
 
+export async function createPulseForm(formData: FormData) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+
+    // Deactivate current active form first
+    await supabase.from("pulse_forms").update({ is_active: false }).eq("is_active", true);
+
+    const { data, error } = await supabase
+        .from("pulse_forms")
+        .insert([{
+            week_label: formData.get("week_label") as string,
+            questions: JSON.parse(formData.get("questions") as string || "[]"),
+            is_active: true,
+        }])
+        .select().single();
+
+    if (error) return { error: error.message };
+    revalidatePath("/hub");
+    return { success: true, data };
+}
+
 export async function submitFeedback(formData: FormData) {
     const { userId } = await auth();
     const content = formData.get("content") as string;

@@ -5,6 +5,8 @@ import { syncUserToSupabase } from "@/lib/sync-user";
 import { getAllAnnouncements } from "@/lib/actions";
 import { AdminShell } from "@/components/admin/admin-shell";
 import { AnnouncementManager } from "@/components/admin/announcement-manager";
+import { InitiativeManager } from "@/components/admin/initiative-manager";
+import { PulseFormBuilder } from "@/components/admin/pulse-form-builder";
 import { EventManager } from "@/components/event-manager";
 import { BroadcastCenter } from "@/components/broadcast-center";
 import { WeeklyPulseAggregator } from "@/components/weekly-pulse-aggregator";
@@ -25,12 +27,14 @@ export default async function AdminPage() {
         { data: events },
         { data: pulseResponses },
         { data: feedback },
+        { data: initiatives },
     ] = await Promise.all([
         getAllAnnouncements(),
         supabase.from("users").select("id"),
         supabase.from("events").select("id"),
         supabase.from("pulse_responses").select("id"),
         supabase.from("feedback").select("*").order("created_at", { ascending: false }),
+        supabase.from("initiatives").select("*").order("display_order"),
     ]);
 
     const stats = {
@@ -53,8 +57,9 @@ export default async function AdminPage() {
                 stats={stats}
                 panels={{
                     announcements: <AnnouncementManager announcements={announcements} />,
+                    initiatives: <InitiativeManager initiatives={initiatives ?? []} />,
                     events: <EventManager />,
-                    pulse: <WeeklyPulseAggregator initialData={feedback ?? []} />,
+                    pulse: <PulseFormBuilder />,
                     broadcast: <BroadcastCenter />,
                 }}
             />
