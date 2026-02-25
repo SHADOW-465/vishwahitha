@@ -7,6 +7,8 @@ import { AdminShell } from "@/components/admin/admin-shell";
 import { AnnouncementManager } from "@/components/admin/announcement-manager";
 import { InitiativeManager } from "@/components/admin/initiative-manager";
 import { PulseFormBuilder } from "@/components/admin/pulse-form-builder";
+import { BoardManager } from "@/components/admin/board-manager";
+import { PageSectionsEditor } from "@/components/admin/page-sections-editor";
 import { EventManager } from "@/components/event-manager";
 import { BroadcastCenter } from "@/components/broadcast-center";
 import { WeeklyPulseAggregator } from "@/components/weekly-pulse-aggregator";
@@ -28,6 +30,8 @@ export default async function AdminPage() {
         { data: pulseResponses },
         { data: feedback },
         { data: initiatives },
+        { data: boardMembers },
+        { data: pageSections },
     ] = await Promise.all([
         getAllAnnouncements(),
         supabase.from("users").select("id"),
@@ -35,6 +39,8 @@ export default async function AdminPage() {
         supabase.from("pulse_responses").select("id"),
         supabase.from("feedback").select("*").order("created_at", { ascending: false }),
         supabase.from("initiatives").select("*").order("display_order"),
+        supabase.from("board_members").select("*").order("display_order"),
+        supabase.from("page_sections").select("*"),
     ]);
 
     const stats = {
@@ -60,6 +66,8 @@ export default async function AdminPage() {
                     initiatives: <InitiativeManager initiatives={initiatives ?? []} />,
                     events: <EventManager />,
                     pulse: <PulseFormBuilder />,
+                    board: <BoardManager members={boardMembers ?? []} />,
+                    sections: <PageSectionsEditor sections={Object.fromEntries((pageSections ?? []).map((s: any) => [s.section_key, s]))} />,
                     broadcast: <BroadcastCenter />,
                 }}
             />

@@ -164,6 +164,45 @@ export async function createPulseForm(formData: FormData) {
     return { success: true, data };
 }
 
+export async function createBoardMember(formData: FormData) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+
+    const { error } = await supabase.from("board_members").insert([{
+        name: formData.get("name") as string,
+        role: formData.get("role") as string,
+        email: formData.get("email") as string,
+        image_url: formData.get("image_url") as string,
+    }]);
+
+    if (error) return { error: error.message };
+    revalidatePath("/about");
+    return { success: true };
+}
+
+export async function deleteBoardMember(id: string) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+    const { error } = await supabase.from("board_members").delete().eq("id", id);
+    if (error) return { error: error.message };
+    revalidatePath("/about");
+    return { success: true };
+}
+
+export async function updatePageSection(sectionKey: string, content: Record<string, unknown>) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+
+    const { error } = await supabase.from("page_sections")
+        .upsert({ section_key: sectionKey, content, updated_by: userId, updated_at: new Date().toISOString() },
+            { onConflict: "section_key" });
+
+    if (error) return { error: error.message };
+    revalidatePath("/");
+    revalidatePath("/about");
+    return { success: true };
+}
+
 export async function submitFeedback(formData: FormData) {
     const { userId } = await auth();
     const content = formData.get("content") as string;
