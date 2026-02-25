@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { BackgroundWrapper } from "@/components/ui/background-wrapper";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
     subsets: ["latin"],
@@ -35,10 +36,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ClerkProvider>
             <html lang="en">
                 <body className={`${plusJakartaSans.variable} ${cormorantGaramond.variable} ${jetbrainsMono.variable} antialiased`}>
-                    <BackgroundWrapper />
-                    <Navbar />
-                    {children}
-                    <Footer />
+                    <ThemeProvider>
+                        <BackgroundWrapper />
+                        <Navbar />
+                        {children}
+                        <Footer />
+                    </ThemeProvider>
                 </body>
             </html>
         </ClerkProvider>
