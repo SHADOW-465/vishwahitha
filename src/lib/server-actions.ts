@@ -125,6 +125,24 @@ export async function deleteInitiative(id: string) {
     return { success: true };
 }
 
+export async function submitPulseResponse(formData: FormData) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+
+    const form_id = formData.get("form_id") as string;
+    const answers = JSON.parse(formData.get("answers") as string || "{}");
+    const comment = formData.get("comment") as string;
+
+    const { data, error } = await supabase
+        .from("pulse_responses")
+        .insert([{ form_id, member_id: userId, answers, comment }])
+        .select().single();
+
+    if (error) return { error: error.message };
+    revalidatePath("/hub");
+    return { success: true, data };
+}
+
 export async function submitFeedback(formData: FormData) {
     const { userId } = await auth();
     const content = formData.get("content") as string;
