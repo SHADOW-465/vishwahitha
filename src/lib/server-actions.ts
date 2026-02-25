@@ -67,6 +67,45 @@ export async function toggleRSVP(event_id: string, currentStatus: string | null)
     return { success: true, data };
 }
 
+export async function createInitiative(formData: FormData) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+
+    const slug = (formData.get("title") as string)
+        .toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
+    const { data, error } = await supabase
+        .from("initiatives")
+        .insert([{
+            slug,
+            title: formData.get("title") as string,
+            category: formData.get("category") as string,
+            short_description: formData.get("short_description") as string,
+            full_description: formData.get("full_description") as string,
+            impact_stat: formData.get("impact_stat") as string,
+            impact_label: formData.get("impact_label") as string,
+            hero_image_url: formData.get("hero_image_url") as string,
+            color_class: formData.get("color_class") as string || "border-white/10",
+        }])
+        .select().single();
+
+    if (error) return { error: error.message };
+    revalidatePath("/");
+    revalidatePath("/initiatives");
+    return { success: true, data };
+}
+
+export async function deleteInitiative(id: string) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+
+    const { error } = await supabase.from("initiatives").delete().eq("id", id);
+    if (error) return { error: error.message };
+    revalidatePath("/");
+    revalidatePath("/initiatives");
+    return { success: true };
+}
+
 export async function submitFeedback(formData: FormData) {
     const { userId } = await auth();
     const content = formData.get("content") as string;

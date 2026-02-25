@@ -29,3 +29,25 @@ export async function getFeedback() {
     }
     return data;
 }
+
+export async function getInitiatives() {
+    const { data, error } = await supabase
+        .from("initiatives")
+        .select("*")
+        .eq("is_featured", true)
+        .order("display_order", { ascending: true });
+
+    if (error) { console.error("getInitiatives:", error); return []; }
+    return data ?? [];
+}
+
+export async function getInitiativeBySlug(slug: string) {
+    const { data, error } = await supabase
+        .from("initiatives")
+        .select("*, initiative_gallery(*)")
+        .eq("slug", slug)
+        .single();
+
+    if (error) { console.error("getInitiativeBySlug:", error); return null; }
+    return data;
+}
