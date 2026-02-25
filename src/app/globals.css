@@ -2,38 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Theme CSS Variables ───────────────────────────────── */
 :root {
-  --background: #0A0A14;
+  --background: #08080F;
   --foreground: #FAF8F5;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --gold-start: #C9A84C;
+  --gold-end: #FFD97D;
+}
+
+/* Light theme override — applied via body[data-theme="light"] */
+body[data-theme="light"] {
+  --background: #FAFAF4;
+  --foreground: #0D0C14;
+  --glass-bg: rgba(0, 0, 0, 0.04);
+  --glass-border: rgba(0, 0, 0, 0.08);
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-heading), Arial, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.9s cubic-bezier(0.83, 0, 0.17, 1),
+              color 0.9s cubic-bezier(0.83, 0, 0.17, 1);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-
-
-/* Base custom styles per specification */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* ── Typography ─────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   letter-spacing: -0.02em;
 }
 
-/* For glassmorphism wrappers */
+/* ── Glass Panel ─────────────────────────────────────────── */
 .glass-panel {
-  @apply bg-white/5 backdrop-blur-2xl border border-white/10;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+}
+
+/* ── Gold Gradient Text ──────────────────────────────────── */
+.gold-text {
+  background: linear-gradient(90deg, #C9A84C, #FFD97D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Noise Overlay ───────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #08080F; }
+::-webkit-scrollbar-thumb { background: #C9A84C44; border-radius: 3px; }
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
 }
