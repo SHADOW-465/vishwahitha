@@ -4,26 +4,45 @@ import { supabase } from "@/lib/supabase";
 import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 
-export async function createBroadcast(formData: FormData) {
+export async function createAnnouncement(formData: FormData) {
     const { userId } = await auth();
     if (!userId) return { error: "Unauthorized" };
-
-    const title = formData.get("title") as string;
-    const content = formData.get("content") as string;
-    const isUrgent = formData.get("isUrgent") === "on";
 
     const { data, error } = await supabase
         .from("announcements")
         .insert([{
-            title: isUrgent ? `[URGENT] ${title}` : title,
-            content,
-            author_id: userId
+            title: formData.get("title") as string,
+            content: formData.get("content") as string,
+            tag: formData.get("tag") as string || "general",
+            visibility: formData.get("visibility") as string || "public",
+            is_pinned: formData.get("is_pinned") === "true",
+            author_id: userId,
         }])
-        .select();
+        .select().single();
 
     if (error) return { error: error.message };
+    revalidatePath("/announcements");
     revalidatePath("/hub");
     return { success: true, data };
+}
+
+export async function deleteAnnouncement(id: string) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+    const { error } = await supabase.from("announcements").delete().eq("id", id);
+    if (error) return { error: error.message };
+    revalidatePath("/announcements");
+    revalidatePath("/hub");
+    return { success: true };
+}
+
+export async function toggleAnnouncementPin(id: string, currentPin: boolean) {
+    const { userId } = await auth();
+    if (!userId) return { error: "Unauthorized" };
+    const { error } = await supabase.from("announcements").update({ is_pinned: !currentPin }).eq("id", id);
+    if (error) return { error: error.message };
+    revalidatePath("/announcements");
+    return { success: true };
 }
 
 export async function createEvent(formData: FormData) {

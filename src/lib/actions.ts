@@ -41,6 +41,29 @@ export async function getInitiatives() {
     return data ?? [];
 }
 
+export async function getPublicAnnouncements() {
+    const { data, error } = await supabase
+        .from("announcements")
+        .select("*")
+        .eq("visibility", "public")
+        .order("is_pinned", { ascending: false })
+        .order("created_at", { ascending: false });
+
+    if (error) { console.error("getPublicAnnouncements:", error); return []; }
+    return data ?? [];
+}
+
+export async function getAllAnnouncements() {
+    const { data, error } = await supabase
+        .from("announcements")
+        .select("*")
+        .order("is_pinned", { ascending: false })
+        .order("created_at", { ascending: false });
+
+    if (error) { console.error("getAllAnnouncements:", error); return []; }
+    return data ?? [];
+}
+
 export async function getInitiativeBySlug(slug: string) {
     const { data, error } = await supabase
         .from("initiatives")

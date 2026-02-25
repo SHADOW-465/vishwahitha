@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createBroadcast } from "@/lib/server-actions";
+import { createAnnouncement } from "@/lib/server-actions";
 import { Send } from "lucide-react";
 
 export const BroadcastCenter = () => {
@@ -12,7 +12,7 @@ export const BroadcastCenter = () => {
         setLoading(true);
         setSuccess(false);
 
-        const result = await createBroadcast(formData);
+        const result = await createAnnouncement(formData);
 
         if (result.success) {
             setSuccess(true);
