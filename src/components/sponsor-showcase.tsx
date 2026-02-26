@@ -47,8 +47,7 @@ export const SponsorShowcase = () => {
                         >
                             {/* Gold diamond separator */}
                             <span className="text-accent-gold/30 text-xs font-mono">◆</span>
-
-                            <span className="font-heading font-black text-2xl md:text-3xl text-white/20 group-hover:text-transparent bg-clip-text group-hover:bg-gradient-to-r group-hover:from-accent-gold group-hover:to-accent-gold-light transition-all duration-500">
+                            <span className="font-heading font-black text-lg sm:text-2xl md:text-3xl text-white/20 group-hover:text-transparent bg-clip-text group-hover:bg-gradient-to-r group-hover:from-accent-gold group-hover:to-accent-gold-light transition-all duration-500">
                                 {sponsor.name}
                             </span>
                         </div>
@@ -56,8 +55,8 @@ export const SponsorShowcase = () => {
                 </motion.div>
 
                 {/* Gradient masks matching background */}
-                <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[var(--background)] to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[var(--background)] to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 left-0 w-12 sm:w-24 md:w-40 bg-gradient-to-r from-[var(--background)] to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-12 sm:w-24 md:w-40 bg-gradient-to-l from-[var(--background)] to-transparent z-10 pointer-events-none" />
             </div>
 
             {/* Bottom gold line */}

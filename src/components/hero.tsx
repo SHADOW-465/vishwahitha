@@ -12,7 +12,7 @@ interface HeroProps {
 
 export const Hero = ({
     headline = "Service Above",
-    subtext = "Community Luxe — merging high-end execution with dedicated NGO roots. District 3232.",
+    subtext = "Community Luxe — merging high-end execution with dedicated NGO roots. District 3234.",
 }: HeroProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
 

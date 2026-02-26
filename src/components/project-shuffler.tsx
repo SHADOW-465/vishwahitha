@@ -33,11 +33,11 @@ export const ProjectShuffler = ({ initiatives }: Props) => {
 
     return (
         <section className="py-32 px-6 w-full max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                 <div className="space-y-8">
-                    <h2 className="text-4xl md:text-6xl font-heading font-bold text-text-primary">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text-primary">
                         Curated <br />
-                        <span className="font-drama italic gold-text font-light text-5xl md:text-7xl">Artifacts</span>
+                        <span className="font-drama italic gold-text font-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl">Artifacts</span>
                     </h2>
                     <p className="text-text-secondary font-mono text-lg max-w-md">
                         Our active initiatives. Click any card to explore the full story.
@@ -48,16 +48,15 @@ export const ProjectShuffler = ({ initiatives }: Props) => {
                             <button
                                 key={i}
                                 onClick={() => setCurrentIndex(i)}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${
-                                    i === currentIndex ? "w-8 bg-accent-gold" : "w-1.5 bg-white/20"
-                                }`}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? "w-8 bg-accent-gold" : "w-1.5 bg-white/20"
+                                    }`}
                             />
                         ))}
                     </div>
                 </div>
 
                 <div
-                    className="relative h-[420px] w-full flex items-center justify-center cursor-pointer"
+                    className="relative h-[320px] sm:h-[380px] md:h-[420px] w-full flex items-center justify-center cursor-pointer"
                     onClick={() => setCurrentIndex((prev) => (prev + 1) % initiatives.length)}
                 >
                     <AnimatePresence mode="popLayout">
