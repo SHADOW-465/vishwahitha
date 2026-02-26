@@ -29,11 +29,10 @@ export const Navbar = () => {
         setScrolled(latest > 50);
     });
 
-    const linkClass = `text-sm font-medium transition-colors duration-300 inline-block hover:-translate-y-[1px] ${
-        isLight
+    const linkClass = `text-sm font-medium transition-colors duration-300 inline-block hover:-translate-y-[1px] ${isLight
             ? "text-text-primary-light hover:text-[#B8860B]"
             : "text-text-secondary hover:text-text-primary"
-    }`;
+        }`;
 
     const pillBg = scrolled
         ? isLight
@@ -56,9 +55,11 @@ export const Navbar = () => {
             />
 
             {/* Logo */}
-            <Link href="/" className="relative z-10 font-heading font-bold text-xl tracking-tighter gold-text">
-                VISHWAHITA
-            </Link>
+            <div className="flex-1 flex justify-start">
+                <Link href="/" className="relative z-10 font-heading font-bold text-xl tracking-tighter gold-text">
+                    VISHWAHITA
+                </Link>
+            </div>
 
             {/* Nav links */}
             <nav className="relative z-10 hidden md:flex items-center gap-5">
@@ -88,25 +89,27 @@ export const Navbar = () => {
             </nav>
 
             {/* Auth */}
-            <div className="relative z-10 flex items-center gap-3">
-                <SignedOut>
-                    <MagneticButton>
-                        <Link
-                            href="/sign-up"
-                            className="bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary px-5 py-2 rounded-full text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block"
-                        >
-                            Join Us
-                        </Link>
-                    </MagneticButton>
-                </SignedOut>
-                <SignedIn>
-                    <UserButton
-                        appearance={{
-                            variables: { colorPrimary: '#C9A84C' },
-                            elements: { userButtonAvatarBox: "w-9 h-9 border-2 border-accent-gold/30" }
-                        }}
-                    />
-                </SignedIn>
+            <div className="flex-1 flex justify-end">
+                <div className="relative z-10 flex items-center gap-3">
+                    <SignedOut>
+                        <MagneticButton>
+                            <Link
+                                href="/sign-up"
+                                className="bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary px-5 py-2 rounded-full text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block"
+                            >
+                                Join Us
+                            </Link>
+                        </MagneticButton>
+                    </SignedOut>
+                    <SignedIn>
+                        <UserButton
+                            appearance={{
+                                variables: { colorPrimary: '#C9A84C' },
+                                elements: { userButtonAvatarBox: "w-9 h-9 border-2 border-accent-gold/30" }
+                            }}
+                        />
+                    </SignedIn>
+                </div>
             </div>
         </motion.header>
     );

@@ -56,8 +56,8 @@ export const SponsorShowcase = () => {
                 </motion.div>
 
                 {/* Gradient masks matching background */}
-                <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[var(--bg)] to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[var(--bg)] to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[var(--background)] to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[var(--background)] to-transparent z-10 pointer-events-none" />
             </div>
 
             {/* Bottom gold line */}

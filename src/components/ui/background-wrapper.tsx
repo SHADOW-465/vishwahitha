@@ -11,10 +11,10 @@ export const BackgroundWrapper = () => {
     return (
         <div
             className="fixed inset-0 overflow-hidden -z-50 transition-colors duration-700"
-            style={{ background: isLight ? "var(--bg)" : "var(--bg)" }}
+            style={{ background: isLight ? "var(--background)" : "var(--background)" }}
         >
             {/* Solid base — picks up CSS var automatically */}
-            <div className="absolute inset-0 bg-[var(--bg)] transition-colors duration-700" />
+            <div className="absolute inset-0 bg-[var(--background)] transition-colors duration-700" />
 
             {/* Dark theme: noir auras */}
             <AnimatePresence>

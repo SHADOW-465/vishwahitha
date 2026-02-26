@@ -2,6 +2,10 @@
 -- Phase 3: Full Feature Expansion
 -- ============================================================
 
+-- 0. Ensure users table has a role column (for RLS)
+ALTER TABLE public.users
+    ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'member';
+
 -- 1. ALTER existing announcements table (from BroadcastCenter)
 --    Add missing columns. If table doesn't exist yet, CREATE it.
 CREATE TABLE IF NOT EXISTS public.announcements (
@@ -104,7 +108,7 @@ CREATE POLICY "Members see all announcements" ON public.announcements
     FOR SELECT USING (auth.role() = 'authenticated');
 DROP POLICY IF EXISTS "Admins manage announcements" ON public.announcements;
 CREATE POLICY "Admins manage announcements" ON public.announcements
-    FOR ALL USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid()::text AND role = 'admin'));
+    FOR ALL USING (EXISTS (SELECT 1 FROM public.users WHERE id = auth.uid()::text AND role = 'admin'));
 
 -- initiatives: public read
 ALTER TABLE public.initiatives ENABLE ROW LEVEL SECURITY;
@@ -112,7 +116,7 @@ DROP POLICY IF EXISTS "Initiatives viewable by all" ON public.initiatives;
 CREATE POLICY "Initiatives viewable by all" ON public.initiatives FOR SELECT USING (true);
 DROP POLICY IF EXISTS "Admins manage initiatives" ON public.initiatives;
 CREATE POLICY "Admins manage initiatives" ON public.initiatives
-    FOR ALL USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid()::text AND role = 'admin'));
+    FOR ALL USING (EXISTS (SELECT 1 FROM public.users WHERE id = auth.uid()::text AND role = 'admin'));
 
 -- initiative_gallery: public read
 ALTER TABLE public.initiative_gallery ENABLE ROW LEVEL SECURITY;
@@ -120,7 +124,7 @@ DROP POLICY IF EXISTS "Initiative gallery viewable by all" ON public.initiative_
 CREATE POLICY "Initiative gallery viewable by all" ON public.initiative_gallery FOR SELECT USING (true);
 DROP POLICY IF EXISTS "Admins manage initiative gallery" ON public.initiative_gallery;
 CREATE POLICY "Admins manage initiative gallery" ON public.initiative_gallery
-    FOR ALL USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid()::text AND role = 'admin'));
+    FOR ALL USING (EXISTS (SELECT 1 FROM public.users WHERE id = auth.uid()::text AND role = 'admin'));
 
 -- pulse_forms: authenticated read
 ALTER TABLE public.pulse_forms ENABLE ROW LEVEL SECURITY;
@@ -128,7 +132,7 @@ DROP POLICY IF EXISTS "Members read pulse forms" ON public.pulse_forms;
 CREATE POLICY "Members read pulse forms" ON public.pulse_forms FOR SELECT USING (auth.role() = 'authenticated');
 DROP POLICY IF EXISTS "Admins manage pulse forms" ON public.pulse_forms;
 CREATE POLICY "Admins manage pulse forms" ON public.pulse_forms
-    FOR ALL USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid()::text AND role = 'admin'));
+    FOR ALL USING (EXISTS (SELECT 1 FROM public.users WHERE id = auth.uid()::text AND role = 'admin'));
 
 -- pulse_responses: members insert own, admins read all
 ALTER TABLE public.pulse_responses ENABLE ROW LEVEL SECURITY;
@@ -140,7 +144,7 @@ CREATE POLICY "Members read own response" ON public.pulse_responses
     FOR SELECT USING (member_id = auth.uid()::text);
 DROP POLICY IF EXISTS "Admins read all responses" ON public.pulse_responses;
 CREATE POLICY "Admins read all responses" ON public.pulse_responses
-    FOR SELECT USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid()::text AND role = 'admin'));
+    FOR SELECT USING (EXISTS (SELECT 1 FROM public.users WHERE id = auth.uid()::text AND role = 'admin'));
 
 -- page_sections: public read, admin write
 ALTER TABLE public.page_sections ENABLE ROW LEVEL SECURITY;
@@ -148,4 +152,5 @@ DROP POLICY IF EXISTS "Page sections readable by all" ON public.page_sections;
 CREATE POLICY "Page sections readable by all" ON public.page_sections FOR SELECT USING (true);
 DROP POLICY IF EXISTS "Admins manage page sections" ON public.page_sections;
 CREATE POLICY "Admins manage page sections" ON public.page_sections
-    FOR ALL USING (EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid()::text AND role = 'admin'));
+    FOR ALL USING (EXISTS (SELECT 1 FROM public.users WHERE id = auth.uid()::text AND role = 'admin'));
+
