@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/theme-provider";
 import { ParticlesBackground } from "./particles-background";
+import { DynamicAuras } from "./dynamic-auras";
 
 export const BackgroundWrapper = () => {
     const { theme } = useTheme();
@@ -15,6 +16,8 @@ export const BackgroundWrapper = () => {
         >
             {/* Solid base — picks up CSS var automatically */}
             <div className="absolute inset-0 bg-[var(--background)] transition-colors duration-700" />
+
+            <DynamicAuras />
 
             {/* Dark theme: noir auras */}
             <AnimatePresence>
