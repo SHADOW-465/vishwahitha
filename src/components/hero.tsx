@@ -43,7 +43,7 @@ export const Hero = ({
     return (
         <section
             ref={containerRef}
-            className="relative w-full h-[100dvh] flex items-end justify-start overflow-hidden"
+            className="relative w-full min-h-[100dvh] flex items-end justify-start overflow-hidden"
         >
             {/* Background */}
             <div className="absolute inset-0 z-0">
@@ -54,7 +54,7 @@ export const Hero = ({
             </div>
 
             {/* Content */}
-            <div className="relative z-30 w-full max-w-7xl mx-auto px-6 pb-28 md:pb-36">
+            <div className="relative z-30 w-full max-w-7xl mx-auto px-6 pt-40 pb-20 md:pt-48 md:pb-32">
                 {/* Rotaract badge */}
                 <div className="hero-badge inline-flex items-center gap-2 bg-accent-gold/10 border border-accent-gold/25 rounded-full px-4 py-1.5 mb-8">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent-gold animate-pulse" />
