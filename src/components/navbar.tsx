@@ -42,10 +42,10 @@ export const Navbar = () => {
 
     return (
         <motion.header
-            className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 rounded-[3rem] px-4 md:px-6 py-2.5 md:py-3 flex items-center justify-between gap-4 md:gap-8 min-w-[320px] sm:min-w-[560px] w-[calc(100vw-2rem)] md:w-max max-w-[calc(100vw-2rem)]`}
+            className={`fixed top-4 md:top-6 left-1/2 z-50 transition-all duration-500 rounded-[3rem] px-4 md:px-6 py-2.5 md:py-3 flex items-center justify-between gap-4 md:gap-8 min-w-[320px] sm:min-w-[560px] w-[calc(100vw-2rem)] md:w-max max-w-[calc(100vw-2rem)]`}
             style={{ background: "transparent" }}
-            animate={{ y: 0, opacity: 1 }}
-            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, x: "-50%", opacity: 1 }}
+            initial={{ y: -100, x: "-50%", opacity: 0 }}
             transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
         >
             {/* Pill background as animated div */}
