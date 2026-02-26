@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { BackgroundWrapper } from "@/components/ui/background-wrapper";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "react-hot-toast";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
     subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <BackgroundWrapper />
                         <Navbar />
                         {children}
+                        <Toaster position="bottom-right" toastOptions={{ style: { background: '#111', color: '#fff', border: '1px solid #333' } }} />
                         <Footer />
                     </ThemeProvider>
                 </body>

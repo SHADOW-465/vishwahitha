@@ -58,7 +58,7 @@ export const Footer = async () => {
                             </a>
                         </li>
                         <li>
-                            <span>District 3232</span>
+                            <span>District 3234</span>
                         </li>
                     </ul>
                 </div>

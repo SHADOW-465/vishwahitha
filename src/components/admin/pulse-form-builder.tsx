@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Plus, Trash2, CheckCircle } from "lucide-react";
+import toast from "react-hot-toast";
 
 type QuestionType = "rating" | "pill-select" | "text";
 
@@ -44,8 +45,13 @@ export const PulseFormBuilder = () => {
             options: q.options ? q.options.split(",").map(s => s.trim()) : undefined,
         }))));
         const result = await createPulseForm(fd);
-        if (result.success) setSuccess(true);
         setLoading(false);
+        if (result.success) {
+            toast.success(result.message);
+            setSuccess(true);
+        } else {
+            toast.error(result.message);
+        }
     };
 
     if (success) return (

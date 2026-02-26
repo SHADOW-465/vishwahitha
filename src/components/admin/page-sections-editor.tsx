@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { updatePageSection } from "@/lib/server-actions";
 import { Save } from "lucide-react";
+import toast from "react-hot-toast";
 
 interface Props { sections: Record<string, any> }
 
@@ -21,8 +22,10 @@ export const PageSectionsEditor = ({ sections }: Props) => {
 
     async function handleSave(sectionKey: string) {
         setSaving(sectionKey);
-        await updatePageSection(sectionKey, values[sectionKey]);
+        const res = await updatePageSection(sectionKey, values[sectionKey]);
         setSaving(null);
+        if (res.success) toast.success(res.message);
+        else toast.error(res.message);
     }
 
     return (

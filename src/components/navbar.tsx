@@ -47,11 +47,17 @@ export const Navbar = () => {
         : "text-text-secondary hover:text-text-primary"
         }`;
 
+    const frostedClasses = isLight
+        ? "bg-white/80 backdrop-blur-2xl border border-black/10 shadow-xl"
+        : "bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl";
+
+    const transparentClasses = "bg-transparent border-transparent";
+
     const pillBg = scrolled
-        ? isLight
-            ? "bg-white/80 backdrop-blur-2xl border border-black/10 shadow-xl"
-            : "bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl"
-        : "bg-transparent border-transparent";
+        ? frostedClasses
+        : menuOpen
+            ? `${frostedClasses} lg:bg-transparent lg:border-transparent lg:backdrop-blur-none lg:shadow-none`
+            : transparentClasses;
 
     const pillRadius = menuOpen ? "rounded-3xl" : "rounded-[3rem]";
 

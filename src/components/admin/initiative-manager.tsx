@@ -5,6 +5,7 @@ import { CMSDrawer } from "./cms-drawer";
 import { createInitiative, deleteInitiative } from "@/lib/server-actions";
 import { Plus, Trash2, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 interface Props { initiatives: any[] }
 
@@ -16,9 +17,21 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
         e.preventDefault();
         setLoading(true);
         const fd = new FormData(e.currentTarget);
-        await createInitiative(fd);
+        const res = await createInitiative(fd);
         setLoading(false);
-        setDrawerOpen(false);
+        if (res.success) {
+            toast.success(res.message);
+            setDrawerOpen(false);
+        } else {
+            toast.error(res.message);
+        }
+    }
+
+    async function handleDelete(id: string) {
+        if (!confirm("Delete initiative?")) return;
+        const res = await deleteInitiative(id);
+        if (res.success) toast.success(res.message);
+        else toast.error(res.message);
     }
 
     return (
@@ -44,7 +57,7 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
                             <Link href={`/initiatives/${init.slug}`} target="_blank" className="p-2 rounded-xl bg-white/5 text-text-secondary hover:text-text-primary transition-colors">
                                 <ExternalLink size={14} />
                             </Link>
-                            <button onClick={() => deleteInitiative(init.id)} className="p-2 rounded-xl bg-accent-red/10 text-accent-red hover:bg-accent-red/20 transition-colors">
+                            <button onClick={() => handleDelete(init.id)} className="p-2 rounded-xl bg-accent-red/10 text-accent-red hover:bg-accent-red/20 transition-colors">
                                 <Trash2 size={14} />
                             </button>
                         </div>

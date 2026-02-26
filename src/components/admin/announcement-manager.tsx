@@ -5,6 +5,7 @@ import { CMSDrawer } from "./cms-drawer";
 import { createAnnouncement, deleteAnnouncement, toggleAnnouncementPin } from "@/lib/server-actions";
 import { Plus, Pin, Trash2 } from "lucide-react";
 import { AnnouncementCard } from "@/components/announcement-card";
+import toast from "react-hot-toast";
 
 interface Props { announcements: any[] }
 
@@ -16,9 +17,27 @@ export const AnnouncementManager = ({ announcements: initial }: Props) => {
         e.preventDefault();
         setLoading(true);
         const fd = new FormData(e.currentTarget);
-        await createAnnouncement(fd);
+        const res = await createAnnouncement(fd);
         setLoading(false);
-        setDrawerOpen(false);
+        if (res.success) {
+            toast.success(res.message);
+            setDrawerOpen(false);
+        } else {
+            toast.error(res.message);
+        }
+    }
+
+    async function handleTogglePin(id: string, currentPin: boolean) {
+        const res = await toggleAnnouncementPin(id, currentPin);
+        if (res.success) toast.success(res.message);
+        else toast.error(res.message);
+    }
+
+    async function handleDelete(id: string) {
+        if (!confirm("Delete announcement?")) return;
+        const res = await deleteAnnouncement(id);
+        if (res.success) toast.success(res.message);
+        else toast.error(res.message);
     }
 
     return (
@@ -42,13 +61,13 @@ export const AnnouncementManager = ({ announcements: initial }: Props) => {
                         <AnnouncementCard announcement={a} index={0} />
                         <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                             <button
-                                onClick={() => toggleAnnouncementPin(a.id, a.is_pinned)}
+                                onClick={() => handleTogglePin(a.id, a.is_pinned)}
                                 className={`p-2 rounded-xl transition-colors ${a.is_pinned ? "bg-accent-gold/20 text-accent-gold" : "bg-white/5 text-text-secondary hover:text-accent-gold"}`}
                             >
                                 <Pin size={14} />
                             </button>
                             <button
-                                onClick={() => deleteAnnouncement(a.id)}
+                                onClick={() => handleDelete(a.id)}
                                 className="p-2 rounded-xl bg-accent-red/10 text-accent-red hover:bg-accent-red/20 transition-colors"
                             >
                                 <Trash2 size={14} />

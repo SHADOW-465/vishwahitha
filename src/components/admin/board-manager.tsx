@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CMSDrawer } from "./cms-drawer";
 import { createBoardMember, deleteBoardMember } from "@/lib/server-actions";
 import { Plus, Trash2, User } from "lucide-react";
+import toast from "react-hot-toast";
 
 interface Props { members: any[] }
 
@@ -14,9 +15,21 @@ export const BoardManager = ({ members: initial }: Props) => {
     async function handleCreate(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setLoading(true);
-        await createBoardMember(new FormData(e.currentTarget));
+        const res = await createBoardMember(new FormData(e.currentTarget));
         setLoading(false);
-        setDrawerOpen(false);
+        if (res.success) {
+            toast.success(res.message);
+            setDrawerOpen(false);
+        } else {
+            toast.error(res.message);
+        }
+    }
+
+    async function handleDelete(id: string) {
+        if (!confirm("Delete board member?")) return;
+        const res = await deleteBoardMember(id);
+        if (res.success) toast.success(res.message);
+        else toast.error(res.message);
     }
 
     return (
@@ -38,7 +51,7 @@ export const BoardManager = ({ members: initial }: Props) => {
                             <p className="font-heading font-bold text-text-primary truncate">{m.name}</p>
                             <p className="font-mono text-xs text-accent-gold">{m.role}</p>
                         </div>
-                        <button onClick={() => deleteBoardMember(m.id)} className="p-2 rounded-xl bg-accent-red/10 text-accent-red opacity-0 group-hover:opacity-100 transition-all">
+                        <button onClick={() => handleDelete(m.id)} className="p-2 rounded-xl bg-accent-red/10 text-accent-red opacity-0 group-hover:opacity-100 transition-all">
                             <Trash2 size={14} />
                         </button>
                     </div>
