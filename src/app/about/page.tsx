@@ -12,13 +12,13 @@ export default async function AboutPage() {
     const story = storySection?.content as { paragraphs?: string[] } | null;
     const paragraphs = story?.paragraphs ?? [
         "The Rotaract Club of Vishwahitha is a community-based organization dedicated to fostering leadership, professional development, and impactful service projects.",
-        "Sponsored by Rotary International, we operate under the guiding principle of Service Above Self — executing high-quality, sustainable programs that address local needs while building a network of global citizens.",
+        "Sponsored by Rotary Club of Madras Industrial City, we operate under the guiding principle of Service Above Self — executing high-quality, sustainable programs that address local needs while building a network of global citizens.",
     ];
 
     return (
-        <div className="min-h-screen pt-32 pb-24 px-6 max-w-7xl mx-auto space-y-24">
-            <section className="glass-panel rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden">
-                <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-accent-gold/5 blur-[80px]" />
+        <div className="min-h-screen pt-24 pb-16 px-5 md:pt-32 md:pb-24 md:px-6 max-w-7xl mx-auto space-y-16 md:space-y-24">
+            <section className="glass-panel rounded-[2rem] md:rounded-[2.5rem] p-5 sm:p-8 md:p-16 relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-40 h-40 md:w-64 md:h-64 rounded-full bg-accent-gold/5 blur-[80px]" />
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-gold mb-4">Who We Are</p>
                 <h1 className="font-heading text-4xl md:text-6xl font-bold text-text-primary mb-8">
                     Our <span className="font-drama italic gold-text font-light">Story</span>
@@ -35,7 +35,7 @@ export default async function AboutPage() {
                     </h2>
                     <p className="font-mono text-sm text-text-secondary mt-2">The dedicated team driving Vishwahita forward.</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
                     {boardMembers && boardMembers.length > 0 ? (
                         boardMembers.map((member: any) => (
                             <div key={member.id} className="glass-panel p-6 rounded-[2rem] group hover:border-accent-gold/30 transition-all duration-300">
