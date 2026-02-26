@@ -1,7 +1,10 @@
-import { supabase } from "@/lib/supabase";
 import { Mail, Instagram, Twitter, Linkedin, MapPin, ExternalLink } from "lucide-react";
+import { getPageSection } from "@/lib/actions";
 
-export const Footer = () => {
+export const Footer = async () => {
+    const tagline = await getPageSection("footer_tagline")
+        ?? "A community of young leaders taking action to build a better world. Sponsored by Rotary, driven by passion.";
+
     return (
         <footer className="w-full bg-primary border-t border-white/5 pt-20 pb-10 px-6 mt-32 relative overflow-hidden">
 
@@ -12,7 +15,7 @@ export const Footer = () => {
                         VISHWAHITA
                     </h2>
                     <p className="font-mono text-sm text-text-secondary max-w-sm leading-relaxed">
-                        A community of young leaders taking action to build a better world. Sponsored by Rotary, driven by passion.
+                        {tagline}
                     </p>
                     <div className="flex items-center gap-4 text-text-secondary">
                         <a href="https://instagram.com/rotaract" target="_blank" rel="noreferrer" className="hover:text-accent-gold transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">

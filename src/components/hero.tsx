@@ -5,7 +5,15 @@ import gsap from "gsap";
 import Link from "next/link";
 import { MagneticButton } from "./ui/magnetic-button";
 
-export const Hero = () => {
+interface HeroProps {
+    headline?: string;
+    subtext?: string;
+}
+
+export const Hero = ({
+    headline = "Service Above",
+    subtext = "Community Luxe — merging high-end execution with dedicated NGO roots. District 3232.",
+}: HeroProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -56,7 +64,7 @@ export const Hero = () => {
                 <div className="max-w-4xl space-y-4">
                     {/* Line 1 — bold sans */}
                     <h1 className="hero-reveal font-heading font-bold text-5xl md:text-7xl lg:text-8xl text-text-primary tracking-tighter leading-[0.95]">
-                        Service Above
+                        {headline}
                     </h1>
                     {/* Line 2 — massive drama serif gold */}
                     <h1 className="hero-reveal font-drama italic font-light text-[5rem] md:text-[9rem] lg:text-[11rem] leading-[0.8] gold-text tracking-tight">
@@ -64,8 +72,7 @@ export const Hero = () => {
                     </h1>
 
                     <p className="hero-reveal text-base md:text-xl text-text-secondary font-mono max-w-lg leading-relaxed pt-4">
-                        Community Luxe — merging high-end execution with dedicated NGO roots.
-                        District 3232.
+                        {subtext}
                     </p>
 
                     <div className="hero-reveal flex items-center gap-4 pt-6">

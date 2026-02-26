@@ -64,6 +64,17 @@ export async function getAllAnnouncements() {
     return data ?? [];
 }
 
+export async function getPageSection(key: string): Promise<string | null> {
+    const { data, error } = await supabase
+        .from("page_sections")
+        .select("content")
+        .eq("section_key", key)
+        .single();
+
+    if (error) { return null; }
+    return (data?.content as string) ?? null;
+}
+
 export async function getInitiativeBySlug(slug: string) {
     const { data, error } = await supabase
         .from("initiatives")
