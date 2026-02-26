@@ -6,10 +6,10 @@ export const Footer = async () => {
         ?? "A community of young leaders taking action to build a better world. Sponsored by Rotary, driven by passion.";
 
     return (
-        <footer className="w-full bg-primary border-t border-white/5 pt-20 pb-10 px-6 mt-32 relative overflow-hidden">
+        <footer className="w-full bg-primary border-t border-white/5 pt-12 pb-8 px-5 mt-16 md:pt-20 md:pb-10 md:px-6 md:mt-32 relative overflow-hidden">
 
 
-            <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
                 <div className="md:col-span-2 space-y-6">
                     <h2 className="font-heading text-3xl font-bold tracking-tighter text-text-primary">
                         VISHWAHITA
