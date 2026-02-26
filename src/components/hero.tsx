@@ -6,12 +6,14 @@ import Link from "next/link";
 import { MagneticButton } from "./ui/magnetic-button";
 
 interface HeroProps {
-    headline?: string;
+    headlineLine1?: string;
+    headlineLine2?: string;
     subtext?: string;
 }
 
 export const Hero = ({
-    headline = "Service Above",
+    headlineLine1 = "Service Above",
+    headlineLine2 = "Self.",
     subtext = "Community Luxe — merging high-end execution with dedicated NGO roots. District 3234.",
 }: HeroProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -64,11 +66,11 @@ export const Hero = ({
                 <div className="max-w-4xl space-y-4">
                     {/* Line 1 — bold sans */}
                     <h1 className="hero-reveal font-heading font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-text-primary tracking-tighter leading-[0.95]">
-                        {headline}
+                        {headlineLine1}
                     </h1>
                     {/* Line 2 — massive drama serif gold */}
                     <h1 className="hero-reveal font-drama italic font-light text-[3rem] sm:text-[4.5rem] md:text-[7rem] lg:text-[9rem] xl:text-[11rem] leading-[0.8] gold-text tracking-tight">
-                        Self.
+                        {headlineLine2}
                     </h1>
 
                     <p className="hero-reveal text-base md:text-xl text-text-secondary font-mono max-w-lg leading-relaxed pt-4">

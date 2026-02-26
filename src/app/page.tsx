@@ -13,7 +13,11 @@ export default async function Home() {
 
     return (
         <main className="min-h-screen pb-32">
-            <Hero headline={heroHeadline ?? undefined} subtext={heroSubtext ?? undefined} />
+            <Hero
+                headlineLine1={heroHeadline?.line1}
+                headlineLine2={heroHeadline?.line2}
+                subtext={heroSubtext?.text}
+            />
             <ProjectShuffler initiatives={initiatives} />
             <LiveEventCalendar />
             <SponsorShowcase />

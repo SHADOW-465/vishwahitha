@@ -2,8 +2,8 @@ import { Mail, Instagram, Twitter, Linkedin, MapPin, ExternalLink } from "lucide
 import { getPageSection } from "@/lib/actions";
 
 export const Footer = async () => {
-    const tagline = await getPageSection("footer_tagline")
-        ?? "A community of young leaders taking action to build a better world. Sponsored by Rotary, driven by passion.";
+    const taglineObj = await getPageSection("footer_tagline");
+    const tagline = taglineObj?.text ?? "A community of young leaders taking action to build a better world. Sponsored by Rotary, driven by passion.";
 
     return (
         <footer className="w-full bg-primary border-t border-white/5 pt-12 pb-8 px-5 mt-16 md:pt-20 md:pb-10 md:px-6 md:mt-32 relative overflow-hidden">

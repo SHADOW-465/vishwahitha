@@ -64,7 +64,7 @@ export async function getAllAnnouncements() {
     return data ?? [];
 }
 
-export async function getPageSection(key: string): Promise<string | null> {
+export async function getPageSection(key: string): Promise<Record<string, any> | null> {
     const { data, error } = await supabase
         .from("page_sections")
         .select("content")
@@ -72,7 +72,7 @@ export async function getPageSection(key: string): Promise<string | null> {
         .single();
 
     if (error) { return null; }
-    return (data?.content as string) ?? null;
+    return (data?.content as Record<string, any>) ?? null;
 }
 
 export async function getInitiativeBySlug(slug: string) {
