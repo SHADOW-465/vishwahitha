@@ -62,11 +62,11 @@ export const InitiativeCard = ({ initiative, index }: { initiative: Initiative; 
                             </div>
                         ) : (
                             <div className="w-full aspect-video bg-gradient-to-br from-accent-gold/10 to-transparent flex items-center justify-center">
-                                <span className="font-drama italic text-5xl gold-text opacity-30">{initiative.title[0]}</span>
+                                <span className="font-drama italic text-4xl md:text-5xl gold-text opacity-30">{initiative.title[0]}</span>
                             </div>
                         )}
 
-                        <div className="p-8">
+                        <div className="p-5 md:p-8">
                             <div className="flex justify-between items-start mb-4">
                                 <span className="font-mono text-xs uppercase tracking-widest text-text-secondary bg-white/5 px-3 py-1 rounded-full">
                                     {initiative.category}

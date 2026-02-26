@@ -29,9 +29,8 @@ export const HubTabs = ({ announcements, members, documents, myRsvps, activePuls
                     <button
                         key={tab}
                         onClick={() => setActiveTab(i)}
-                        className={`relative flex-shrink-0 font-mono text-sm px-5 py-2.5 rounded-xl transition-colors duration-200 ${
-                            activeTab === i ? "text-primary font-bold" : "text-text-secondary hover:text-text-primary"
-                        }`}
+                        className={`relative flex-shrink-0 font-mono text-sm px-5 py-2.5 rounded-xl transition-colors duration-200 ${activeTab === i ? "text-primary font-bold" : "text-text-secondary hover:text-text-primary"
+                            }`}
                     >
                         {activeTab === i && (
                             <motion.div
@@ -75,7 +74,7 @@ export const HubTabs = ({ announcements, members, documents, myRsvps, activePuls
                         <div className="space-y-4">
                             {myRsvps.length > 0 ? (
                                 myRsvps.map((rsvp: any) => (
-                                    <div key={rsvp.id} className="glass-panel rounded-2xl p-6 flex items-center justify-between">
+                                    <div key={rsvp.id} className="glass-panel rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                                         <div>
                                             <h4 className="font-heading font-bold text-text-primary">{rsvp.events?.title}</h4>
                                             <p className="font-mono text-xs text-text-secondary mt-1">
@@ -102,7 +101,7 @@ export const HubTabs = ({ announcements, members, documents, myRsvps, activePuls
 
                     {/* Weekly Pulse */}
                     {activeTab === 4 && (
-                        <div className="glass-panel rounded-3xl p-8">
+                        <div className="glass-panel rounded-2xl md:rounded-3xl p-5 md:p-8">
                             {!activePulseForm ? (
                                 <div className="py-16 text-center text-text-secondary font-mono">
                                     No active pulse form this week. Check back later.
@@ -190,11 +189,10 @@ const PulseFormWidget = ({ form }: { form: any }) => {
                                     <button
                                         key={n}
                                         onClick={() => setAnswers(prev => ({ ...prev, [q.id]: n }))}
-                                        className={`w-11 h-11 rounded-xl font-heading font-bold text-lg border transition-all duration-200 ${
-                                            answers[q.id] === n
+                                        className={`w-11 h-11 rounded-xl font-heading font-bold text-lg border transition-all duration-200 ${answers[q.id] === n
                                                 ? "bg-accent-gold text-primary border-accent-gold scale-110"
                                                 : "border-white/10 text-text-secondary hover:border-accent-gold/40"
-                                        }`}
+                                            }`}
                                     >
                                         {n}
                                     </button>
@@ -208,11 +206,10 @@ const PulseFormWidget = ({ form }: { form: any }) => {
                                     <button
                                         key={opt}
                                         onClick={() => setAnswers(prev => ({ ...prev, [q.id]: opt }))}
-                                        className={`font-mono text-sm border rounded-full px-5 py-2 transition-all duration-200 ${
-                                            answers[q.id] === opt
+                                        className={`font-mono text-sm border rounded-full px-5 py-2 transition-all duration-200 ${answers[q.id] === opt
                                                 ? "bg-accent-gold text-primary border-accent-gold"
                                                 : "border-white/10 text-text-secondary hover:border-accent-gold/40"
-                                        }`}
+                                            }`}
                                     >
                                         {opt}
                                     </button>

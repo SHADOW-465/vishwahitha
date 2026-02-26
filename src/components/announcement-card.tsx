@@ -27,7 +27,7 @@ export const AnnouncementCard = ({ announcement: a, index }: { announcement: Ann
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: index * 0.07, ease: [0.25, 1, 0.5, 1] }}
             viewport={{ once: true }}
-            className={`glass-panel rounded-3xl p-8 ${a.is_pinned ? "border-accent-gold/30" : ""}`}
+            className={`glass-panel rounded-2xl md:rounded-3xl p-5 md:p-8 ${a.is_pinned ? "border-accent-gold/30" : ""}`}
         >
             <div className="flex items-start justify-between mb-4 gap-4">
                 <div className="flex items-center gap-3 flex-wrap">
