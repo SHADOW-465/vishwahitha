@@ -50,11 +50,11 @@ export const Hero = ({
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1593113565694-c6c703b44b82?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-25 grayscale z-0" />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/85 to-primary/40 z-10" />
                 {/* Gold vignette at bottom */}
-                <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-accent-gold/5 blur-[120px] z-20 rounded-full" />
+                <div className="absolute bottom-0 left-0 w-full sm:w-[600px] h-[300px] sm:h-[400px] bg-accent-gold/5 blur-[120px] z-20 rounded-full" />
             </div>
 
             {/* Content */}
-            <div className="relative z-30 w-full max-w-7xl mx-auto px-6 pt-40 pb-20 md:pt-48 md:pb-32">
+            <div className="relative z-30 w-full max-w-7xl mx-auto px-5 pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32">
                 {/* Rotaract badge */}
                 <div className="hero-badge inline-flex items-center gap-2 bg-accent-gold/10 border border-accent-gold/25 rounded-full px-4 py-1.5 mb-8">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent-gold animate-pulse" />
@@ -63,11 +63,11 @@ export const Hero = ({
 
                 <div className="max-w-4xl space-y-4">
                     {/* Line 1 — bold sans */}
-                    <h1 className="hero-reveal font-heading font-bold text-5xl md:text-7xl lg:text-8xl text-text-primary tracking-tighter leading-[0.95]">
+                    <h1 className="hero-reveal font-heading font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-text-primary tracking-tighter leading-[0.95]">
                         {headline}
                     </h1>
                     {/* Line 2 — massive drama serif gold */}
-                    <h1 className="hero-reveal font-drama italic font-light text-[5rem] md:text-[9rem] lg:text-[11rem] leading-[0.8] gold-text tracking-tight">
+                    <h1 className="hero-reveal font-drama italic font-light text-[3rem] sm:text-[4.5rem] md:text-[7rem] lg:text-[9rem] xl:text-[11rem] leading-[0.8] gold-text tracking-tight">
                         Self.
                     </h1>
 
