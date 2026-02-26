@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(head:*)",
+      "WebSearch",
+      "Bash(cd:*)",
+      "Bash(tail:*)",
+      "Bash(cd /c/Users/acer/Documents/projects/vishwahitha && npm test 2>&1)",
+      "Bash(ls:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(node:*)",
+      "Bash(git:*)"
+    ]
+  }
+}
