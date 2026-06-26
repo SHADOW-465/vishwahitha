@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, JetBrains_Mono, Cormorant_Garamond } from "next/font/google";
+import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -8,16 +8,16 @@ import { BackgroundWrapper } from "@/components/ui/background-wrapper";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "react-hot-toast";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const inter = Inter({
     subsets: ["latin"],
     variable: "--font-heading",
-    weight: ["400", "500", "600", "700", "800"],
+    weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const cormorantGaramond = Cormorant_Garamond({
+const playfairDisplay = Playfair_Display({
     subsets: ["latin"],
     variable: "--font-drama",
-    weight: ["300", "400", "600"],
+    weight: ["400", "500", "600", "700"],
     style: ["normal", "italic"],
 });
 
@@ -29,14 +29,14 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
     title: "Rotaract Club of Vishwahita",
-    description: "Community Luxe. A bridge between a high-end creative agency and a dedicated NGO.",
+    description: "Midnight Luxe. A living digital experience for Rotaract Club of Vishwahita.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <ClerkProvider>
             <html lang="en">
-                <body className={`${plusJakartaSans.variable} ${cormorantGaramond.variable} ${jetbrainsMono.variable} antialiased`}>
+                <body className={`${inter.variable} ${playfairDisplay.variable} ${jetbrainsMono.variable} antialiased`}>
                     <ThemeProvider>
                         <BackgroundWrapper />
                         <Navbar />

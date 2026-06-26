@@ -4,20 +4,20 @@
 
 /* ── Theme CSS Variables ───────────────────────────────── */
 :root {
-  --background: #08080F;
+  --background: #0D0D12;
   --foreground: #FAF8F5;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.06);
   --gold-start: #C9A84C;
-  --gold-end: #FFD97D;
+  --gold-end: #FAF8F5;
 }
 
 /* Light theme override — applied via body[data-theme="light"] */
 body[data-theme="light"] {
-  --background: #FAFAF4;
-  --foreground: #0D0C14;
-  --glass-bg: rgba(0, 0, 0, 0.04);
-  --glass-border: rgba(0, 0, 0, 0.08);
+  --background: #FAF8F5;
+  --foreground: #2A2A35;
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.06);
 }
 
 body {
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Gold Gradient Text ──────────────────────────────────── */
 .gold-text {
-  background: linear-gradient(90deg, #C9A84C, #FFD97D);
+  background: linear-gradient(90deg, #C9A84C, #E5D3A2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -57,7 +57,7 @@ body::before {
   position: fixed;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.028;
+  opacity: 0.05;
   pointer-events: none;
   z-index: 9999;
 }

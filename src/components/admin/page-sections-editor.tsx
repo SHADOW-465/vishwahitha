@@ -10,6 +10,8 @@ interface Props { sections: Record<string, any> }
 const SECTION_DEFS = [
     { key: "hero_headline", label: "Hero Headline", fields: [{ name: "line1", label: "Line 1" }, { name: "line2", label: "Line 2 (gold drama serif)" }] },
     { key: "hero_subtext", label: "Hero Subtext", fields: [{ name: "text", label: "Paragraph" }] },
+    { key: "daily_affirmation", label: "Daily Affirmation", fields: [{ name: "quote", label: "Today's Quote" }, { name: "challenge", label: "Today's Challenge" }] },
+    { key: "volunteer_stats", label: "Volunteer Statistics", fields: [{ name: "hours", label: "Volunteer Hours Logged" }] },
     { key: "about_story", label: "About — Story", fields: [{ name: "paragraphs[0]", label: "Paragraph 1" }, { name: "paragraphs[1]", label: "Paragraph 2" }] },
     { key: "footer_tagline", label: "Footer Tagline", fields: [{ name: "text", label: "Tagline text" }] },
 ];
