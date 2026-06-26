@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
+import { Inter, Playfair_Display, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ClerkProvider } from "@clerk/nextjs";
-import { BackgroundWrapper } from "@/components/ui/background-wrapper";
+import { CinematicBackground } from "@/components/ui/cinematic-background";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "react-hot-toast";
 
@@ -21,6 +21,13 @@ const playfairDisplay = Playfair_Display({
     style: ["normal", "italic"],
 });
 
+const instrumentSerif = Instrument_Serif({
+    subsets: ["latin"],
+    variable: "--font-serif-italic",
+    weight: ["400"],
+    style: ["italic"],
+});
+
 const jetbrainsMono = JetBrains_Mono({
     subsets: ["latin"],
     variable: "--font-mono",
@@ -29,16 +36,16 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
     title: "Rotaract Club of Vishwahita",
-    description: "Midnight Luxe. A living digital experience for Rotaract Club of Vishwahita.",
+    description: "Midnight Luxe. An interactive scroll-driven digital platform for Rotaract Club of Vishwahita.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <ClerkProvider>
             <html lang="en">
-                <body className={`${inter.variable} ${playfairDisplay.variable} ${jetbrainsMono.variable} antialiased`}>
+                <body className={`${inter.variable} ${playfairDisplay.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}>
                     <ThemeProvider>
-                        <BackgroundWrapper />
+                        <CinematicBackground />
                         <Navbar />
                         {children}
                         <Toaster position="bottom-right" toastOptions={{ style: { background: '#111', color: '#fff', border: '1px solid #333' } }} />

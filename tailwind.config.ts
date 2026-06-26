@@ -10,12 +10,14 @@ export default {
         extend: {
             colors: {
                 // Dark zone base
-                primary: "#08080F",
+                primary: "#020617",
                 // Light zone base
-                "primary-light": "#FAFAF4",
+                "primary-light": "#FAF8F5",
                 // Gold gradient endpoints
-                "accent-gold": "#C9A84C",
-                "accent-gold-light": "#FFD97D",
+                "accent-gold": "#D4AF37",
+                "accent-gold-light": "#F5E6C4",
+                // Accent blue
+                "accent-blue": "#3B82F6",
                 // Energy / urgency
                 "accent-red": "#E8394D",
                 // Service / growth
@@ -26,12 +28,13 @@ export default {
                 "text-primary-light": "#0D0C14",
                 "text-secondary-light": "#5A5A6A",
                 // Glass
-                surface: "rgba(255, 255, 255, 0.03)",
+                surface: "rgba(255, 255, 255, 0.08)",
             },
             fontFamily: {
                 heading: ["var(--font-heading)"],
                 drama: ["var(--font-drama)"],
                 mono: ["var(--font-mono)"],
+                serifItalic: ["var(--font-serif-italic)"],
             },
             backgroundImage: {
                 "gold-gradient": "linear-gradient(135deg, #C9A84C, #FFD97D)",

@@ -1,72 +1,65 @@
 import { Hero } from "@/components/hero";
 import { LiveClubStatus } from "@/components/live-club-status";
+import { LegacyTimeline } from "@/components/legacy-timeline";
+import { WhoWeAre } from "@/components/who-we-are";
+import { FeaturedBento } from "@/components/featured-bento";
 import { DailyAffirmation } from "@/components/daily-affirmation";
 import { ImpactStatsSection } from "@/components/impact-counter";
-import { LegacyTimeline } from "@/components/legacy-timeline";
-import { FeaturedBento } from "@/components/featured-bento";
-import { LiveProjectFeed } from "@/components/live-project-feed";
-import { MemberSpotlight } from "@/components/member-spotlight";
 import { CinematicGallery } from "@/components/cinematic-gallery";
-import { JoinMission } from "@/components/join-mission";
-import { getInitiatives, getPageSection } from "@/lib/actions";
-import { supabase } from "@/lib/supabase";
+import { MembershipTiers } from "@/components/membership-tiers";
+import { getPageSection } from "@/lib/actions";
 
 export const revalidate = 60; // Revalidate dynamic content every 60 seconds
 
 export default async function Home() {
     // Fetch data in parallel on the server
     const [
-        initiatives,
         heroHeadline,
         heroSubtext,
-        dailyAffirmation,
-        { data: boardMembers }
+        dailyAffirmation
     ] = await Promise.all([
-        getInitiatives(),
         getPageSection("hero_headline"),
         getPageSection("hero_subtext"),
-        getPageSection("daily_affirmation"),
-        supabase.from("board_members").select("*").order("display_order")
+        getPageSection("daily_affirmation")
     ]);
 
     return (
         <main className="min-h-screen bg-primary overflow-x-hidden">
-            {/* 1. Cinematic Hero */}
+            {/* Section 1: Hero */}
             <Hero
                 headlineLine1={heroHeadline?.line1 || "27 Years of Youth-Led Service meets"}
                 headlineLine2={heroHeadline?.line2 || "Impact."}
                 subtext={heroSubtext?.text || "Welcome to the Digital Home of Rotaract Vishwahita. Fostering leaders, building lifelong fellowship, and driving sustainable service in Chennai."}
             />
 
-            {/* 2. Live Club Status */}
+            {/* Section 2: Live Club Status */}
             <LiveClubStatus />
 
-            {/* 3. The Daily Affirmation */}
+            {/* Section 3: Legacy Timeline */}
+            <LegacyTimeline />
+
+            {/* Section 4: Who We Are (Split Storytelling) */}
+            <WhoWeAre />
+
+            {/* Section 5: Projects (Bento Grid) */}
+            <FeaturedBento />
+
+            {/* Section 6: Daily Inspiration */}
             <DailyAffirmation 
                 initialQuote={dailyAffirmation?.quote}
                 initialChallenge={dailyAffirmation?.challenge}
             />
 
-            {/* 4. Impact Counter */}
+            {/* Section 7: Impact (Counter with dot-generated Rotary gear) */}
             <ImpactStatsSection />
 
-            {/* 5. Legacy Timeline */}
-            <LegacyTimeline />
-
-            {/* 6. Featured Projects Bento Grid */}
-            <FeaturedBento />
-
-            {/* 7. Live Project Feed */}
-            <LiveProjectFeed projects={initiatives} />
-
-            {/* 8. Member Spotlight */}
-            <MemberSpotlight members={boardMembers ?? []} />
-
-            {/* 9. Cinematic Gallery */}
+            {/* Section 8: Cinematic Gallery */}
             <CinematicGallery />
 
-            {/* 10. Join Rotaract */}
-            <JoinMission />
+            {/* Section 9: Membership */}
+            <MembershipTiers />
+
+            {/* Section 10 is the Footer rendered globally in layout.tsx */}
         </main>
     );
 }
