@@ -66,7 +66,7 @@ export const Hero = ({
     return (
         <section
             ref={containerRef}
-            className="relative w-full h-[100dvh] flex items-end justify-start overflow-hidden bg-transparent"
+            className="relative w-full min-h-[100dvh] flex items-center justify-start overflow-hidden bg-transparent pt-24"
         >
             {/* Custom Mouse Spotlight Glow */}
             <div
@@ -79,7 +79,7 @@ export const Hero = ({
             <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-primary to-transparent z-10 pointer-events-none" />
 
             {/* Foreground Content */}
-            <div className="relative z-20 w-full max-w-7xl mx-auto px-6 pb-24 md:pb-32">
+            <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
                 <div className="max-w-4xl space-y-6">
                     {/* Club Name */}
                     <div className="hero-reveal inline-flex items-center gap-2 bg-accent-gold/10 border border-accent-gold/25 rounded-full px-4.5 py-2">
@@ -109,7 +109,7 @@ export const Hero = ({
                         <MagneticButton>
                             <Link
                                 href="/sign-up"
-                                className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold text-sm px-8 py-4.5 rounded-full transition-transform duration-300 shadow-lg shadow-accent-gold/5"
+                                className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold text-sm px-8 py-4 rounded-full transition-transform duration-300 shadow-lg shadow-accent-gold/5"
                             >
                                 <span className="relative z-10">Become a Member</span>
                                 <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
@@ -119,7 +119,7 @@ export const Hero = ({
                         <MagneticButton>
                             <a
                                 href="#legacy"
-                                className="inline-flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 text-text-primary font-medium text-sm px-8 py-4.5 rounded-full transition-colors"
+                                className="inline-flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 text-text-primary font-medium text-sm px-8 py-4 rounded-full transition-colors"
                             >
                                 Explore Legacy
                             </a>
