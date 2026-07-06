@@ -10,6 +10,44 @@ import { useTheme } from "@/components/theme-provider";
 
 const LAST_SEEN_KEY = "vishwahitha_announcements_last_seen";
 
+const RotaryLogo = () => (
+    <svg className="w-7 h-7 text-accent-cranberry shrink-0" viewBox="0 0 100 100" fill="currentColor">
+        {/* Outer Wheel Rim */}
+        <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" strokeWidth="6" />
+        <circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" strokeWidth="3" />
+        {/* Inner Hub */}
+        <circle cx="50" cy="50" r="10" />
+        <circle cx="50" cy="50" r="6" fill="#020617" />
+        {/* Gear Teeth (24 teeth) */}
+        {Array.from({ length: 24 }).map((_, i) => (
+            <rect
+                key={i}
+                x="47"
+                y="6"
+                width="6"
+                height="8"
+                rx="1"
+                transform={`rotate(${i * 15} 50 50)`}
+            />
+        ))}
+        {/* Spokes (6 spokes) */}
+        {Array.from({ length: 6 }).map((_, i) => (
+            <line
+                key={i}
+                x1="50"
+                y1="50"
+                x2="50"
+                y2="12"
+                stroke="currentColor"
+                strokeWidth="4"
+                transform={`rotate(${i * 60} 50 50)`}
+            />
+        ))}
+        {/* Keyway slot */}
+        <rect x="48" y="44" width="4" height="6" fill="currentColor" />
+    </svg>
+);
+
 export const Navbar = () => {
     const { scrollY } = useScroll();
     const [scrolled, setScrolled] = useState(false);
@@ -79,8 +117,16 @@ export const Navbar = () => {
             {/* Top row: logo + desktop nav + auth + hamburger */}
             <div className="relative z-10 flex items-center justify-between gap-4 md:gap-8">
                 {/* Logo */}
-                <Link href="/" className="font-heading font-bold text-lg md:text-xl tracking-tighter gold-text shrink-0">
-                    VISHWAHITA
+                <Link href="/" className="flex items-center gap-2.5 shrink-0 hover:opacity-95 transition-opacity group">
+                    <RotaryLogo />
+                    <div className="flex flex-col items-start leading-none">
+                        <div className="flex items-center gap-1">
+                            <span className="font-heading font-black text-[10px] md:text-xs tracking-widest text-accent-cranberry uppercase">Rotaract</span>
+                            <span className="font-mono text-[8px] uppercase tracking-wider text-text-secondary">Club of</span>
+                        </div>
+                        <span className="font-heading font-extrabold text-sm md:text-base tracking-tighter text-text-primary">VISHWAHITA</span>
+                        <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-accent-gold mt-0.5">District 3234</span>
+                    </div>
                 </Link>
 
                 {/* Desktop nav links */}
@@ -116,7 +162,7 @@ export const Navbar = () => {
                         <MagneticButton>
                             <Link
                                 href="/sign-up"
-                                className="bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block"
+                                className="bg-gradient-to-r from-accent-cranberry to-accent-gold text-white px-4 md:px-5 py-2.5 rounded-full text-xs md:text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block shadow-lg shadow-accent-cranberry/15"
                             >
                                 Join Us
                             </Link>

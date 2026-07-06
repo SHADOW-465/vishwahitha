@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, RefreshCw, Compass } from "lucide-react";
+import { Sparkles, RefreshCw, Compass, Copy } from "lucide-react";
+import { toast } from "react-hot-toast";
 
 interface AffirmationProps {
     initialQuote?: string;
@@ -71,7 +72,20 @@ export const DailyAffirmation = ({
                         
                         <div className="flex items-center justify-between border-b border-white/5 pb-4">
                             <span className="font-mono text-xs text-text-secondary uppercase tracking-widest">Affirmation</span>
-                            <span className="font-mono text-[10px] text-accent-gold">27 Years of Legacy</span>
+                            <div className="flex items-center gap-3">
+                                <span className="font-mono text-[10px] text-accent-gold">27 Years of Legacy</span>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        navigator.clipboard.writeText(initialQuote);
+                                        toast.success("Quote copied to clipboard!");
+                                    }}
+                                    className="p-1.5 rounded-lg bg-white/5 border border-white/5 text-text-secondary hover:text-accent-cranberry hover:border-accent-cranberry/30 hover:bg-white/10 transition-all duration-200 flex items-center justify-center"
+                                    title="Copy Quote"
+                                >
+                                    <Copy size={11} />
+                                </button>
+                            </div>
                         </div>
 
                         <div className="flex-1 flex items-center justify-center py-6">

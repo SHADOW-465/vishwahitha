@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Award, Mail, Sparkles, User } from "lucide-react";
+import { Award, Mail, Sparkles, User, Linkedin, Instagram } from "lucide-react";
 
 interface BoardMember {
     id: string;
@@ -75,7 +75,7 @@ const SpotlightCard = ({ member }: SpotlightCardProps) => {
                 style={{
                     background: useTransform(
                         [glowX, glowY],
-                        (coords) => `radial-gradient(circle 160px at ${coords[0]}px ${coords[1]}px, rgba(201,168,76,0.18), transparent)`
+                        (coords) => `radial-gradient(circle 160px at ${coords[0]}px ${coords[1]}px, rgba(212,175,76,0.18), transparent)`
                     )
                 }}
             />
@@ -102,7 +102,7 @@ const SpotlightCard = ({ member }: SpotlightCardProps) => {
 
                     <div>
                         <span className="font-mono text-[9px] uppercase tracking-widest text-accent-gold flex items-center gap-1">
-                            <Award size={10} /> Board Executive
+                            <Award size={10} className="text-accent-cranberry" /> Board Executive
                         </span>
                         <h3 className="text-xl font-heading font-extrabold text-text-primary mt-1 truncate">
                             {member.name}
@@ -116,19 +116,45 @@ const SpotlightCard = ({ member }: SpotlightCardProps) => {
                 {/* Lower Section */}
                 <div style={{ transform: "translateZ(20px)" }} className="border-t border-white/5 pt-4 mt-6 flex items-center justify-between text-text-secondary">
                     {member.email ? (
-                        <div className="flex items-center gap-2 overflow-hidden max-w-[80%]">
-                            <Mail size={12} className="text-accent-gold shrink-0" />
-                            <span className="font-mono text-[10px] truncate">{member.email}</span>
+                        <div className="flex items-center gap-2 overflow-hidden max-w-[55%]">
+                            <Mail size={11} className="text-accent-gold shrink-0" />
+                            <span className="font-mono text-[9px] truncate">{member.email}</span>
                         </div>
                     ) : (
                         <div className="flex items-center gap-2">
-                            <User size={12} className="text-accent-gold" />
-                            <span className="font-mono text-[10px]">District 3234 Member</span>
+                            <User size={11} className="text-accent-gold" />
+                            <span className="font-mono text-[9px]">District 3234</span>
                         </div>
                     )}
-                    <span className="font-mono text-[10px] text-accent-gold/40 group-hover:text-accent-gold transition-colors">
-                        #board
-                    </span>
+                    
+                    {/* Social actions */}
+                    <div className="flex items-center gap-2.5 shrink-0">
+                        <a 
+                            href={`mailto:${member.email || 'contact@vishwahitha.org'}`}
+                            className="hover:text-accent-cranberry transition-colors duration-200"
+                            title="Email"
+                        >
+                            <Mail size={13} />
+                        </a>
+                        <a 
+                            href="https://linkedin.com" 
+                            target="_blank" 
+                            rel="noreferrer" 
+                            className="hover:text-accent-cranberry transition-colors duration-200"
+                            title="LinkedIn"
+                        >
+                            <Linkedin size={13} />
+                        </a>
+                        <a 
+                            href="https://instagram.com" 
+                            target="_blank" 
+                            rel="noreferrer" 
+                            className="hover:text-accent-cranberry transition-colors duration-200"
+                            title="Instagram"
+                        >
+                            <Instagram size={13} />
+                        </a>
+                    </div>
                 </div>
             </motion.div>
         </div>

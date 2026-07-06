@@ -20,6 +20,9 @@ export default {
                 "accent-blue": "#3B82F6",
                 // Energy / urgency
                 "accent-red": "#E8394D",
+                // Rotaract Cranberry
+                "accent-cranberry": "#D41367",
+                "accent-cranberry-light": "#F7E6EC",
                 // Service / growth
                 "accent-teal": "#00C9A7",
                 // Text
@@ -39,6 +42,8 @@ export default {
             backgroundImage: {
                 "gold-gradient": "linear-gradient(135deg, #C9A84C, #FFD97D)",
                 "gold-gradient-text": "linear-gradient(90deg, #C9A84C, #FFD97D, #C9A84C)",
+                "cranberry-gradient": "linear-gradient(135deg, #D41367, #F53B86)",
+                "cranberry-gradient-text": "linear-gradient(90deg, #D41367, #F53B86, #D41367)",
             },
             borderRadius: {
                 '2xl': '1.5rem',

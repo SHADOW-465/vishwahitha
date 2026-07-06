@@ -120,7 +120,7 @@ export const FeaturedBento = () => {
                 {/* Card 1: Large Card (Vaagai) */}
                 <BentoCard
                     title="Vaagai Elder Care"
-                    category="Elderly Companionship"
+                    category="Community Service"
                     description="Connecting youth with elder care homes through companion programs, story journaling, and interactive board game sessions."
                     impact="320+"
                     impactLabel="Elders Comforted"
@@ -134,7 +134,7 @@ export const FeaturedBento = () => {
                 {/* Card 2: Tall Card (INDRU) */}
                 <BentoCard
                     title="INDRU Platform"
-                    category="Daily Knowledge"
+                    category="Professional Development"
                     description="Our signature learning movement sharing daily insights in philosophy, science, and history to make members continuous learners."
                     impact="365"
                     impactLabel="Insights Shared"
@@ -148,7 +148,7 @@ export const FeaturedBento = () => {
                 {/* Card 3: Small Card (WishFit) */}
                 <BentoCard
                     title="WishFit Campaign"
-                    category="Community Relief"
+                    category="International Service"
                     description="A seasonal clothing and support drive ensuring underprivileged communities receive warm festive garments."
                     impact="1,200+"
                     impactLabel="Garments Donated"
@@ -169,7 +169,7 @@ export const FeaturedBento = () => {
                     </div>
                     <div className="relative z-10 flex items-start justify-between">
                         <div>
-                            <span className="font-mono text-[10px] uppercase tracking-widest text-text-secondary">Visuals</span>
+                            <span className="font-mono text-[10px] uppercase tracking-widest text-text-secondary">Club Service & Fellowship</span>
                             <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-text-primary mt-1">Cinematic Gallery</h3>
                         </div>
                         <div className="p-3 bg-white/5 rounded-2xl border border-white/5 text-accent-gold">

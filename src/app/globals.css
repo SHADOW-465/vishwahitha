@@ -10,6 +10,8 @@
   --glass-border: rgba(255, 255, 255, 0.10);
   --gold-start: #D4AF37;
   --gold-end: #F5E6C4;
+  --accent-cranberry: #D41367;
+  --accent-cranberry-light: #F7E6EC;
   --accent-blue: #3B82F6;
   --success: #22C55E;
 }
@@ -48,6 +50,14 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Gold Gradient Text ──────────────────────────────────── */
 .gold-text {
   background: linear-gradient(90deg, #D4AF37, #F5E6C4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Cranberry Gradient Text ─────────────────────────────── */
+.cranberry-text {
+  background: linear-gradient(90deg, #D41367, #F53B86);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

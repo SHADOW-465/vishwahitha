@@ -14,39 +14,39 @@ interface GalleryImage {
 const galleryData: GalleryImage[] = [
     {
         id: "1",
-        url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800",
-        caption: "Abstract Gold Flow — Representing our dynamic fellowship energy.",
-        category: "Exhibition"
+        url: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=800",
+        caption: "Vaagai Companionship Drive — Connecting Chennai youth with elderly residents for recreational assemblies and stories.",
+        category: "Community Service"
     },
     {
         id: "2",
-        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800",
-        caption: "Architectural Shadows — Defining our structural planning approach.",
-        category: "Planning"
+        url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800",
+        caption: "INDRU Literacy Action — Distributing cognitive learning toolkits and daily journals to Chennai corporation school students.",
+        category: "Professional Development"
     },
     {
         id: "3",
-        url: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=800",
-        caption: "Light Play — Exploring new opportunities for local youth development.",
-        category: "Summit"
+        url: "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=800",
+        caption: "Marina Beach Sanitation Operation — A collaborative district environmental cleanup gathering over 150 volunteers.",
+        category: "Community Service"
     },
     {
         id: "4",
-        url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800",
-        caption: "Golden Geometry — The precise execution behind Vaagai campaigns.",
-        category: "Campaign"
+        url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800",
+        caption: "Ascent Leadership Forum — Interactive workshop session guiding undergraduate members on resume writing and corporate operations.",
+        category: "Professional Development"
     },
     {
         id: "5",
-        url: "https://images.unsplash.com/photo-1508962914676-134849a727f0?q=80&w=800",
-        caption: "Luxury Interiors — Setting high standards for community meetings.",
-        category: "Assembly"
+        url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800",
+        caption: "Annual Fellowship Gala & Charter Night — Celebrating 27 years of service, fellowship, and strategic board inductions in District 3234.",
+        category: "Club Service"
     },
     {
         id: "6",
-        url: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800",
-        caption: "Study Space — Inspiring intellectual growth and continuous reading.",
-        category: "Culture"
+        url: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=800",
+        caption: "WishFit Clothing Mobilization — Sorting and distributing over 1,200 warm garments to local shelter networks.",
+        category: "International Service"
     }
 ];
 

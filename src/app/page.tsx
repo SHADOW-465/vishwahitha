@@ -3,10 +3,12 @@ import { LiveClubStatus } from "@/components/live-club-status";
 import { LegacyTimeline } from "@/components/legacy-timeline";
 import { WhoWeAre } from "@/components/who-we-are";
 import { FeaturedBento } from "@/components/featured-bento";
+import { LiveEventCalendar } from "@/components/live-event-calendar";
 import { DailyAffirmation } from "@/components/daily-affirmation";
 import { ImpactStatsSection } from "@/components/impact-counter";
 import { CinematicGallery } from "@/components/cinematic-gallery";
 import { MembershipTiers } from "@/components/membership-tiers";
+import { JoinMission } from "@/components/join-mission";
 import { getPageSection } from "@/lib/actions";
 
 export const revalidate = 60; // Revalidate dynamic content every 60 seconds
@@ -44,6 +46,9 @@ export default async function Home() {
             {/* Section 5: Projects (Bento Grid) */}
             <FeaturedBento />
 
+            {/* Section 5b: Live Events */}
+            <LiveEventCalendar />
+
             {/* Section 6: Daily Inspiration */}
             <DailyAffirmation 
                 initialQuote={dailyAffirmation?.quote}
@@ -58,6 +63,9 @@ export default async function Home() {
 
             {/* Section 9: Membership */}
             <MembershipTiers />
+
+            {/* Section 9b: Admissions Call to Action */}
+            <JoinMission />
 
             {/* Section 10 is the Footer rendered globally in layout.tsx */}
         </main>

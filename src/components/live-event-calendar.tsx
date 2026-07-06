@@ -22,12 +22,16 @@ export const LiveEventCalendar = async () => {
     ];
 
     return (
-        <section className="py-24 px-6 w-full max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-white/10 pb-8">
+        <section className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                 <div>
-                    <h2 className="text-4xl md:text-5xl font-heading font-bold text-text-primary">
-                        Upcoming <span className="text-accent-gold font-drama italic font-light">Engagements</span>
+                    <span className="font-mono text-xs text-accent-cranberry uppercase tracking-[0.3em]">Operational Flow</span>
+                    <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight mt-2">
+                        Upcoming <span className="font-drama italic font-light gold-text">Engagements</span>
                     </h2>
+                    <p className="font-mono text-sm text-text-secondary mt-3 max-w-md">
+                        Join our upcoming General Body Meetings, community outreach runs, and district fellowship events in Chennai.
+                    </p>
                 </div>
             </div>
 
@@ -35,7 +39,7 @@ export const LiveEventCalendar = async () => {
                 {displayEvents.map((event: any) => (
                     <div
                         key={event.id}
-                        className="group glass-panel rounded-[2rem] p-8 flex flex-col justify-between h-full min-h-[250px] transition-transform duration-300 hover:-translate-y-1"
+                        className="group glass-panel rounded-[2rem] p-8 flex flex-col justify-between h-full min-h-[250px] transition-transform duration-300 hover:-translate-y-1 hover:border-accent-cranberry/25"
                     >
                         <div>
                             <p className="text-accent-cranberry font-mono text-sm tracking-widest mb-2">
@@ -43,7 +47,7 @@ export const LiveEventCalendar = async () => {
                                 {" • "}
                                 {new Date(event.date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                             </p>
-                            <h3 className="text-2xl font-heading font-bold text-text-primary mb-2 line-clamp-2">
+                            <h3 className="text-2xl font-heading font-bold text-text-primary mb-2 line-clamp-2 group-hover:text-accent-cranberry transition-colors">
                                 {event.title}
                             </h3>
                             <p className="text-text-secondary font-mono text-sm">
@@ -53,7 +57,10 @@ export const LiveEventCalendar = async () => {
 
                         <div className="mt-8">
                             <MagneticButton>
-                                <Link href={`/events/${event.id}`} className="text-text-primary text-sm font-bold border border-white/20 rounded-full px-5 py-2 inline-block hover:bg-white/10 transition-colors">
+                                <Link 
+                                    href={`/events/${event.id}`} 
+                                    className="text-text-primary text-xs font-mono border border-accent-cranberry/35 hover:border-accent-cranberry hover:bg-accent-cranberry/5 rounded-full px-5 py-2.5 inline-block transition-colors"
+                                >
                                     Learn More
                                 </Link>
                             </MagneticButton>
