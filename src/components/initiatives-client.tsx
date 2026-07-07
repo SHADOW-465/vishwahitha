@@ -37,7 +37,111 @@ export const InitiativesClient = ({ initiatives }: { initiatives: Initiative[] }
     // Standard Rotaract Avenues of Service
     const categories = ["All", "Community Service", "Professional Development", "Club Service", "International Service"];
 
-    const mappedInitiatives = initiatives.map(i => ({
+    const fallbackInitiatives: Initiative[] = [
+        {
+            id: "fb-1",
+            slug: "vaagai",
+            title: "Vaagai — Mission Vinayaka",
+            category: "Community Service",
+            short_description: "Organized a serene Ganesh Pooja and interactive games for 40 elders at Kalaivani Old Age Home.",
+            impact_stat: "40+",
+            impact_label: "Elders Comforted",
+            color_class: "border-accent-gold/30",
+            hero_image_url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800"
+        },
+        {
+            id: "fb-2",
+            slug: "indru",
+            title: "Indru (Know Your Day)",
+            category: "Professional Development",
+            short_description: "A daily news snippet initiative covering World News, Economics, Tech, Sports, and local Chennai updates.",
+            impact_stat: "150+",
+            impact_label: "Days Active",
+            color_class: "border-accent-teal/30",
+            hero_image_url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800"
+        },
+        {
+            id: "fb-3",
+            slug: "wishfit",
+            title: "WishFit",
+            category: "Community Service",
+            short_description: "A clothing drive that collected and distributed festival outfits to individuals in neighboring communities.",
+            impact_stat: "20+",
+            impact_label: "Individuals Supported",
+            color_class: "border-accent-red/30",
+            hero_image_url: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=800"
+        },
+        {
+            id: "fb-4",
+            slug: "gigup",
+            title: "GigUp",
+            category: "Professional Development",
+            short_description: "A multi-day online workshop led by industry speakers covering freelancing, portfolio building, and client outreach.",
+            impact_stat: "30",
+            impact_label: "Participants Trained",
+            color_class: "border-accent-teal/30",
+            hero_image_url: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800"
+        },
+        {
+            id: "fb-5",
+            slug: "healthy-smiles",
+            title: "The Healthy Smiles",
+            category: "Community Service",
+            short_description: "Oral check-up and hygiene drive partnered with Tagore Medical College at Sai Baba Gurukulam.",
+            impact_stat: "40",
+            impact_label: "Children Impacted",
+            color_class: "border-accent-gold/30",
+            hero_image_url: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800"
+        },
+        {
+            id: "fb-6",
+            slug: "inbox-management",
+            title: "Inbox Management",
+            category: "Professional Development",
+            short_description: "Corporate readiness workshop training participants in professional email writing and digital etiquette.",
+            impact_stat: "140",
+            impact_label: "Students Certified",
+            color_class: "border-accent-teal/30",
+            hero_image_url: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=800"
+        },
+        {
+            id: "fb-7",
+            slug: "project-peace",
+            title: "Project Peace",
+            category: "International Service",
+            short_description: "A digital campaign on International Peace Day promoting global unity through online selfie submissions.",
+            impact_stat: "75+",
+            impact_label: "Submissions",
+            color_class: "border-accent-red/30",
+            hero_image_url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800"
+        },
+        {
+            id: "fb-8",
+            slug: "affirm",
+            title: "Affirm (Daily Motivation)",
+            category: "Club Service",
+            short_description: "A year-long positive mindset drive sharing daily motivational content across social channels.",
+            impact_stat: "155+",
+            impact_label: "Days Running",
+            color_class: "border-accent-gold/30",
+            hero_image_url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800"
+        },
+        {
+            id: "fb-9",
+            slug: "kandupidi-kandupidi",
+            title: "Kandupidi Kandupidi",
+            category: "Club Service",
+            short_description: "An interactive digital guessing game highlighting club leaders to boost internal member bonding.",
+            impact_stat: "24h",
+            impact_label: "Game Duration",
+            color_class: "border-accent-teal/30",
+            hero_image_url: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800"
+        }
+    ];
+
+    const displayInitiatives = initiatives && initiatives.length > 0 ? initiatives : fallbackInitiatives;
+
+    const mappedInitiatives = displayInitiatives.map(i => ({
         ...i,
         mappedCategory: mapCategory(i.category)
     }));

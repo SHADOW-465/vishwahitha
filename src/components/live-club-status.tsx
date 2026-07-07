@@ -21,15 +21,15 @@ export const LiveClubStatus = async () => {
     ]);
 
     // Format fallback / dynamic values
-    const totalMembers = memberCount ?? 42;
-    const totalEvents = eventCount ?? 18;
-    const runningProjects = initiatives?.length ?? 5;
-    const boardCount = boardMembers?.length ?? 12;
+    const totalMembers = memberCount ?? 35; // 35 active members from club content
+    const totalEvents = eventCount ?? 15; // 15 projects completed this term
+    const runningProjects = initiatives?.length ?? 4; // Nova Rise, U2R, Love, Vaagai
+    const boardCount = boardMembers?.length ?? 3; // President, Secretary, GRR
     const volunteerHours = volunteerStatsSection?.hours ?? "4,820+";
 
     // Get today's event or next event
-    const upcomingProject = initiatives?.[0]?.title ?? "Vaagai Elder Care";
-    const nextEvent = "Next District Assembly";
+    const upcomingProject = initiatives?.[0]?.title ?? "Vaagai — Mission Vinayaka";
+    const nextEvent = "Nova Rise Installation";
 
     // Simulate online count based on members
     const onlineCount = Math.max(3, Math.floor((totalMembers * 0.15) + Math.random() * 4));
