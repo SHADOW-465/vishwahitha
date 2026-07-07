@@ -66,7 +66,18 @@ export const DailyAffirmation = ({
                     transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
                 >
                     {/* Front Side: Affirmation Quote */}
-                    <div className="absolute inset-0 backface-hidden glass-panel rounded-3xl p-8 flex flex-col justify-between overflow-hidden">
+                    <motion.div 
+                        className="absolute inset-0 backface-hidden glass-panel rounded-3xl p-8 flex flex-col justify-between overflow-hidden"
+                        animate={{ 
+                            opacity: isFlipped ? 0 : 1,
+                            zIndex: isFlipped ? 0 : 10,
+                            pointerEvents: isFlipped ? "none" : "auto",
+                        }}
+                        transition={{ 
+                            opacity: { duration: 0.15, delay: isFlipped ? 0.25 : 0.4 },
+                            zIndex: { duration: 0, delay: isFlipped ? 0.4 : 0.4 }
+                        }}
+                    >
                         {/* Glowing morning sunlight gradient behind */}
                         <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-accent-gold/20 to-accent-red/20 blur-[60px] pointer-events-none rounded-full" />
                         
@@ -103,12 +114,21 @@ export const DailyAffirmation = ({
                             </span>
                             <span>#service</span>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Back Side: Daily Challenge */}
-                    <div 
+                    <motion.div 
                         className="absolute inset-0 backface-hidden glass-panel rounded-3xl p-8 flex flex-col justify-between overflow-hidden bg-primary rotateY-180"
                         style={{ transform: "rotateY(180deg)" }}
+                        animate={{ 
+                            opacity: isFlipped ? 1 : 0,
+                            zIndex: isFlipped ? 10 : 0,
+                            pointerEvents: isFlipped ? "auto" : "none",
+                        }}
+                        transition={{ 
+                            opacity: { duration: 0.15, delay: isFlipped ? 0.4 : 0.25 },
+                            zIndex: { duration: 0, delay: isFlipped ? 0.4 : 0.4 }
+                        }}
                     >
                         {/* Cool evening neon bloom behind */}
                         <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-accent-teal/20 to-accent-gold/15 blur-[60px] pointer-events-none rounded-full" />
@@ -130,7 +150,7 @@ export const DailyAffirmation = ({
                             </span>
                             <span className="text-accent-teal">#action</span>
                         </div>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>

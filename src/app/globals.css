@@ -81,4 +81,17 @@ body::before {
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .rotateY-180 {
+    transform: rotateY(180deg);
+  }
 }
