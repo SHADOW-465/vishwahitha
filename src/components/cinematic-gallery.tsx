@@ -73,12 +73,12 @@ export const CinematicGallery = () => {
                     <div
                         key={img.id}
                         onClick={() => setSelectedImg(img)}
-                        className="break-inside-avoid relative overflow-hidden rounded-[2rem] glass-panel border border-white/5 cursor-pointer group"
+                        className="break-inside-avoid relative overflow-hidden rounded-[2rem] glass-panel border border-white/5 cursor-pointer group hover:border-accent-gold/30 hover:shadow-lg hover:shadow-accent-gold/5 transition-all duration-300"
                     >
                         <img
                             src={img.url}
                             alt={img.caption}
-                            className="w-full h-auto object-cover grayscale opacity-45 group-hover:opacity-85 group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-700"
+                            className="w-full h-auto object-cover grayscale opacity-45 group-hover:opacity-85 group-hover:grayscale-0 transition-all duration-700"
                         />
                         
                         {/* Hover Overlay */}

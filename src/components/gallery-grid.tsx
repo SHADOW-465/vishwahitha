@@ -57,7 +57,7 @@ export const GalleryGrid = ({ items, categories }: Props) => {
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.3 }}
                                 onClick={() => setLightbox(item)}
-                                className="w-full break-inside-avoid relative group rounded-2xl overflow-hidden mb-6 cursor-zoom-in border border-white/5 hover:border-accent-gold/20 transition-colors"
+                                className="w-full break-inside-avoid relative group rounded-2xl overflow-hidden mb-6 cursor-zoom-in border border-white/5 hover:border-accent-gold/25 hover:shadow-lg hover:shadow-accent-gold/5 transition-all duration-300"
                             >
                                 {item.type === "video" ? (
                                     <video
@@ -70,7 +70,7 @@ export const GalleryGrid = ({ items, categories }: Props) => {
                                     <img
                                         src={item.url}
                                         alt={item.title || "Club photo"}
-                                        className="w-full rounded-2xl group-hover:scale-[1.03] transition-transform duration-500"
+                                        className="w-full rounded-2xl transition-opacity duration-300"
                                     />
                                 )}
                                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

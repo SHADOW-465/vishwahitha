@@ -31,6 +31,7 @@ export const WhoWeAre = () => {
 
     return (
         <section
+            id="about"
             ref={sectionRef}
             className="py-32 px-6 w-full max-w-7xl mx-auto border-t border-white/5 bg-transparent"
         >
@@ -74,7 +75,7 @@ export const WhoWeAre = () => {
                     <img
                         src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800"
                         alt="Vishwahita Leadership Planning Session"
-                        className="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:scale-102 group-hover:opacity-75 transition-all duration-700"
+                        className="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:opacity-75 transition-all duration-700"
                     />
 
                     {/* Floating caption on hover */}

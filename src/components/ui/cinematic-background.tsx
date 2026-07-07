@@ -78,12 +78,12 @@ export const CinematicBackground = () => {
                     const factor = (progress - 0.2) / 0.2; // 0 to 1
                     this.x = this.x + (nodeX - this.x) * factor * 0.35;
                     this.y = this.y + (nodeY - this.y) * factor * 0.35;
-                    this.color = "#3B82F6"; // Electric Blue
+                    this.color = "#D41367"; // Cranberry
                 } else if (progress > 0.4 && progress <= 0.6) {
                     // Chapter 3: Community - float like organic leaves
                     const factor = (progress - 0.4) / 0.2;
                     this.vx += Math.sin(this.y * 0.02) * 0.02;
-                    this.color = "#22C55E"; // Green outreach
+                    this.color = "#00C9A7"; // Teal
                 } else if (progress > 0.6 && progress <= 0.8) {
                     // Chapter 4: Impact - form grid structure
                     const factor = (progress - 0.6) / 0.2;
@@ -105,7 +105,7 @@ export const CinematicBackground = () => {
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     this.x += (dx / dist) * factor * 1.5;
                     this.y += (dy / dist) * factor * 1.5;
-                    this.color = "#D4AF37";
+                    this.color = "#D41367"; // Cranberry
                 } else {
                     this.color = "#D4AF37";
                 }
@@ -143,29 +143,29 @@ export const CinematicBackground = () => {
 
             let bgGlowX2 = width * 0.2;
             let bgGlowY2 = height * 0.2;
-            let bgGlowColor2 = "rgba(59, 130, 246, 0.04)"; // Electric Blue
+            let bgGlowColor2 = "rgba(212, 19, 103, 0.04)"; // Cranberry
             let bgGlowRadius2 = Math.min(width, height) * 0.4;
 
             if (currentProgress > 0.2 && currentProgress <= 0.4) {
-                // Chapter 2: Deep blue network
+                // Chapter 2: Deep Cranberry network
                 const factor = (currentProgress - 0.2) / 0.2;
-                bgGlowColor1 = `rgba(59, 130, 246, ${0.06 + factor * 0.04})`; // More blue
+                bgGlowColor1 = `rgba(212, 19, 103, ${0.06 + factor * 0.04})`; // More Cranberry
                 bgGlowColor2 = "rgba(212, 175, 55, 0.01)";
             } else if (currentProgress > 0.4 && currentProgress <= 0.6) {
-                // Chapter 3: Green outreach
+                // Chapter 3: Teal community
                 const factor = (currentProgress - 0.4) / 0.2;
-                bgGlowColor1 = `rgba(34, 197, 94, ${0.05 * factor})`; // Green
-                bgGlowColor2 = `rgba(59, 130, 246, ${0.04 * (1 - factor)})`;
+                bgGlowColor1 = `rgba(0, 201, 167, ${0.05 * factor})`; // Teal
+                bgGlowColor2 = `rgba(212, 19, 103, ${0.04 * (1 - factor)})`;
             } else if (currentProgress > 0.6 && currentProgress <= 0.8) {
                 // Chapter 4: Gold statistics
                 const factor = (currentProgress - 0.6) / 0.2;
                 bgGlowColor1 = `rgba(212, 175, 55, ${0.08 * factor})`;
-                bgGlowColor2 = "rgba(59, 130, 246, 0.02)";
+                bgGlowColor2 = "rgba(212, 19, 103, 0.02)";
             } else if (currentProgress > 0.8) {
                 // Chapter 5: Sunset
                 const factor = (currentProgress - 0.8) / 0.2;
                 bgGlowColor1 = `rgba(212, 175, 55, ${0.08 + factor * 0.02})`;
-                bgGlowColor2 = `rgba(239, 68, 68, ${0.06 * factor})`; // Sunset red
+                bgGlowColor2 = `rgba(212, 19, 103, ${0.06 * factor})`; // Cranberry
                 bgGlowRadius1 = Math.min(width, height) * 0.8;
                 bgGlowY1 = height;
             }
@@ -245,7 +245,7 @@ export const CinematicBackground = () => {
                     ? (currentProgress - 0.15) / 0.15 
                     : (0.45 - currentProgress) / 0.15;
                 
-                ctx.strokeStyle = "#3B82F6";
+                ctx.strokeStyle = "#D41367";
                 ctx.save();
                 ctx.globalAlpha = Math.max(0, lineAlpha) * 0.12;
                 

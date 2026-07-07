@@ -139,7 +139,7 @@ export const LegacyTimeline = () => {
                             <img
                                 src={activeEvent.image}
                                 alt={activeEvent.title}
-                                className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:opacity-85 group-hover:scale-105 transition-all duration-700"
+                                className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:opacity-85 transition-all duration-700"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
                             <span className="absolute bottom-6 left-6 font-mono text-[10px] uppercase bg-accent-gold/15 text-accent-gold border border-accent-gold/25 rounded-full px-3 py-1 tracking-wider backdrop-blur-md">

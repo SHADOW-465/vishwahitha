@@ -39,7 +39,7 @@ export const JoinMission = () => {
                     <MagneticButton>
                         <Link
                             href="/sign-up"
-                            className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold text-sm px-10 py-5 rounded-full transition-transform duration-300 shadow-xl shadow-accent-gold/10"
+                            className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-10 py-5 rounded-full transition-all duration-300 shadow-xl shadow-accent-cranberry/15 hover:shadow-accent-cranberry/25"
                         >
                             <span className="relative z-10">Become a Member</span>
                             <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />

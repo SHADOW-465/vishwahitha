@@ -57,7 +57,7 @@ const BentoCard = ({
                 <img
                     src={image}
                     alt={title}
-                    className="h-full w-full object-cover grayscale opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
+                    className="h-full w-full object-cover grayscale opacity-20 group-hover:opacity-40 transition-all duration-700"
                 />
                 <div className={`absolute inset-0 bg-gradient-to-t ${themeClasses.gradient} opacity-40`} />
             </div>
@@ -104,7 +104,7 @@ const BentoCard = ({
 
 export const FeaturedBento = () => {
     return (
-        <section className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
+        <section id="initiatives" className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="mb-12">
                 <span className="font-mono text-xs text-accent-gold uppercase tracking-[0.3em]">Featured Actions</span>
                 <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight mt-2">

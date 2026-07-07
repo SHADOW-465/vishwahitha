@@ -22,7 +22,7 @@ export const LiveEventCalendar = async () => {
     ];
 
     return (
-        <section className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
+        <section id="events" className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                 <div>
                     <span className="font-mono text-xs text-accent-cranberry uppercase tracking-[0.3em]">Operational Flow</span>

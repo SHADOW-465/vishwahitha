@@ -70,7 +70,7 @@ export const LiveClubStatus = async () => {
     ];
 
     return (
-        <section className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
+        <section id="pulse" className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="mb-12">
                 <div className="flex items-center gap-2 mb-3">
                     <span className="relative flex h-2 w-2">

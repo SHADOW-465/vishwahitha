@@ -245,7 +245,7 @@ export const ImpactStatsSection = () => {
     ];
 
     return (
-        <section className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
+        <section id="impact" className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="flex flex-col items-center text-center max-w-xl mx-auto mb-16 space-y-6">
                 
                 {/* Dot Rotary Gear Canvas */}

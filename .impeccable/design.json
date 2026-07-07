@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-07T13:40:00Z",
+  "title": "Design System: Rotaract Club of Vishwahita",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Midnight Void", "canonical": "oklch(12.72% 0.02 260)" },
+      "accent-cranberry": { "role": "secondary", "displayName": "Rotaract Cranberry", "canonical": "oklch(50.41% 0.23 355)" },
+      "accent-gold": { "role": "secondary", "displayName": "Rotary Gold", "canonical": "oklch(76.22% 0.16 80)" },
+      "neutral-fg": { "role": "neutral", "displayName": "Ivory Cream", "canonical": "#FAF8F5" },
+      "neutral-muted": { "role": "neutral", "displayName": "Zinc Gray", "canonical": "#A1A1AA" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display Sans", "purpose": "Hero headlines only." },
+      "drama": { "displayName": "Drama Serif", "purpose": "Editorial emphasis keywords." },
+      "body": { "displayName": "Body Copy", "purpose": "Paragraphs and descriptions." },
+      "mono": { "displayName": "Mono Data", "purpose": "Badges, indicators, and metadata." }
+    },
+    "shadows": [
+      { "name": "spotlight-glow", "value": "radial-gradient(circle 160px at var(--x) var(--y), rgba(201,168,76,0.18), transparent)", "purpose": "Interactive hover trail inside glass cards." }
+    ],
+    "motion": [
+      { "name": "ease-out-exponential", "value": "cubic-bezier(0.25, 1, 0.5, 1)", "purpose": "Smooth transition for entries and tilts." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Call-to-action button for memberships and core gates.",
+      "html": "<button class=\"ds-btn-primary\">Join Us</button>",
+      "css": ".ds-btn-primary { background: linear-gradient(135deg, #D41367, #F5E6C4); color: #FAF8F5; padding: 12px 24px; border-radius: 9999px; border: none; font-family: sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s; } .ds-btn-primary:hover { transform: scale(1.03); box-shadow: 0 10px 25px rgba(212, 19, 103, 0.2); }"
+    },
+    {
+      "name": "Magnetic Link",
+      "kind": "button",
+      "refersTo": "button-magnetic",
+      "description": "Secondary button with magnetic hover feedback.",
+      "html": "<a class=\"ds-link-magnetic\">Explore Legacy</a>",
+      "css": ".ds-link-magnetic { background: rgba(255, 255, 255, 0.05); color: #FAF8F5; padding: 12px 24px; border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.1); font-family: sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s, transform 0.3s; } .ds-link-magnetic:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }"
+    },
+    {
+      "name": "Glass Container",
+      "kind": "card",
+      "refersTo": "card-glass",
+      "description": "Standard panel container for bento grid and dashboards.",
+      "html": "<div class=\"ds-card-glass\"><span class=\"ds-tag\">Community Service</span><h3 class=\"ds-title\">Vaagai Elder Care</h3><p class=\"ds-body\">Connecting youth with regional elder homes for companionship and games.</p></div>",
+      "css": ".ds-card-glass { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 2rem; padding: 32px; font-family: sans-serif; } .ds-tag { font-family: monospace; font-size: 10px; text-transform: uppercase; color: #D4AF37; letter-spacing: 0.15em; display: block; margin-bottom: 8px; } .ds-title { font-size: 24px; font-weight: 800; color: #FAF8F5; margin: 0 0 12px 0; } .ds-body { font-size: 14px; color: #A1A1AA; margin: 0; line-height: 1.6; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Digital Instrument of Leadership",
+    "overview": "The Rotaract Club of Vishwahita design system is built to convey community action and prestigious heritage through a high-contrast midnight aesthetic. The interface represents a blend of official Rotary credibility and modern, youth-led digital refinement. Instead of clean corporate flats or overly playful non-profit illustrations, this visual system embraces deep dark-space structures with glowing light accents, glassmorphic panels, and organic background particles. Motion behaves with intentional ease, mimicking high-end watchmaker ateliers and premium editorial journals.",
+    "keyCharacteristics": [
+      "Deep obsidian backdrop overlays with a subtle global 5% SVG fractal noise layer.",
+      "Rounded container borders ranging from 1.5rem to 3rem for smooth tactile volume.",
+      "Interactive magnetism on clickable elements.",
+      "Clean uppercase monospace indicators to show metadata precision."
+    ],
+    "rules": [
+      { "name": "The Cranberry Focus Rule", "body": "The official brand color (#D41367) is used exclusively as a focal accent on less than 15% of any screen surface to preserve its energetic premium impact.", "section": "colors" },
+      { "name": "The Tactile Rest Rule", "body": "Glass panels remain flat at rest with a subtle 1px white/10 border. Lift and glow appear exclusively on hover state as a response to cursor interaction.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do map all initiatives and bento grids to the official Avenues of Service.",
+      "Do ensure all text elements have at least 4.5:1 contrast against their dark background (using `#FAF8F5` for primary copy).",
+      "Do wrap scrolling section boundaries with GSAP Theme Inverters to trigger smooth dark-to-light theme changes."
+    ],
+    "donts": [
+      "Don't use standard emojis as icons; always implement clean vector SVGs from the Lucide set.",
+      "Don't use side-stripe borders (e.g. `border-left-4`) to highlight card categories.",
+      "Don't animate or scale direct image tags on hover; animate container backgrounds instead."
+    ]
+  }
+}

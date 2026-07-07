@@ -52,7 +52,7 @@ export const MembershipTiers = () => {
     ];
 
     return (
-        <section className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5 bg-transparent">
+        <section id="join" className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5 bg-transparent">
             <div className="text-center max-w-xl mx-auto mb-16 space-y-4">
                 <div className="inline-flex items-center gap-2 bg-accent-gold/10 border border-accent-gold/25 rounded-full px-3 py-1">
                     <Sparkles size={12} className="text-accent-gold animate-pulse" />
@@ -73,7 +73,7 @@ export const MembershipTiers = () => {
                         ? "border-accent-gold/40 shadow-2xl bg-white/2" 
                         : "border-white/5 bg-transparent hover:border-white/10";
                     const btnClass = card.featured
-                        ? "bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary"
+                        ? "bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary"
                         : "border border-white/10 hover:bg-white/5 text-text-primary";
 
                     return (

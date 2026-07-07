@@ -9,6 +9,7 @@ import { ImpactStatsSection } from "@/components/impact-counter";
 import { CinematicGallery } from "@/components/cinematic-gallery";
 import { MembershipTiers } from "@/components/membership-tiers";
 import { JoinMission } from "@/components/join-mission";
+import { StoryNavigator } from "@/components/story-navigator";
 import { getPageSection } from "@/lib/actions";
 
 export const revalidate = 60; // Revalidate dynamic content every 60 seconds
@@ -66,6 +67,9 @@ export default async function Home() {
 
             {/* Section 9b: Admissions Call to Action */}
             <JoinMission />
+
+            {/* Floating Navigation Story Tracker */}
+            <StoryNavigator />
 
             {/* Section 10 is the Footer rendered globally in layout.tsx */}
         </main>
