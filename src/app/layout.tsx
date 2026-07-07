@@ -35,8 +35,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Rotaract Club of Vishwahita",
-    description: "Midnight Luxe. An interactive scroll-driven digital platform for Rotaract Club of Vishwahita.",
+    title: "Rotaract Club of Vishwahita | Youth Leadership, Chennai",
+    description: "Chartered in 1999, Rotaract Club of Vishwahita has delivered 500+ projects reaching 2,000+ people across District 3234. Chennai's youth-led service club.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

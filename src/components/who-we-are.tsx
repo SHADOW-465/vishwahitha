@@ -58,7 +58,7 @@ export const WhoWeAre = () => {
                     </div>
 
                     <p className="story-reveal font-mono text-sm md:text-base text-text-secondary leading-relaxed max-w-xl">
-                        Chartered in 1999 under Rotary International, the Rotaract Club of Vishwahita is a Chennai-based collective of young professionals, executives, and leaders. We reject standard NGO templates, treating our service initiatives with the same creative depth and operational rigor as modern product launches.
+                        Chartered on March 10, 1999, and sponsored by the Rotary Club of Madras Industrial City, the Rotaract Club of Vishwahita is a Chennai-based collective of young leaders. In Sanskrit, "Vishwahita" translates to "universal friendship" — the foundational working principle behind our 500+ projects and collaborative committee structure.
                     </p>
 
                     <div className="story-reveal flex items-center gap-1.5 font-mono text-[10px] text-text-secondary">
@@ -87,6 +87,61 @@ export const WhoWeAre = () => {
                             Interactive brainstorming at the annual youth leadership summit, Chennai.
                         </p>
                     </div>
+                </div>
+            </div>
+
+            {/* Principles Grid */}
+            <div className="story-reveal mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Principle 1: Universal Friendship */}
+                <div className="glass-panel p-8 rounded-[2.5rem] border border-white/5 relative overflow-hidden group hover:border-accent-gold/20 transition-all duration-500 bg-black/10">
+                    <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-accent-gold/5 blur-[40px] pointer-events-none" />
+                    <h3 className="font-heading text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
+                        <span className="font-mono text-[9px] text-accent-gold bg-accent-gold/10 border border-accent-gold/20 px-2 py-0.5 rounded-md uppercase tracking-wider font-semibold">Principle</span>
+                        Universal Friendship (Vishwahita)
+                    </h3>
+                    <p className="font-mono text-xs text-text-secondary leading-relaxed mb-6">
+                        "Universal friendship" is the operational standard shaping our projects and committee structures, ensuring:
+                    </p>
+                    <ul className="space-y-3 font-mono text-xs text-text-secondary">
+                        <li className="flex items-start gap-2">
+                            <span className="text-accent-gold font-bold">•</span>
+                            <span><strong>Who we serve:</strong> Projects designed for inclusion and true grassroots impact, not visibility.</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-accent-gold font-bold">•</span>
+                            <span><strong>How we work:</strong> Cross-functional collaboration across committees, rejecting isolated initiatives.</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-accent-gold font-bold">•</span>
+                            <span><strong>What we measure:</strong> Project completion rates and exact outreach figures over intentions.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* Principle 2: Continuity with Purpose */}
+                <div className="glass-panel p-8 rounded-[2.5rem] border border-white/5 relative overflow-hidden group hover:border-accent-teal/20 transition-all duration-500 bg-black/10">
+                    <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-accent-teal/5 blur-[40px] pointer-events-none" />
+                    <h3 className="font-heading text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
+                        <span className="font-mono text-[9px] text-accent-teal bg-accent-teal/10 border border-accent-teal/20 px-2 py-0.5 rounded-md uppercase tracking-wider font-semibold">Approach</span>
+                        Continuity With Purpose
+                    </h3>
+                    <p className="font-mono text-xs text-text-secondary leading-relaxed mb-6">
+                        We operate a structured, multi-generational organization where boards inherit and expand existing progress:
+                    </p>
+                    <ul className="space-y-3 font-mono text-xs text-text-secondary">
+                        <li className="flex items-start gap-2">
+                            <span className="text-accent-teal font-bold">•</span>
+                            <span><strong>Inherited Progression:</strong> Each board builds directly on the previous board's projects, not from zero.</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-accent-teal font-bold">•</span>
+                            <span><strong>Innovation inside Frameworks:</strong> Every new committee integrates fresh ideas within our existing framework.</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-accent-teal font-bold">•</span>
+                            <span><strong>Track Record Addition:</strong> Every project adds to a 27-year track record rather than being a standalone event.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>

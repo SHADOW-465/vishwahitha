@@ -10,6 +10,7 @@ import { CinematicGallery } from "@/components/cinematic-gallery";
 import { MembershipTiers } from "@/components/membership-tiers";
 import { JoinMission } from "@/components/join-mission";
 import { StoryNavigator } from "@/components/story-navigator";
+import { FAQSection } from "@/components/faq-section";
 import { getPageSection } from "@/lib/actions";
 
 export const revalidate = 60; // Revalidate dynamic content every 60 seconds
@@ -30,9 +31,9 @@ export default async function Home() {
         <main className="min-h-screen bg-primary overflow-x-hidden">
             {/* Section 1: Hero */}
             <Hero
-                headlineLine1={heroHeadline?.line1 || "27 Years of Youth-Led Service meets"}
-                headlineLine2={heroHeadline?.line2 || "Impact."}
-                subtext={heroSubtext?.text || "Welcome to the Digital Home of Rotaract Vishwahita. Fostering leaders, building lifelong fellowship, and driving sustainable service in Chennai."}
+                headlineLine1={heroHeadline?.line1 || "Rotaract Club of Vishwahita:"}
+                headlineLine2={heroHeadline?.line2 || "27 Years of Youth-Led Service in Chennai."}
+                subtext={heroSubtext?.text || "Chartered on March 10, 1999, and sponsored by the Rotary Club of Madras Industrial City, we are one of the most active Rotaract clubs in District 3234 — 500+ projects, 2,000+ people reached, one club."}
             />
 
             {/* Section 2: Live Club Status */}
@@ -65,7 +66,10 @@ export default async function Home() {
             {/* Section 9: Membership */}
             <MembershipTiers />
 
-            {/* Section 9b: Admissions Call to Action */}
+            {/* Section 9b: FAQ Accordion */}
+            <FAQSection />
+
+            {/* Section 9c: Admissions Call to Action */}
             <JoinMission />
 
             {/* Floating Navigation Story Tracker */}
