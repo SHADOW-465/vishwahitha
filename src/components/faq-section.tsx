@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HelpCircle, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 interface FAQItem {
     question: string;
@@ -14,24 +14,24 @@ export const FAQSection = () => {
 
     const faqs: FAQItem[] = [
         {
-            question: "When was the Rotaract Club of Vishwahita chartered?",
-            answer: "The club was chartered on March 10, 1999, under the sponsorship of the Rotary Club of Madras Industrial City."
+            question: "Who can join?",
+            answer: "Students and young professionals in and around Chennai who want to run service projects and grow as leaders. Age and membership norms follow Rotaract guidelines for District 3234."
         },
         {
-            question: "Which Rotary District does the club belong to?",
-            answer: "The Rotaract Club of Vishwahita operates under District 3234."
+            question: "How do I apply?",
+            answer: "Use Become a member on this page to create an account, then the board will guide you through orientation and induction. You can also follow announcements for open intake windows."
         },
         {
-            question: "What does \"Vishwahita\" mean?",
-            answer: "Vishwahita means \"universal friendship\" — the principle that shapes the club's project design and committee structure."
+            question: "When was the club chartered?",
+            answer: "10 March 1999, sponsored by the Rotary Club of Madras Industrial City. We operate under Rotary International District 3234."
         },
         {
-            question: "How many projects has the club completed?",
-            answer: "The club has delivered 500+ initiatives and reached more than 2,000 individuals over 27 years."
+            question: "What does Vishwahita mean?",
+            answer: "Universal friendship — the principle behind how we design projects and work across committees."
         },
         {
-            question: "How can I join the Rotaract Club of Vishwahita?",
-            answer: "Reach out through the membership form on this page. Both students and young professionals in Chennai are eligible to apply."
+            question: "Where do I see events and updates?",
+            answer: "Public notices live under Announcements and in the Club Bulletin on the homepage. Members get fuller ops access in the Hub after sign-in."
         }
     ];
 
@@ -41,17 +41,15 @@ export const FAQSection = () => {
 
     return (
         <section id="faq" className="py-24 px-6 w-full max-w-4xl mx-auto border-t border-white/5 bg-transparent">
-            {/* Header */}
-            <div className="text-center mb-16 space-y-3">
-                <div className="inline-flex items-center gap-2 bg-accent-gold/10 border border-accent-gold/20 rounded-full px-3 py-1">
-                    <HelpCircle size={12} className="text-accent-gold" />
-                    <span className="font-mono text-[10px] text-accent-gold uppercase tracking-[0.15em] font-medium">FAQ</span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary">
-                    Frequently Asked <span className="font-drama italic font-light gold-text">Questions</span>
+            <div className="text-center mb-12 md:mb-16 space-y-3">
+                <p className="font-mono text-[10px] text-accent-gold uppercase tracking-[0.18em] font-medium">
+                    Before you join
+                </p>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary text-balance">
+                    Questions people ask before joining
                 </h2>
-                <p className="font-mono text-xs text-text-secondary">
-                    Clear answers on our history, structure, and admissions protocol.
+                <p className="font-mono text-xs text-text-secondary max-w-md mx-auto leading-relaxed">
+                    Membership, charter, and where to find what&apos;s happening this week.
                 </p>
             </div>
 

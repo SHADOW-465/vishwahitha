@@ -64,13 +64,13 @@ export const LegacyTimeline = () => {
         <section id="legacy" className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                 <div>
-                    <span className="font-mono text-xs text-accent-gold uppercase tracking-[0.3em]">Historical Archive</span>
-                    <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight mt-2">
-                        Our Legacy <span className="font-drama italic font-light gold-text">Over Time</span>
+                    <span className="font-mono text-xs text-accent-gold uppercase tracking-[0.22em]">Legacy · 1999–today</span>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight mt-2 text-balance">
+                        From charter night to this term
                     </h2>
                 </div>
-                <p className="font-mono text-sm text-text-secondary max-w-md">
-                    Click through the timeline checkpoints to explore the evolution of our youth-led service movements in Chennai.
+                <p className="font-mono text-sm text-text-secondary max-w-md leading-relaxed">
+                    Select a year to follow how Vishwahita&apos;s service in Chennai grew — not a museum wall, a living arc.
                 </p>
             </div>
 

@@ -1,0 +1,31 @@
+{
+  "scanned_at": "2026-07-15",
+  "design_md": true,
+  "design_md_path": "DESIGN.md",
+  "font_stack": {
+    "display": "Inter (next/font, --font-heading)",
+    "drama": "Playfair Display (next/font, --font-drama)",
+    "serif_italic": "Instrument Serif (next/font, --font-serif-italic)",
+    "mono": "JetBrains Mono (next/font, --font-mono)",
+    "source": "src/app/layout.tsx"
+  },
+  "palette": {
+    "primary": "#020617",
+    "accent_gold": "#D4AF37",
+    "accent_cranberry": "#D41367",
+    "neutral_fg": "#FAF8F5",
+    "neutral_muted": "#A1A1AA",
+    "source": "DESIGN.md + tailwind.config.ts + globals.css"
+  },
+  "motion": {
+    "stance": "motion-on",
+    "libraries": ["framer-motion", "gsap", "@tsparticles/*"]
+  },
+  "spacing": {
+    "scale": "8pt semantic (sm/md/lg in DESIGN.md) + Tailwind defaults",
+    "radius": "1.5rem–3rem (2xl–4xl)"
+  },
+  "framework": "Next.js 16 App Router + React 19 RC + Tailwind 3.4",
+  "preserve": ["font stack", "palette", "spacing/radius", "glass + magnetic CTA voice", "dark/light theme inversion"],
+  "introduce_when_building": ["macrostructure discipline", "slop-test gates", "nav/footer archetypes within locked system"]
+}

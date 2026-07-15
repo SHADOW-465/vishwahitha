@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { MagneticButton } from "./ui/magnetic-button";
 
 interface HeroProps {
@@ -13,9 +13,9 @@ interface HeroProps {
 }
 
 export const Hero = ({
-    headlineLine1 = "27 Years of Youth-Led Service meets",
-    headlineLine2 = "Impact.",
-    subtext = "Welcome to the Digital Home of Rotaract Vishwahita. Fostering leaders, building lifelong fellowship, and driving sustainable service in Chennai.",
+    headlineLine1 = "Rotaract Club of Vishwahita",
+    headlineLine2 = "27 years of youth-led service in Chennai.",
+    subtext = "Chartered 10 March 1999 · Sponsored by the Rotary Club of Madras Industrial City · District 3234. One club, real projects, a clear path to join.",
 }: HeroProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const cursorRef = useRef<HTMLDivElement>(null);
@@ -81,48 +81,43 @@ export const Hero = ({
 
             {/* Foreground Content */}
             <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-                <div className="max-w-4xl space-y-6">
-                    {/* Club Name */}
-                    <div className="hero-reveal inline-flex items-center gap-2 bg-accent-gold/10 border border-accent-gold/25 rounded-full px-4.5 py-2">
-                        <Sparkles size={12} className="text-accent-gold animate-pulse" />
-                        <span className="font-mono text-[10px] md:text-xs text-accent-gold uppercase tracking-[0.25em] font-semibold">
-                            Rotaract Club of Vishwahita
-                        </span>
-                    </div>
+                <div className="max-w-4xl space-y-6 min-w-0">
+                    {/* Institutional line — not a sparkle pill */}
+                    <p className="hero-reveal font-mono text-[10px] md:text-xs text-accent-gold uppercase tracking-[0.22em] font-medium">
+                        RI District 3234 · Group 01 · Chennai
+                    </p>
 
-                    {/* Massive Display Typography */}
-                    <div className="space-y-4">
-                        <h1 className="hero-reveal font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tighter leading-[0.9] text-text-primary text-balance">
+                    {/* Display + drama (locked DESIGN.md pairing) */}
+                    <div className="space-y-3 min-w-0">
+                        <h1 className="hero-reveal font-heading font-extrabold text-4xl sm:text-5xl md:text-7xl tracking-tighter leading-[0.95] text-text-primary text-balance min-w-0 break-words">
                             {headlineLine1}
                         </h1>
-                        <h1 className="hero-reveal font-serifItalic italic font-light text-[3.8rem] sm:text-[5.5rem] md:text-[9.5rem] leading-[0.75] gold-text tracking-tight pb-3">
+                        <p className="hero-reveal font-drama font-light text-3xl sm:text-5xl md:text-6xl leading-[1.05] gold-text tracking-tight pb-1 text-balance">
                             {headlineLine2}
-                        </h1>
+                        </p>
                     </div>
 
-                    {/* One Sentence Subtext */}
-                    <p className="hero-reveal text-sm sm:text-base md:text-lg text-text-secondary font-heading max-w-xl leading-relaxed pt-2">
+                    <p className="hero-reveal text-sm sm:text-base md:text-lg text-text-secondary font-heading max-w-xl leading-relaxed pt-1">
                         {subtext}
                     </p>
 
-                    {/* Action Buttons */}
-                    <div className="hero-reveal flex flex-wrap items-center gap-4 pt-6">
+                    <div className="hero-reveal flex flex-wrap items-center gap-3 sm:gap-4 pt-6">
                         <MagneticButton>
                             <Link
                                 href="/sign-up"
-                                className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-accent-cranberry/15 hover:shadow-accent-cranberry/25"
+                                className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-accent-cranberry/15 hover:shadow-accent-cranberry/25 whitespace-nowrap"
                             >
-                                <span className="relative z-10">Become a Member</span>
+                                <span className="relative z-10">Become a member</span>
                                 <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </MagneticButton>
 
                         <MagneticButton>
                             <a
-                                href="#legacy"
-                                className="inline-flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 text-text-primary font-medium text-sm px-8 py-4 rounded-full transition-colors"
+                                href="#now"
+                                className="inline-flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 text-text-primary font-medium text-sm px-8 py-4 rounded-full transition-colors whitespace-nowrap"
                             >
-                                Explore Legacy
+                                See what&apos;s on
                             </a>
                         </MagneticButton>
                     </div>

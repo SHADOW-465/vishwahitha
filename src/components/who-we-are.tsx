@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Compass, Sparkles } from "lucide-react";
+import { Compass } from "lucide-react";
 
 export const WhoWeAre = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -38,22 +38,18 @@ export const WhoWeAre = () => {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
                 {/* Left Side: Editorial Typography & Narrative (7 cols) */}
                 <div className="md:col-span-7 space-y-8">
-                    <div className="story-reveal flex items-center gap-2">
-                        <Sparkles size={12} className="text-accent-gold" />
-                        <span className="font-mono text-xs text-accent-gold uppercase tracking-[0.2em] font-medium">
-                            Who We Are
-                        </span>
-                    </div>
+                    <p className="story-reveal font-mono text-xs text-accent-gold uppercase tracking-[0.2em] font-medium">
+                        Who we are
+                    </p>
 
-                    <h2 className="story-reveal text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight leading-[1.05] text-balance">
-                        Merging corporate precision with{" "}
-                        <span className="font-drama italic font-light gold-text">deep community roots.</span>
+                    <h2 className="story-reveal text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight leading-[1.05] text-balance">
+                        Universal friendship with{" "}
+                        <span className="font-drama font-light gold-text">deep roots in Chennai.</span>
                     </h2>
 
-                    {/* Massive Display Quote in Serif Italic */}
                     <div className="story-reveal border-l-2 border-accent-gold/30 pl-6 py-2 my-8">
-                        <blockquote className="font-serifItalic italic text-2xl md:text-3xl text-text-primary font-light leading-relaxed">
-                            "We do not just execute service projects. We forge the capacity of young individuals to take absolute ownership of local change."
+                        <blockquote className="font-drama font-light text-xl sm:text-2xl md:text-3xl text-text-primary leading-relaxed">
+                            We do not only run projects. We build young people who take ownership of local change.
                         </blockquote>
                     </div>
 
@@ -62,8 +58,8 @@ export const WhoWeAre = () => {
                     </p>
 
                     <div className="story-reveal flex items-center gap-1.5 font-mono text-[10px] text-text-secondary">
-                        <Compass size={12} className="animate-spin-slow" />
-                        <span>Rotary District 3234 • Charter ID 52890</span>
+                        <Compass size={12} className="text-accent-gold shrink-0" />
+                        <span>Rotary District 3234 · Sponsored by Rotary Club of Madras Industrial City</span>
                     </div>
                 </div>
 
