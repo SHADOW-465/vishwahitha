@@ -129,6 +129,10 @@ export async function createInitiative(formData: FormData): Promise<ActionRespon
     const title = formData.get("title") as string;
     const slug = title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
     const isLegacy = formData.get("is_legacy") === "on" || formData.get("is_legacy") === "true";
+    const isFeatured =
+        formData.get("is_featured") === "true" ||
+        formData.get("is_featured") === "on" ||
+        formData.get("is_featured_check") === "on";
 
     if (isLegacy) {
         await supabase.from("initiatives").update({ is_legacy: false }).eq("is_legacy", true);
@@ -144,8 +148,9 @@ export async function createInitiative(formData: FormData): Promise<ActionRespon
         impact_label: formData.get("impact_label") as string,
         hero_image_url: formData.get("hero_image_url") as string,
         color_class: (formData.get("color_class") as string) || "border-white/10",
-        is_featured: formData.get("is_featured") !== "off",
+        is_featured: isFeatured,
         is_legacy: isLegacy,
+        display_order: Number(formData.get("display_order") || 0) || undefined,
     });
 
     const message = !payload.hero_image_url ? "Initiative created without hero image" : "Initiative created successfully";
@@ -184,6 +189,44 @@ export async function deleteInitiative(id: string): Promise<ActionResponse> {
     revalidatePath("/");
     revalidatePath("/initiatives");
     return { success: true, message: "Initiative deleted successfully" };
+}
+
+/** President can edit title, copy, image path, featured flag, etc. */
+export async function updateInitiative(id: string, formData: FormData): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const isLegacy = formData.get("is_legacy") === "on" || formData.get("is_legacy") === "true";
+    if (isLegacy) {
+        await supabase.from("initiatives").update({ is_legacy: false }).eq("is_legacy", true);
+    }
+
+    const payload = sanitizePayload({
+        title: formData.get("title") as string,
+        category: formData.get("category") as string,
+        short_description: formData.get("short_description") as string,
+        full_description: formData.get("full_description") as string,
+        impact_stat: formData.get("impact_stat") as string,
+        impact_label: formData.get("impact_label") as string,
+        hero_image_url: formData.get("hero_image_url") as string,
+        is_featured: formData.get("is_featured") === "on" || formData.get("is_featured") === "true",
+        is_legacy: isLegacy,
+        display_order: Number(formData.get("display_order") || 0),
+    });
+
+    const { data, error } = await supabase
+        .from("initiatives")
+        .update(payload)
+        .eq("id", id)
+        .select()
+        .single();
+
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/");
+    revalidatePath("/initiatives");
+    revalidatePath("/admin");
+    if (data?.slug) revalidatePath(`/initiatives/${data.slug}`);
+    return { success: true, message: "Initiative updated.", data };
 }
 
 export async function submitPulseResponse(formData: FormData): Promise<ActionResponse> {

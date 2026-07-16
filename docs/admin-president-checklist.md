@@ -19,7 +19,13 @@ Use **Admin** (Clerk role `admin` on your account). Everything below maps to a p
 
 ## Site content (as needed)
 
-5. **Legacy project** — Admin → Initiatives → star (**Set legacy**)  
+5. **Initiatives & daily programmes** — Admin → Initiatives  
+   - **INDRU** and **Know the Law** are ongoing daily series (images: `/indru.jpeg`, `/know-the-law.jpeg`).  
+   - To add a new one: put the image file in the site `public/` folder (ask the developer once, or use an image URL), then set **Hero image path** to `/your-file.jpeg`.  
+   - Tick **Featured on homepage**. For daily series, set Impact Number to `Daily`.  
+   - Edit anytime with the pencil icon.  
+
+6. **Legacy project** — Admin → Initiatives → star (**Set legacy**)  
    Only one flagship is allowed; homepage legacy spotlight uses it.
 
 6. **Page sections** — Admin → Page Sections  
