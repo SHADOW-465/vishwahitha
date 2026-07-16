@@ -22,7 +22,7 @@ export const Footer = async () => {
                         {tagline}
                     </p>
                     <div className="flex items-center gap-4 text-text-secondary">
-                        <a href="https://instagram.com/rotaract" target="_blank" rel="noreferrer" className="hover:text-accent-gold transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+                        <a href="https://www.instagram.com/racvishwahita/" target="_blank" rel="noreferrer" className="hover:text-accent-gold transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10" aria-label="Instagram @racvishwahita">
                             <Instagram size={20} />
                         </a>
                         <a href="https://twitter.com/rotaract" target="_blank" rel="noreferrer" className="hover:text-accent-gold transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">

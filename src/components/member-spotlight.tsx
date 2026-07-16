@@ -146,7 +146,7 @@ const SpotlightCard = ({ member }: SpotlightCardProps) => {
                             <Linkedin size={13} />
                         </a>
                         <a 
-                            href="https://instagram.com" 
+                            href="https://www.instagram.com/racvishwahita/" 
                             target="_blank" 
                             rel="noreferrer" 
                             className="hover:text-accent-cranberry transition-colors duration-200"
