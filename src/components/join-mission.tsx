@@ -17,13 +17,13 @@ export const JoinMission = () => {
                     Membership · Students & young professionals
                 </p>
 
-                <div className="space-y-3">
-                    <h2 className="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl text-text-primary tracking-tighter leading-[0.98] text-balance">
-                        The next chapter needs you in the room
+                <div className="space-y-2 sm:space-y-3">
+                    <h2 className="font-heading font-extrabold text-4xl sm:text-5xl md:text-7xl text-text-primary tracking-tighter leading-[0.92] text-balance">
+                        The Next 27 Years
                     </h2>
-                    <p className="font-drama font-light text-2xl sm:text-3xl md:text-4xl leading-snug gold-text tracking-tight">
-                        Unite for Good. Rise Above.
-                    </p>
+                    <h2 className="font-display-drama text-[2.75rem] sm:text-[4rem] md:text-[5.5rem] leading-[0.8] gold-text tracking-tight pb-2 text-balance">
+                        Need New Leaders.
+                    </h2>
                 </div>
 
                 <p className="font-mono text-sm md:text-base text-text-secondary max-w-xl mx-auto leading-relaxed">

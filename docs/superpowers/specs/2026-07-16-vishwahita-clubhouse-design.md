@@ -288,6 +288,7 @@ Server actions remain `"use server"` + `auth()` guards + `revalidatePath`.
 - `/projects` signature + legacy spotlight.  
 - `/contact` page.  
 - Strip leftover bloat sections from home (affirmation, fake live pulse, membership tier maze, story navigator chrome).  
+- **Ambattur-class public parity** (standing strip, board, gallery teaser, avenues tags, prospect join form, honest empty states) — ticket IDs **P0-*** / **P1-*** live in `AGENTS.md` §11a. Phase 2+ must not start until that checklist is green.  
 
 ### Phase 2 — Member Clubroom (priority #2–3)
 - Rename/redirect hub → `/member`.  

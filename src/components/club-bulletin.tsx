@@ -140,10 +140,10 @@ export async function ClubBulletin() {
                         </ul>
 
                         <Link
-                            href="/announcements"
+                            href="/events"
                             className="inline-flex items-center gap-1.5 font-mono text-xs text-text-secondary hover:text-accent-gold transition-colors"
                         >
-                            Full calendar & notices
+                            Full events calendar
                             <ArrowRight size={12} />
                         </Link>
                     </div>

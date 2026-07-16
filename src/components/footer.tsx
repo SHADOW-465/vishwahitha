@@ -6,7 +6,7 @@ export const Footer = async () => {
     const tagline = taglineObj?.text ?? "A community of young leaders taking action to build a better world. Sponsored by Rotary, driven by passion.";
 
     return (
-        <footer className="w-full bg-primary border-t border-white/5 pt-12 pb-8 px-5 mt-16 md:pt-20 md:pb-10 md:px-6 md:mt-32 relative overflow-hidden">
+        <footer id="site-footer" className="w-full bg-primary border-t border-white/5 pt-12 pb-8 px-5 mt-16 md:pt-20 md:pb-10 md:px-6 md:mt-32 relative overflow-hidden">
 
 
             <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
@@ -39,7 +39,13 @@ export const Footer = async () => {
                         </li>
                         <li className="flex items-start gap-3">
                             <MapPin size={16} className="text-accent-gold shrink-0 mt-1" />
-                            <span>123 Club Venue Street,<br />Rotary District Building</span>
+                            <span>Chennai · RI District 3234 · Group 01</span>
+                        </li>
+                        <li>
+                            <a href="/contact" className="hover:text-accent-gold transition-colors">Contact form →</a>
+                        </li>
+                        <li>
+                            <a href="/events" className="hover:text-accent-gold transition-colors">Events calendar →</a>
                         </li>
                     </ul>
                 </div>

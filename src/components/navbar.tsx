@@ -8,8 +8,6 @@ import { Menu, X } from "lucide-react";
 import { MagneticButton } from "./ui/magnetic-button";
 import { useTheme } from "@/components/theme-provider";
 
-const LAST_SEEN_KEY = "vishwahitha_announcements_last_seen";
-
 const RotaryLogo = () => (
     <svg className="w-7 h-7 text-accent-cranberry shrink-0" viewBox="0 0 100 100" fill="currentColor">
         {/* Outer Wheel Rim */}
@@ -57,12 +55,6 @@ export const Navbar = () => {
     const { theme } = useTheme();
     const isLight = theme === "light";
     const navRef = useRef<HTMLElement>(null);
-
-    const [badgeCount, setBadgeCount] = useState(0);
-    useEffect(() => {
-        const lastSeen = localStorage.getItem(LAST_SEEN_KEY);
-        if (!lastSeen) { setBadgeCount(3); return; }
-    }, [user]);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         setScrolled(latest > 50);
@@ -129,24 +121,18 @@ export const Navbar = () => {
                     </div>
                 </Link>
 
-                {/* Desktop nav links */}
+                {/* Desktop nav — Phase 0 public IA: Events · Contact · Member · Admin */}
                 <nav className="hidden lg:flex items-center gap-3 lg:gap-5">
                     <MagneticButton><Link href="/about" className={linkClass}>About</Link></MagneticButton>
-                    <MagneticButton><Link href="/initiatives" className={linkClass}>Initiatives</Link></MagneticButton>
-                    <MagneticButton><Link href="/gallery" className={linkClass}>Gallery</Link></MagneticButton>
-                    <MagneticButton>
-                        <Link href="/announcements" className={`${linkClass} relative`}>
-                            Announcements
-                            {badgeCount > 0 && (
-                                <span className="absolute -top-2 -right-3 w-4 h-4 rounded-full bg-accent-red text-white text-[9px] font-bold flex items-center justify-center animate-pulse">
-                                    {badgeCount}
-                                </span>
-                            )}
-                        </Link>
-                    </MagneticButton>
+                    <MagneticButton><Link href="/events" className={linkClass}>Events</Link></MagneticButton>
+                    <MagneticButton><Link href="/initiatives" className={linkClass}>Projects</Link></MagneticButton>
+                    <MagneticButton><Link href="/contact" className={linkClass}>Contact</Link></MagneticButton>
                     <SignedIn>
-                        <MagneticButton><Link href="/hub" className={linkClass}>Hub</Link></MagneticButton>
+                        <MagneticButton><Link href="/hub" className={linkClass}>Member</Link></MagneticButton>
                     </SignedIn>
+                    <SignedOut>
+                        <MagneticButton><Link href="/sign-in" className={linkClass}>Member</Link></MagneticButton>
+                    </SignedOut>
                     {isAdmin && (
                         <MagneticButton>
                             <Link href="/admin" className="text-sm font-medium gold-text hover:opacity-80 transition-opacity inline-block hover:-translate-y-[1px]">
@@ -200,9 +186,9 @@ export const Navbar = () => {
                         <div className="flex flex-col gap-0.5 pt-3 pb-2 border-t border-white/10 mt-2">
                             {[
                                 { href: "/about", label: "About" },
-                                { href: "/initiatives", label: "Initiatives" },
-                                { href: "/gallery", label: "Gallery" },
-                                { href: "/announcements", label: "Announcements" },
+                                { href: "/events", label: "Events" },
+                                { href: "/initiatives", label: "Projects" },
+                                { href: "/contact", label: "Contact" },
                             ].map(({ href, label }) => (
                                 <Link
                                     key={href}
@@ -211,11 +197,6 @@ export const Navbar = () => {
                                     className={`${linkClass} py-2.5 px-2 rounded-xl flex items-center gap-2`}
                                 >
                                     {label}
-                                    {label === "Announcements" && badgeCount > 0 && (
-                                        <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-accent-red text-white text-[9px] font-bold animate-pulse">
-                                            {badgeCount}
-                                        </span>
-                                    )}
                                 </Link>
                             ))}
                             <SignedIn>
@@ -224,9 +205,18 @@ export const Navbar = () => {
                                     onClick={() => setMenuOpen(false)}
                                     className={`${linkClass} py-2.5 px-2 rounded-xl`}
                                 >
-                                    Hub
+                                    Member
                                 </Link>
                             </SignedIn>
+                            <SignedOut>
+                                <Link
+                                    href="/sign-in"
+                                    onClick={() => setMenuOpen(false)}
+                                    className={`${linkClass} py-2.5 px-2 rounded-xl`}
+                                >
+                                    Member
+                                </Link>
+                            </SignedOut>
                             {isAdmin && (
                                 <Link
                                     href="/admin"

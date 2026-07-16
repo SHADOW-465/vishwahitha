@@ -7,7 +7,7 @@
 **Product overview:** `PRODUCT.md`  
 **Dev commands:** `CLAUDE.md` / this file § Commands  
 
-**Last updated:** 2026-07-16  
+**Last updated:** 2026-07-16 (parity checklist §11a added)  
 
 ---
 
@@ -59,6 +59,8 @@ The club runs relatively few events and sees low participation. The site must:
 | D15 | Tutorial | Soft gate only in v1 (encourage, don’t hard-block RSVP) |
 | D16 | Stack | Next.js App Router · Clerk · Supabase · optional Resend digests later |
 | D17 | Hub rename | Evolve `/hub` → **`/member`**; redirect `/hub` after cutover |
+| D18 | Competitor parity | Match **Ambattur-class public completeness** (standing, board, gallery, join form, avenues, events page) while keeping clubroom/CMS as our edge; do **not** copy AI template slogans or vanity stats |
+| D19 | Phase 0+1 tickets | Public House work tracked in **§11a** (Ambattur parity checklist). Phase 2+ deferred. |
 
 ---
 
@@ -267,12 +269,118 @@ First paint: logo + club name centered → scroll (or timeout) rises into nav �
 | Phase | Name | Outcome |
 | --- | --- | --- |
 | **0** | Visual calm | Remove particles/connectors; quiet background; nav toward target IA |
-| **1** | Public House | Home structure §6, `/events`, projects + legacy, `/contact`, strip bloat |
-| **2** | Member Clubroom | `/member`, RSVP, Participate (prompt + ideas), Learn tutorial |
-| **3** | Admin completeness | All content types CMS; one-legacy enforcement; prompt workflow |
-| **4** | Habit amplifiers | Email digest / reminders (Resend); optional hard tutorial gate |
+| **1** | Public House | Home structure §6 + **Ambattur parity** (§11a), `/events`, projects + legacy, `/contact`, join form, strip bloat |
+| **2** | Member Clubroom | `/member`, RSVP, Participate (prompt + ideas), Learn tutorial — **not in current ticket set** |
+| **3** | Admin completeness | All content types CMS; one-legacy enforcement; prompt workflow — **not in current ticket set** |
+| **4** | Habit amplifiers | Email digest / reminders (Resend); optional hard tutorial gate — **not in current ticket set** |
 
-**Next implementation work:** Phase 0 + Phase 1 first. Do not boil the ocean.
+**Next implementation work:** Phase 0 + Phase 1 largely shipped (2026-07-16). Apply SQL migration `supabase/migrations/20260716_phase1_public_house.sql` in Supabase. Then Phase 2 (clubroom) when ready.
+
+### Competitive references (context only)
+
+| Club site | Takeaway |
+| --- | --- |
+| [racambattur.org](https://www.racambattur.org/) | Strong public brochure: parent Rotary, D3234, mission/vision, avenues, signature projects, gallery, board, events teaser + calendar, join form + requirements. **Parity target for public jobs.** |
+| [rotractclubofnanganallurelite.org.in](https://rotractclubofnanganallurelite.org.in) | Weak official signal (AI Studio shell / little SSR content). **Anti-pattern** — avoid empty SPA, generic AI chrome, missing institutional spine. |
+
+**Our edge (do not dilute in Phase 0–1):** CMS-backed content, club bulletin, real charter depth (1999 + named sponsor), auth/roles foundation for later clubroom. Phase 0–1 makes the **public house as complete as Ambattur**; Phase 2+ makes us **clearly better**.
+
+---
+
+## 11a. Phase 0 + Phase 1 tickets (Ambattur parity checklist)
+
+Status legend: `[ ]` todo · `[~]` partial / in repo but not at target · `[x]` done  
+
+**Acceptance for “Phase 1 complete”:** all P0/P1 tickets below are `[x]`, public site has no particle/connector chrome, and a cold visitor can understand who we are, see proof, and apply/join without signing into a member product.
+
+### Phase 0 — Visual calm (unblock professionalism)
+
+| ID | Ticket | Ambattur gap / why | Done when |
+| --- | --- | --- | --- |
+| **P0-1** | Remove particle / connector cinematic background from root layout | They look calm; we look busy | `[x]` Unmounted; solid paper only (2026-07-16) |
+| **P0-2** | Neutralize childish global noise / multi-aura clutter | Restraint = official | `[x]` Noise overlay off; BackgroundWrapper quiet (2026-07-16) |
+| **P0-3** | Nav → target public IA | They have clear sections; we need clear routes | `[x]` About · Events · Notices · Contact · Member · Admin (2026-07-16) |
+| **P0-4** | Prefer empty/honest over fake live metrics | They show empty events honestly | `[x]` Fake announcement badge removed (2026-07-16) |
+| **P0-typo** | Restore novel display typography | User preference | `[x]` Inter + Instrument Serif drama scale on hero/join (2026-07-16) |
+
+### Phase 1 — Public House (parity + our structure)
+
+#### 1A · Homepage structure (dynamic, not dump)
+
+| ID | Ticket | Ambattur equivalent | Done when |
+| --- | --- | --- | --- |
+| **P1-1** | Logo + club name intro → rises into sticky nav | Their clear brand open | First paint mark+name; one calm motion to nav; reduced-motion safe |
+| **P1-2** | Hook: short positioning + Join + See events | Hero dual CTA | Primary join, secondary events; no 4+ CTAs |
+| **P1-3** | **Official standing** strip | Club / parent / District cards | Charter 10 Mar 1999 · Rotary Club of Madras Industrial City · RI District 3234 · Group 01 (CMS or static facts) |
+| **P1-4** | Story block (short) | About us | One paragraph Vishwahita meaning + who we serve; not a wall of text |
+| **P1-5** | Events **carousel** (3–6 cards) → `/events` | Top 3 events + full calendar link | Auto-scroll or horizontal strip; click opens events page; empty state: “No upcoming events” |
+| **P1-6** | Signature projects carousel → projects | Signature projects section | Named **Signature projects** (not “bento archive”); deep-link to list/detail |
+| **P1-7** | **Legacy** spotlight (one project) | (they lack deep legacy — our win) | Exactly one flagship `is_legacy` treatment on home |
+| **P1-8** | **Board strip** (public) | Leadership team | President / Secretary / key officers with real names; link to `/about` if more |
+| **P1-9** | **Gallery teaser** (3–6 real photos) → `/gallery` | Gallery section | Real club photos only; no stock-as-final; empty if none |
+| **P1-10** | Mission (+ optional vision) one-liners | Mission / vision | CMS `page_sections`; not slogan spam |
+| **P1-11** | **Avenues** as tags/map (not 4 fake feature cards) | Our Avenues | Projects tagged Club / Community / Professional / International; small public map or filters |
+| **P1-12** | Join block: **requirements + prospect form** + Clerk optional | Join form + requirements | Age/commitment bullets + form (name, email, phone, why) stored for president; sign-up secondary |
+| **P1-13** | FAQ only for join friction | Implicit in requirements | Keep short; join-focused |
+| **P1-14** | Contact teaser → `/contact` | Footer/join adjacency | Email / social / city line |
+| **P1-15** | Strip home bloat | Cleaner than multi-section AI soup | Off home: affirmation, fake pulse, membership tiers maze, story navigator chrome, full dump grids |
+
+#### 1B · Dedicated public routes
+
+| ID | Ticket | Ambattur equivalent | Done when |
+| --- | --- | --- | --- |
+| **P1-16** | `/events` full list + filters | View full calendar | Upcoming / past / online; revalidate; empty state honest |
+| **P1-17** | Event detail + RSVP if signed in | Event depth | Public can read; members RSVP (auth gate for write only) |
+| **P1-18** | `/projects` (or keep `/initiatives` with redirect) | Signature projects index | Signature list + legacy flagship; rename UI to Projects |
+| **P1-19** | `/projects/[slug]` detail | Project depth | Real copy + optional gallery |
+| **P1-20** | `/contact` page | Contact / join adjacency | Contact facts + form endpoint; sponsor/District line |
+| **P1-21** | `/gallery` works with real media | Gallery | No broken empty chrome; captions with event name when possible |
+| **P1-22** | `/about` thin official page | About + leadership | Standing + board + story overflow from home |
+
+#### 1C · CMS / data enough for public (still Phase 1 — not full Phase 3)
+
+| ID | Ticket | Why Phase 1 | Done when |
+| --- | --- | --- | --- |
+| **P1-23** | President can edit events for public calendar | Parity needs live events | Existing admin events CRUD wired to public `/events` + carousel |
+| **P1-24** | President can edit board members for public strip | Leadership section | `board_members` on home/about |
+| **P1-25** | Prospect / contact messages stored | Join form without Clerk | `contact_messages` (or equivalent) + admin list or email; no invented CRM |
+| **P1-26** | Page sections for standing/mission/hero | Copy without deploy | Keys documented; admin Page Sections covers them |
+| **P1-27** | Honest stats only | Beat AI vanity | Home stats only if president-confirmed; else omit |
+
+#### 1D · Explicitly out of Phase 0–1 (do not build yet)
+
+| Deferred | Phase |
+| --- | --- |
+| Idea board, weekly prompt UI, tutorial gate | Phase 2 |
+| `/member` rename + clubroom dashboard | Phase 2 |
+| Ideas moderation, pulse builder polish, digests | Phase 3–4 |
+| Convex, chat feed, fake presence | Never (v1) |
+
+### Suggested implement order (single sequence)
+
+```text
+P0-1 → P0-2 → P0-3 → P0-4
+  → P1-3, P1-2, P1-4          # standing + hook + story
+  → P1-16, P1-5               # events page then home carousel
+  → P1-18, P1-6, P1-7         # projects + signature + legacy
+  → P1-8, P1-9, P1-21, P1-22  # board, gallery, about
+  → P1-10, P1-11              # mission, avenues
+  → P1-20, P1-12, P1-25       # contact + join form
+  → P1-1, P1-13, P1-14, P1-15 # logo intro, FAQ, teaser, bloat strip
+  → P1-17, P1-23–P1-27        # detail, CMS wire, honest stats
+```
+
+### Definition of done (Phase 1 gate)
+
+- [x] Cold visitor understands club, District, sponsor, and how to join in &lt; 1 minute  
+- [x] No particle/connector backgrounds  
+- [x] Events and projects deep-link off home (no full dump)  
+- [x] Join works without requiring full member product (prospect form)  
+- [x] Board + gallery teaser + contact exist as public proof  
+- [x] No invented metrics (fake badge removed; empty events honest)  
+- [x] Phase 2 not started  
+
+**Shipped 2026-07-16:** `/events`, `/events/[id]` + RSVP, `/contact`, home standing/carousel/legacy/board/gallery/mission/join, brand intro, migration for `contact_messages` + `is_legacy` + `is_online`.
 
 ---
 

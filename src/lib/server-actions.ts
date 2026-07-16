@@ -91,6 +91,7 @@ export async function createEvent(formData: FormData): Promise<ActionResponse> {
 
     if (error) return { success: false, message: error.message, error };
     revalidatePath("/");
+    revalidatePath("/events");
     revalidatePath("/admin");
     return { success: true, message: "Event created successfully", data };
 }
@@ -112,6 +113,8 @@ export async function toggleRSVP(event_id: string, currentStatus: string | null)
 
     if (error) return { success: false, message: error.message, error };
     revalidatePath("/hub");
+    revalidatePath("/events");
+    revalidatePath(`/events/${event_id}`);
     return { success: true, message: "RSVP updated successfully", data };
 }
 
@@ -242,6 +245,59 @@ export async function updatePageSection(sectionKey: string, content: Record<stri
     revalidatePath("/");
     revalidatePath("/about");
     return { success: true, message: "Page section updated successfully" };
+}
+
+/** Public contact / membership prospect form (no auth required) */
+export async function submitContactMessage(formData: FormData): Promise<ActionResponse> {
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const age = String(formData.get("age") || "").trim();
+    const occupation = String(formData.get("occupation") || "").trim();
+    const kind = (formData.get("kind") as string) === "prospect" ? "prospect" : "contact";
+
+    if (!name || !email || !message) {
+        return { success: false, message: "Name, email, and message are required." };
+    }
+
+    const payload = sanitizePayload({
+        name,
+        email,
+        phone: phone || null,
+        age: age || null,
+        occupation: occupation || null,
+        message,
+        kind,
+    });
+
+    const { data, error } = await supabase
+        .from("contact_messages")
+        .insert([payload])
+        .select()
+        .single();
+
+    if (error) {
+        // Table may not be migrated yet
+        console.error("submitContactMessage:", error);
+        return {
+            success: false,
+            message: error.message.includes("contact_messages")
+                ? "Contact inbox is not set up yet. Email contact@vishwahitha.org or the board directly."
+                : error.message,
+            error,
+        };
+    }
+
+    revalidatePath("/admin");
+    revalidatePath("/contact");
+    return {
+        success: true,
+        message: kind === "prospect"
+            ? "Application received. The board will reach out soon."
+            : "Message sent. We'll get back to you.",
+        data,
+    };
 }
 
 export async function submitFeedback(formData: FormData): Promise<ActionResponse> {

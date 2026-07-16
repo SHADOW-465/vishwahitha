@@ -13,31 +13,20 @@ interface HeroProps {
 }
 
 export const Hero = ({
-    headlineLine1 = "Rotaract Club of Vishwahita",
-    headlineLine2 = "27 years of youth-led service in Chennai.",
-    subtext = "Chartered 10 March 1999 · Sponsored by the Rotary Club of Madras Industrial City · District 3234. One club, real projects, a clear path to join.",
+    headlineLine1 = "Rotaract Club of Vishwahita:",
+    headlineLine2 = "27 Years of Youth-Led Service in Chennai.",
+    subtext = "Chartered on March 10, 1999, and sponsored by the Rotary Club of Madras Industrial City, we are one of the most active Rotaract clubs in District 3234 — 500+ projects, 2,000+ people reached, one club.",
 }: HeroProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const cursorRef = useRef<HTMLDivElement>(null);
 
-    // Spotlight cursor tracking & GSAP entrances
     useEffect(() => {
-        const cursor = cursorRef.current;
-        
-        const handleMouseMove = (e: MouseEvent) => {
-            if (!cursor) return;
-            gsap.to(cursor, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.1,
-                ease: "power2.out"
-            });
-        };
+        const reduce =
+            typeof window !== "undefined" &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        window.addEventListener("mousemove", handleMouseMove);
+        if (reduce) return;
 
         const ctx = gsap.context(() => {
-            // Reveal text elements
             gsap.from(".hero-reveal", {
                 y: 60,
                 opacity: 0,
@@ -47,20 +36,16 @@ export const Hero = ({
                 delay: 0.2,
             });
 
-            // Gentle fade-in for scroll indicator
             gsap.from(".hero-scroll-indicator", {
                 opacity: 0,
                 y: 10,
                 duration: 1,
                 delay: 1.5,
-                ease: "power2.out"
+                ease: "power2.out",
             });
         }, containerRef);
 
-        return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-            ctx.revert();
-        };
+        return () => ctx.revert();
     }, []);
 
     return (
@@ -69,35 +54,26 @@ export const Hero = ({
             ref={containerRef}
             className="relative w-full min-h-[100dvh] flex items-center justify-start overflow-hidden bg-transparent pt-24"
         >
-            {/* Custom Mouse Spotlight Glow */}
-            <div
-                ref={cursorRef}
-                className="hidden md:block fixed top-0 left-0 w-[400px] h-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-gold/5 blur-[120px] pointer-events-none z-0"
-                style={{ mixBlendMode: "screen" }}
-            />
-
-            {/* Gradient Mask for bottom fade */}
+            {/* Soft bottom fade into paper — no cursor spotlight / particle trail */}
             <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-primary to-transparent z-10 pointer-events-none" />
 
-            {/* Foreground Content */}
             <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-                <div className="max-w-4xl space-y-6 min-w-0">
-                    {/* Institutional line — not a sparkle pill */}
+                <div className="max-w-5xl space-y-6 min-w-0">
                     <p className="hero-reveal font-mono text-[10px] md:text-xs text-accent-gold uppercase tracking-[0.22em] font-medium">
                         RI District 3234 · Group 01 · Chennai
                     </p>
 
-                    {/* Display + drama (locked DESIGN.md pairing) */}
-                    <div className="space-y-3 min-w-0">
-                        <h1 className="hero-reveal font-heading font-extrabold text-4xl sm:text-5xl md:text-7xl tracking-tighter leading-[0.95] text-text-primary text-balance min-w-0 break-words">
+                    {/* Novel display: Inter extrabold + Instrument Serif drama at large scale */}
+                    <div className="space-y-2 sm:space-y-3 min-w-0">
+                        <h1 className="hero-reveal font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tighter leading-[0.9] text-text-primary text-balance break-words min-w-0">
                             {headlineLine1}
                         </h1>
-                        <p className="hero-reveal font-drama font-light text-3xl sm:text-5xl md:text-6xl leading-[1.05] gold-text tracking-tight pb-1 text-balance">
+                        <h1 className="hero-reveal font-display-drama text-[2.75rem] sm:text-[4.5rem] md:text-[7.5rem] lg:text-[9rem] leading-[0.78] gold-text tracking-tight pb-2 text-balance break-words min-w-0">
                             {headlineLine2}
-                        </p>
+                        </h1>
                     </div>
 
-                    <p className="hero-reveal text-sm sm:text-base md:text-lg text-text-secondary font-heading max-w-xl leading-relaxed pt-1">
+                    <p className="hero-reveal text-sm sm:text-base md:text-lg text-text-secondary font-heading max-w-xl leading-relaxed pt-2">
                         {subtext}
                     </p>
 
@@ -108,25 +84,29 @@ export const Hero = ({
                                 className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-accent-cranberry/15 hover:shadow-accent-cranberry/25 whitespace-nowrap"
                             >
                                 <span className="relative z-10">Become a member</span>
-                                <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight
+                                    size={16}
+                                    className="relative z-10 group-hover:translate-x-1 transition-transform"
+                                />
                             </Link>
                         </MagneticButton>
 
                         <MagneticButton>
-                            <a
-                                href="#now"
+                            <Link
+                                href="/events"
                                 className="inline-flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 text-text-primary font-medium text-sm px-8 py-4 rounded-full transition-colors whitespace-nowrap"
                             >
-                                See what&apos;s on
-                            </a>
+                                See events
+                            </Link>
                         </MagneticButton>
                     </div>
                 </div>
             </div>
 
-            {/* Scroll Indicator */}
             <div className="hero-scroll-indicator absolute bottom-12 right-12 z-20 hidden md:flex flex-col items-center gap-3 opacity-30">
-                <span className="font-mono text-[9px] text-text-secondary uppercase tracking-[0.3em]">Scroll</span>
+                <span className="font-mono text-[9px] text-text-secondary uppercase tracking-[0.3em]">
+                    Scroll
+                </span>
                 <div className="w-px h-16 bg-gradient-to-b from-accent-gold to-transparent" />
             </div>
         </section>

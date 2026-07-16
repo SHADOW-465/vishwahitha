@@ -44,11 +44,11 @@ export const WhoWeAre = () => {
 
                     <h2 className="story-reveal text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight leading-[1.05] text-balance">
                         Universal friendship with{" "}
-                        <span className="font-drama font-light gold-text">deep roots in Chennai.</span>
+                        <span className="font-display-drama gold-text">deep roots in Chennai.</span>
                     </h2>
 
                     <div className="story-reveal border-l-2 border-accent-gold/30 pl-6 py-2 my-8">
-                        <blockquote className="font-drama font-light text-xl sm:text-2xl md:text-3xl text-text-primary leading-relaxed">
+                        <blockquote className="font-display-drama text-xl sm:text-2xl md:text-3xl text-text-primary leading-relaxed">
                             We do not only run projects. We build young people who take ownership of local change.
                         </blockquote>
                     </div>

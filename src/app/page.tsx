@@ -1,16 +1,18 @@
-/* Hallmark · macrostructure: Club Newspaper (Long Document story beats)
- * tone: luxury-editorial · theme: DESIGN.md Midnight Cranberry & Gold
- * audience: public + Rotaracters + officials · use: join + prove activity
- * enrichment: none · nav: existing floating pill · footer: existing
- * beats: Hook · Now · Proof · Legacy · People · FAQ · Join
+/* Hallmark · Phase 1 Public House
+ * beats: Intro · Hook · Standing · Now · Events · Signature · Legacy · Board · Gallery · Mission · FAQ · Join
  */
+import { BrandIntro } from "@/components/brand-intro";
 import { Hero } from "@/components/hero";
+import { OfficialStanding } from "@/components/official-standing";
 import { ClubBulletin } from "@/components/club-bulletin";
-import { LegacyTimeline } from "@/components/legacy-timeline";
-import { WhoWeAre } from "@/components/who-we-are";
+import { EventsCarousel } from "@/components/events-carousel";
 import { FeaturedBento } from "@/components/featured-bento";
-import { JoinMission } from "@/components/join-mission";
+import { LegacySpotlight } from "@/components/legacy-spotlight";
+import { BoardStrip } from "@/components/board-strip";
+import { GalleryTeaser } from "@/components/gallery-teaser";
+import { MissionAvenues } from "@/components/mission-avenues";
 import { FAQSection } from "@/components/faq-section";
+import { JoinSection } from "@/components/join-section";
 import { getPageSection } from "@/lib/actions";
 
 export const revalidate = 60;
@@ -22,34 +24,53 @@ export default async function Home() {
     ]);
 
     return (
-        <main className="min-h-screen bg-primary overflow-x-clip">
-            {/* 1 · HOOK */}
-            <Hero
-                headlineLine1={heroHeadline?.line1 || "Rotaract Club of Vishwahita"}
-                headlineLine2={heroHeadline?.line2 || "27 years of youth-led service in Chennai."}
-                subtext={
-                    heroSubtext?.text ||
-                    "Chartered 10 March 1999 · Sponsored by the Rotary Club of Madras Industrial City · District 3234. One club, real projects, a clear path to join."
-                }
-            />
+        <>
+            <BrandIntro />
+            <main className="min-h-screen bg-primary overflow-x-clip">
+                {/* 1 · HOOK */}
+                <Hero
+                    headlineLine1={
+                        heroHeadline?.line1 || "Rotaract Club of Vishwahita:"
+                    }
+                    headlineLine2={
+                        heroHeadline?.line2 || "27 Years of Youth-Led Service in Chennai."
+                    }
+                    subtext={
+                        heroSubtext?.text ||
+                        "Chartered 10 March 1999 · Sponsored by the Rotary Club of Madras Industrial City · District 3234. One club, real projects, a clear path to join."
+                    }
+                />
 
-            {/* 2 · NOW — bulletin: events + announcements */}
-            <ClubBulletin />
+                {/* 2 · OFFICIAL STANDING */}
+                <OfficialStanding />
 
-            {/* 3 · PROOF — signature work */}
-            <FeaturedBento />
+                {/* 3 · NOW — bulletin */}
+                <ClubBulletin />
 
-            {/* 4 · LEGACY — charter arc */}
-            <LegacyTimeline />
+                {/* 4 · EVENTS CAROUSEL */}
+                <EventsCarousel />
 
-            {/* 5 · PEOPLE — who you'll meet / what we stand for */}
-            <WhoWeAre />
+                {/* 5 · SIGNATURE PROJECTS */}
+                <FeaturedBento />
 
-            {/* 6 · JOIN friction */}
-            <FAQSection />
+                {/* 6 · LEGACY SPOTLIGHT */}
+                <LegacySpotlight />
 
-            {/* 7 · JOIN CTA */}
-            <JoinMission />
-        </main>
+                {/* 7 · BOARD */}
+                <BoardStrip />
+
+                {/* 8 · GALLERY (only if photos exist) */}
+                <GalleryTeaser />
+
+                {/* 9 · MISSION + AVENUES */}
+                <MissionAvenues />
+
+                {/* 10 · FAQ */}
+                <FAQSection />
+
+                {/* 11 · JOIN + PROSPECT FORM */}
+                <JoinSection />
+            </main>
+        </>
     );
 }

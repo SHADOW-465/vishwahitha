@@ -1,0 +1,8 @@
+-- Applied via Supabase MCP to project Vishwahitha-1 (mxeptmylucphyjueldcf)
+-- on 2026-07-16 when remote public schema was empty.
+-- Record only — remote already has: bootstrap_core_schema, bootstrap_rls_policies,
+-- bootstrap_seed_content, tighten_write_rls_for_service_role_app.
+--
+-- Tables: users, events, event_rsvps, documents, board_members, announcements,
+-- initiatives (+ is_legacy), initiative_gallery, pulse_forms, pulse_responses,
+-- page_sections, gallery_media, feedback, contact_messages.

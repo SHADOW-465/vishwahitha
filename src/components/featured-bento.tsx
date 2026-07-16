@@ -107,13 +107,14 @@ export const FeaturedBento = () => {
         <section id="initiatives" className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="mb-12 max-w-2xl min-w-0">
                 <span className="font-mono text-xs text-accent-gold uppercase tracking-[0.22em]">
-                    Proof of work
+                    Signature projects
                 </span>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight mt-2 text-balance">
-                    Projects that left a mark in Chennai
+                    Flagship work across the{" "}
+                    <span className="font-display-drama gold-text">avenues</span>
                 </h2>
                 <p className="font-mono text-sm text-text-secondary mt-3 max-w-md leading-relaxed">
-                    Signature work across Community, Professional, Club, and International Service — open any card for the full story.
+                    Named programmes — not generic pillars. Open any card for the full story.
                 </p>
                 <Link
                     href="/initiatives"
