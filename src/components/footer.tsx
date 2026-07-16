@@ -39,7 +39,7 @@ export const Footer = async () => {
                     <ul className="space-y-4 font-mono text-sm text-text-secondary">
                         <li className="flex items-center gap-3">
                             <Mail size={16} className="text-accent-gold" />
-                            <a href="mailto:contact@vishwahitha.org" className="hover:text-white transition-colors">contact@vishwahitha.org</a>
+                            <a href="mailto:rcvishwahita@gmail.com" className="hover:text-white transition-colors">rcvishwahita@gmail.com</a>
                         </li>
                         <li className="flex items-start gap-3">
                             <MapPin size={16} className="text-accent-gold shrink-0 mt-1" />

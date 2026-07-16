@@ -130,7 +130,7 @@ const SpotlightCard = ({ member }: SpotlightCardProps) => {
                     {/* Social actions */}
                     <div className="flex items-center gap-2.5 shrink-0">
                         <a 
-                            href={`mailto:${member.email || 'contact@vishwahitha.org'}`}
+                            href={`mailto:${member.email || 'rcvishwahita@gmail.com'}`}
                             className="hover:text-accent-cranberry transition-colors duration-200"
                             title="Email"
                         >

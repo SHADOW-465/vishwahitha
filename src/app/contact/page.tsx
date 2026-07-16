@@ -27,10 +27,10 @@ export default function ContactPage() {
                         <li className="flex items-center gap-3">
                             <Mail size={16} className="text-accent-gold shrink-0" />
                             <a
-                                href="mailto:contact@vishwahitha.org"
+                                href="mailto:rcvishwahita@gmail.com"
                                 className="hover:text-text-primary transition-colors break-all"
                             >
-                                contact@vishwahitha.org
+                                rcvishwahita@gmail.com
                             </a>
                         </li>
                         <li className="flex items-start gap-3">

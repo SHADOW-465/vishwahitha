@@ -548,7 +548,7 @@ export async function submitContactMessage(formData: FormData): Promise<ActionRe
         return {
             success: false,
             message: error.message.includes("contact_messages")
-                ? "Contact inbox is not set up yet. Email contact@vishwahitha.org or the board directly."
+                ? "Contact inbox is not set up yet. Email rcvishwahita@gmail.com or the board directly."
                 : error.message,
             error,
         };
