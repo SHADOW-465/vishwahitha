@@ -1,0 +1,374 @@
+{
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\create-webhook.js": {
+    "mtime": 1782392303.5227625,
+    "hash": "d2ebfdb11ac47e8aebcbcb44abca7a32"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\next-env.d.ts": {
+    "mtime": 1783415008.2309794,
+    "hash": "b698cdd97fe8e3bd16dcd74899ad7cef"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\next.config.mjs": {
+    "mtime": 1782392303.5341804,
+    "hash": "d22255e453468e95a94685220e289c7d"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\postcss.config.js": {
+    "mtime": 1782392303.5412788,
+    "hash": "9c7a1a47dd94cfd3111f50f1d3b7ede6"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\tailwind.config.ts": {
+    "mtime": 1783368146.357809,
+    "hash": "8b628a7d0152157df7987f67a32dcbd6"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\vitest.config.ts": {
+    "mtime": 1782392303.6403584,
+    "hash": "f522d0a760063915bab1dfa49131dde9"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\middleware.disabled.ts": {
+    "mtime": 1782392303.6223695,
+    "hash": "5ba54f53d947f96c8f8cc200910d2ebc"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\proxy.ts": {
+    "mtime": 1782392303.6238818,
+    "hash": "59b518575d1a17daa3bf9b3bcdc9b95d"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\layout.tsx": {
+    "mtime": 1783414926.108256,
+    "hash": "bf4f2e23d13366e345285dbebcbaec35"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\page.tsx": {
+    "mtime": 1784133931.5660715,
+    "hash": "d04803045441fe48fae88b8fbae26506"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\about\\page.tsx": {
+    "mtime": 1783427848.7060645,
+    "hash": "0c3ab3fe20c6574632dfed82c01d141e"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\admin\\page.tsx": {
+    "mtime": 1782392303.5468118,
+    "hash": "a3b6a71e70b2b9900f865f4f7c5859f2"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\announcements\\page.tsx": {
+    "mtime": 1782392303.548816,
+    "hash": "6f84fd1f0a64f37b9ef7b5405819b6bc"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\api\\broadcast\\route.ts": {
+    "mtime": 1782392303.5525222,
+    "hash": "81fc5c62f017c5a95c855408c5dc02eb"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\gallery\\page.tsx": {
+    "mtime": 1782392303.554533,
+    "hash": "8de837d4fa60290e044fc2003ae9175a"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\hub\\page.tsx": {
+    "mtime": 1782392303.55789,
+    "hash": "25263fa1cf25a3a73f50397f40185a01"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\initiatives\\page.tsx": {
+    "mtime": 1783368197.8568285,
+    "hash": "ddaa6de2c0eef46e312e0db1a37234a2"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\initiatives\\[slug]\\page.tsx": {
+    "mtime": 1782392303.5610895,
+    "hash": "319afc8e624063c03b0dee9cfcbfd1c0"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\sign-in\\[[...sign-in]]\\page.tsx": {
+    "mtime": 1782392303.5679827,
+    "hash": "e57f6330d1f59e19e2f4994deae62f54"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\app\\sign-up\\[[...sign-up]]\\page.tsx": {
+    "mtime": 1782392303.5703807,
+    "hash": "62d36e30ee8cfbfbdfec8ea7a4d31d4f"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\announcement-card.tsx": {
+    "mtime": 1782392303.5810597,
+    "hash": "01ef23179a7ca522ef13e7538fb1b8c1"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\auth-header.tsx": {
+    "mtime": 1782392303.5824704,
+    "hash": "a3ba5476de1182338e4dd99bc9bbcc46"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\broadcast-center.tsx": {
+    "mtime": 1782392303.5839517,
+    "hash": "0cfea647aebff6803a3b17b41a6565e7"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\cinematic-gallery.tsx": {
+    "mtime": 1783411865.2937176,
+    "hash": "687975b466784c7a5892943774dba8f9"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\club-bulletin.tsx": {
+    "mtime": 1784133931.5660715,
+    "hash": "4e55224a77632a985218464aabe35f6a"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\daily-affirmation.tsx": {
+    "mtime": 1783413257.0387836,
+    "hash": "9ef0d5932b216d2fcae22039f235b51c"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\document-repository.tsx": {
+    "mtime": 1782392303.5849574,
+    "hash": "34b32cbae09be38aa826ec0e0c2320b0"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\event-manager.tsx": {
+    "mtime": 1782392303.5869493,
+    "hash": "6f38c127e65893cc593a3ff4bc74d322"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\event-rsvp.tsx": {
+    "mtime": 1782392303.5879636,
+    "hash": "ca44298197433a67eb048265e7fb37ae"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\faq-section.tsx": {
+    "mtime": 1784133993.018858,
+    "hash": "b9418d2a0a4c87ca5c58de65332a5acb"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\featured-bento.tsx": {
+    "mtime": 1784133974.3551078,
+    "hash": "12e5f541109a96d9de6171d031427389"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\footer.tsx": {
+    "mtime": 1782392303.5895863,
+    "hash": "db3d00b5997574f0a4dbc89bf6aca333"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\gallery-grid.tsx": {
+    "mtime": 1783411826.025052,
+    "hash": "a67ec6885849d0257d2be54de04d4918"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\hero.tsx": {
+    "mtime": 1784133984.6648135,
+    "hash": "090236a3df325f2570937264827b70e3"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\hub-tabs.tsx": {
+    "mtime": 1782392303.5940711,
+    "hash": "bfb6675d01fe394d8bfbc74e6a04dcd1"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\impact-counter.tsx": {
+    "mtime": 1783411731.893653,
+    "hash": "dfffd57e3297ebbafe130136e4fc52ff"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\initiative-card.tsx": {
+    "mtime": 1782392303.5968194,
+    "hash": "7f7d330ee9884ac5ad7ecede12ef49f8"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\initiatives-client.tsx": {
+    "mtime": 1783427834.4252574,
+    "hash": "3dec99f285c0a5bea30bcb6f5e2beda9"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\join-mission.tsx": {
+    "mtime": 1784133974.3551078,
+    "hash": "8a5634c2b518cfc62233be6aae51bcb0"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\legacy-timeline.tsx": {
+    "mtime": 1784133992.994855,
+    "hash": "4ed5378bdced82d00d4c91cdbf0b726e"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\live-club-status.tsx": {
+    "mtime": 1783427825.5874228,
+    "hash": "9d1011c872a9f728d9c9f4c0449f6b55"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\live-event-calendar.tsx": {
+    "mtime": 1783411709.970898,
+    "hash": "ed6def8592a93b1e0dd721aa780ebaf5"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\live-project-feed.tsx": {
+    "mtime": 1782392779.9383585,
+    "hash": "cd0de79f7417bca0e0f65998e86c8f46"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\member-directory.tsx": {
+    "mtime": 1782392303.599385,
+    "hash": "f31488221ae2f669b825566a01185e70"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\member-spotlight.tsx": {
+    "mtime": 1783368310.2329497,
+    "hash": "75e8bf454b27927eed9e79227d431fee"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\membership-tiers.tsx": {
+    "mtime": 1783411783.1755283,
+    "hash": "6ab9bdd1c94832391c537471956452c2"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\navbar.tsx": {
+    "mtime": 1783368165.878405,
+    "hash": "91abe26a49ab4cb0f8c0bf6052b5d43e"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\project-shuffler.tsx": {
+    "mtime": 1782392303.6020353,
+    "hash": "7be5170ebc7f01c3c5384f5632112077"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\sponsor-showcase.tsx": {
+    "mtime": 1782392303.6025443,
+    "hash": "90454767ecc14a9cb4e8636854f400a5"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\story-navigator.tsx": {
+    "mtime": 1783411751.8620498,
+    "hash": "779a3fc57beddca582331323a7462051"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\theme-provider.tsx": {
+    "mtime": 1782392303.6045575,
+    "hash": "24e35ec3236b320a6ee5b17cac466da9"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\weekly-pulse-aggregator.tsx": {
+    "mtime": 1782392303.6138642,
+    "hash": "d2c76a5bc0acacaf44df9f8b4c2724b0"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\who-we-are.tsx": {
+    "mtime": 1784133974.4796138,
+    "hash": "e3e64574241e161975aa2e176f82bda7"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\admin\\admin-shell.tsx": {
+    "mtime": 1782392303.5725534,
+    "hash": "8a9388ea78474a19e2556a3196e61c6b"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\admin\\announcement-manager.tsx": {
+    "mtime": 1782392303.5741396,
+    "hash": "6f0c4e6c571752f2b30f4893cde993dd"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\admin\\board-manager.tsx": {
+    "mtime": 1782392303.5751486,
+    "hash": "9cc4e1a9dfb9b055c9d9a2838a433823"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\admin\\cms-drawer.tsx": {
+    "mtime": 1782392303.5761516,
+    "hash": "a13fcbd2ee0e1122ed4b87023a8bcdb4"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\admin\\initiative-manager.tsx": {
+    "mtime": 1782392303.5776446,
+    "hash": "df7e5fa5186cb0554078d9077de85b13"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\admin\\page-sections-editor.tsx": {
+    "mtime": 1782392808.4970746,
+    "hash": "ab7f7fdd98f9147528ae29e4a61b0698"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\admin\\pulse-form-builder.tsx": {
+    "mtime": 1782392303.5810597,
+    "hash": "40486e3206f8bd7144c358fe39a3c118"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\ui\\background-wrapper.tsx": {
+    "mtime": 1782392303.6069503,
+    "hash": "7ab83548b26ee38bc5f456ff62b65490"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\ui\\cinematic-background.tsx": {
+    "mtime": 1783411687.3649104,
+    "hash": "dc62dd9472f78aec62644a187ffd96eb"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\ui\\dynamic-auras.tsx": {
+    "mtime": 1782392303.6083496,
+    "hash": "1827d06ff56f48bccb85df1128dbbd0c"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\ui\\magnetic-button.tsx": {
+    "mtime": 1782392303.6103473,
+    "hash": "28102c253da72f975313e2f58a754c6d"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\ui\\particles-background.tsx": {
+    "mtime": 1782392303.6113462,
+    "hash": "d95c1c0d494572104d48c48afad83de5"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\ui\\themed-section.tsx": {
+    "mtime": 1782392303.612352,
+    "hash": "e2dd7f6f766fb6df764889ea74e2612c"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\lib\\actions.ts": {
+    "mtime": 1782392303.6149094,
+    "hash": "69f663a9265de652ea9466a6164097dd"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\lib\\server-actions.ts": {
+    "mtime": 1782392303.6168866,
+    "hash": "c69103650a577f6bdb4d85173cd7a5ff"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\lib\\supabase-admin.ts": {
+    "mtime": 1782392303.618192,
+    "hash": "835c0d83f5f79a06571e1313f168967e"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\lib\\supabase.ts": {
+    "mtime": 1782392303.6191947,
+    "hash": "809b11c96e1c72189d7fc02410068b15"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\lib\\sync-user.ts": {
+    "mtime": 1782392303.6208136,
+    "hash": "36210c9418bbade25ea68ce1bf2391e9"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\test\\announcement-actions.test.ts": {
+    "mtime": 1782392303.6258914,
+    "hash": "8355567f6d0b2fcb77b8c351a3db3504"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\test\\daily-affirmation.test.tsx": {
+    "mtime": 1783413628.1746993,
+    "hash": "057fa9f12ba96c4de9700f81f1d22c6d"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\test\\initiative-actions.test.ts": {
+    "mtime": 1782392303.6271117,
+    "hash": "b45c01274bf5a2169f0363913b1a9353"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\test\\setup.ts": {
+    "mtime": 1782392303.628249,
+    "hash": "dc972af1d2b80e79814a7e1999178b15"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\test\\smoke.test.ts": {
+    "mtime": 1782392303.6296086,
+    "hash": "b74a0ae75b78a3403c5c296b7a0f15ff"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\test\\theme-provider.test.tsx": {
+    "mtime": 1782392303.6306255,
+    "hash": "41457ef5ffee1e00f4ee539274d61fc6"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\supabase\\migrations\\20260223000000_phase2.sql": {
+    "mtime": 1782392303.6337254,
+    "hash": "4e8faf44a5186d965c50f9b7895bcd85"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\supabase\\migrations\\20260225_board_members.sql": {
+    "mtime": 1782392303.6347232,
+    "hash": "6950adb879a9a19db9db5690b2945bbb"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\supabase\\migrations\\20260225_phase3_schema.sql": {
+    "mtime": 1782392303.636084,
+    "hash": "901cd8937125e7f2def5d2e083a14ee9"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\AGENTS.md": {
+    "mtime": 1784143562.7106333,
+    "hash": "c201477b668d87ec71360c721a199781"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\CLAUDE.md": {
+    "mtime": 1782392303.4348636,
+    "hash": "82d11f639771d76bac9df13a66e3f574"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\club content.md": {
+    "mtime": 1783427631.7201123,
+    "hash": "1f4aa9cbeb7e4c448d196224c816185f"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\content refernce.md": {
+    "mtime": 1783413726.6840527,
+    "hash": "8e3016c5b5c6bc85cbcc6a425e1c5fd1"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\DESIGN.md": {
+    "mtime": 1783411608.3137326,
+    "hash": "07dc2a694b433e2089d27f9df9a8fd3a"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\GEMINI.md": {
+    "mtime": 1782392303.436365,
+    "hash": "079b9f2aeb031a0cfeaac5852f262aaa"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\PRODUCT.md": {
+    "mtime": 1783411594.2725804,
+    "hash": "51e5928f11db8b5c978692ba45f04ba7"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\docs\\plans\\2026-02-25-vishwahitha-full-implementation.md": {
+    "mtime": 1782392303.5265944,
+    "hash": "f559f117d6f848472743d1c1725290bb"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\docs\\plans\\2026-02-25-vishwahitha-website-design.md": {
+    "mtime": 1782392303.5286064,
+    "hash": "9974b8c9c06be35429295d064032f1ad"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\docs\\plans\\2026-02-26-mobile-responsiveness-design.md": {
+    "mtime": 1782392303.5306022,
+    "hash": "f8c0a4f1344033446f4ce924d317fd21"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\docs\\plans\\2026-02-26-mobile-responsiveness-implementation.md": {
+    "mtime": 1782392303.5327835,
+    "hash": "1a19f5a44b4a289c1a85a586eac7e1dc"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\docs\\superpowers\\specs\\2026-07-16-vishwahita-clubhouse-design.md": {
+    "mtime": 1784142502.1508622,
+    "hash": "78f24bd090fb8b585759eee4bb27a7a1"
+  },
+  "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\Rotaract Club of Vishwahita_GRM PPT_25-26-min.pdf": {
+    "mtime": 1782392303.5184145,
+    "hash": "37ffde2a5a24a22e513125bf072c7f48"
+  }
+}
