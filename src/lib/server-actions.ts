@@ -318,6 +318,132 @@ export async function deleteContactMessage(id: string): Promise<ActionResponse> 
     return { success: true, message: "Message removed." };
 }
 
+export async function addIdeaComment(formData: FormData): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const idea_id = String(formData.get("idea_id") || "");
+    const body = String(formData.get("body") || "").trim();
+    if (!idea_id || !body) return { success: false, message: "Comment required." };
+
+    const { data, error } = await supabase
+        .from("idea_comments")
+        .insert([{ idea_id, author_id: userId, body }])
+        .select()
+        .single();
+
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/member/participate");
+    return { success: true, message: "Comment added.", data };
+}
+
+/** Phase 4: email all members a weekly digest of upcoming events + active prompt */
+export async function sendWeeklyDigest(): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const { sendMemberEmails } = await import("@/lib/email");
+    const now = new Date();
+    const inTwoWeeks = new Date(now.getTime() + 14 * 86400000).toISOString();
+
+    const [{ data: members }, { data: events }, { data: forms }] = await Promise.all([
+        supabase.from("users").select("email, first_name"),
+        supabase
+            .from("events")
+            .select("title, date, location, is_public")
+            .eq("is_public", true)
+            .gte("date", now.toISOString())
+            .lte("date", inTwoWeeks)
+            .order("date", { ascending: true })
+            .limit(8),
+        supabase.from("pulse_forms").select("week_label").eq("is_active", true).limit(1),
+    ]);
+
+    const eventLines =
+        (events ?? []).length > 0
+            ? (events ?? [])
+                  .map(
+                      (e: any) =>
+                          `• ${e.title} — ${new Date(e.date).toLocaleString("en-IN", {
+                              weekday: "short",
+                              day: "numeric",
+                              month: "short",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                          })}${e.location ? ` @ ${e.location}` : ""}`
+                  )
+                  .join("\n")
+            : "• No public events scheduled in the next two weeks.";
+
+    const promptLine = forms?.[0]
+        ? `\nThis week's prompt: ${forms[0].week_label}\nAnswer it in Member → Participate.\n`
+        : "\n";
+
+    const text = `Weekly club digest\n\nUpcoming:\n${eventLines}\n${promptLine}\nOpen the site: sign in → Member for RSVP, ideas, and the tutorial.`;
+
+    const result = await sendMemberEmails({
+        subject: "Vishwahita weekly digest",
+        text,
+        recipients: members ?? [],
+    });
+
+    return {
+        success: true,
+        message: result.message,
+        data: { sent: result.sent, errors: result.errors },
+    };
+}
+
+/** Phase 4: remind members about events in the next 48 hours */
+export async function sendEventReminders(): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const { sendMemberEmails } = await import("@/lib/email");
+    const now = new Date();
+    const in48h = new Date(now.getTime() + 48 * 3600000).toISOString();
+
+    const [{ data: members }, { data: events }] = await Promise.all([
+        supabase.from("users").select("email, first_name"),
+        supabase
+            .from("events")
+            .select("title, date, location, is_public")
+            .eq("is_public", true)
+            .gte("date", now.toISOString())
+            .lte("date", in48h)
+            .order("date", { ascending: true }),
+    ]);
+
+    if (!events?.length) {
+        return { success: true, message: "No events in the next 48 hours — nothing to send." };
+    }
+
+    const lines = events
+        .map(
+            (e: any) =>
+                `• ${e.title} — ${new Date(e.date).toLocaleString("en-IN", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "short",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                })}${e.location ? ` @ ${e.location}` : ""}`
+        )
+        .join("\n");
+
+    const result = await sendMemberEmails({
+        subject: "Reminder: Vishwahita events soon",
+        text: `Friendly reminder — these events are coming up soon:\n\n${lines}\n\nRSVP under Member → Events if you can make it.`,
+        recipients: members ?? [],
+    });
+
+    return {
+        success: true,
+        message: result.message,
+        data: { sent: result.sent, errors: result.errors },
+    };
+}
+
 export async function createPulseForm(formData: FormData): Promise<ActionResponse> {
     const { userId } = await auth();
     if (!userId) return { success: false, message: "Unauthorized" };

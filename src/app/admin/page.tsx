@@ -13,6 +13,7 @@ import { IdeasModeration } from "@/components/admin/ideas-moderation";
 import { ContactInbox } from "@/components/admin/contact-inbox";
 import { MilestoneManager } from "@/components/admin/milestone-manager";
 import { PresidentChecklist } from "@/components/admin/president-checklist";
+import { HabitsPanel } from "@/components/admin/habits-panel";
 import { EventManager } from "@/components/event-manager";
 import { BroadcastCenter } from "@/components/broadcast-center";
 
@@ -83,6 +84,7 @@ export default async function AdminPage() {
                     ideas: <IdeasModeration ideas={ideas ?? []} />,
                     inbox: <ContactInbox messages={contactMessages ?? []} />,
                     milestones: <MilestoneManager milestones={milestones ?? []} />,
+                    habits: <HabitsPanel />,
                     pulse: <PulseFormBuilder />,
                     board: <BoardManager members={boardMembers ?? []} />,
                     sections: <PageSectionsEditor sections={sectionsMap} />,

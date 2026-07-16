@@ -11,6 +11,7 @@ import { LegacySpotlight } from "@/components/legacy-spotlight";
 import { BoardStrip } from "@/components/board-strip";
 import { GalleryTeaser } from "@/components/gallery-teaser";
 import { MissionAvenues } from "@/components/mission-avenues";
+import { MilestonesStrip } from "@/components/milestones-strip";
 import { FAQSection } from "@/components/faq-section";
 import { JoinSection } from "@/components/join-section";
 import { getPageSection } from "@/lib/actions";
@@ -65,10 +66,13 @@ export default async function Home() {
                 {/* 9 · MISSION + AVENUES */}
                 <MissionAvenues />
 
-                {/* 10 · FAQ */}
+                {/* 10 · MILESTONES (CMS) */}
+                <MilestonesStrip />
+
+                {/* 11 · FAQ */}
                 <FAQSection />
 
-                {/* 11 · JOIN + PROSPECT FORM */}
+                {/* 12 · JOIN + PROSPECT FORM */}
                 <JoinSection />
             </main>
         </>

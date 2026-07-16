@@ -7,12 +7,13 @@ export default async function ParticipatePage() {
     const { userId } = await auth();
     if (!userId) redirect("/sign-in");
 
-    const [{ data: forms }, { data: responses }, { data: ideas }, { data: votes }] =
+    const [{ data: forms }, { data: responses }, { data: ideas }, { data: votes }, { data: comments }] =
         await Promise.all([
             supabase.from("pulse_forms").select("*").eq("is_active", true).limit(1),
             supabase.from("pulse_responses").select("form_id").eq("member_id", userId),
             supabase.from("ideas").select("*").order("created_at", { ascending: false }).limit(50),
             supabase.from("idea_votes").select("idea_id").eq("member_id", userId),
+            supabase.from("idea_comments").select("*").order("created_at", { ascending: true }).limit(200),
         ]);
 
     const form = forms?.[0]
@@ -41,6 +42,7 @@ export default async function ParticipatePage() {
                 ideas={ideas ?? []}
                 userId={userId}
                 votedIds={votedIds}
+                comments={comments ?? []}
             />
         </div>
     );

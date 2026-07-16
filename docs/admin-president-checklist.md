@@ -34,6 +34,13 @@ Use **Admin** (Clerk role `admin` on your account). Everything below maps to a p
 9. **Announcements** — Admin → Announcements  
    Pin important public notices for the club bulletin.
 
+## Email habits (Phase 4)
+
+10. **Habits / Email** — Admin → Habits / Email  
+    - **Weekly digest**: upcoming public events (14 days) + active prompt  
+    - **48h reminders**: events starting soon  
+    Requires `RESEND_API_KEY` in environment (optional `RESEND_FROM` verified domain). Without it, the UI explains that nothing was sent.
+
 ## Access
 
 - Admin requires Clerk `publicMetadata.role = "admin"`.  

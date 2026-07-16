@@ -23,6 +23,10 @@ const ITEMS = [
         title: "Edit standing copy",
         body: "Admin → Page Sections. Update hero, mission/vision, standing (charter, sponsor, District).",
     },
+    {
+        title: "Email habits (optional)",
+        body: "Admin → Habits / Email. Send weekly digest or 48h event reminders (requires RESEND_API_KEY).",
+    },
 ];
 
 export function PresidentChecklist() {

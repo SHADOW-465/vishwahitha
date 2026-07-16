@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { createIdea, voteIdea, submitPulseResponse } from "@/lib/server-actions";
+import { createIdea, voteIdea, submitPulseResponse, addIdeaComment } from "@/lib/server-actions";
 
 type Idea = {
     id: string;
@@ -10,6 +10,14 @@ type Idea = {
     status: string;
     vote_count: number;
     author_id: string;
+};
+
+type IdeaComment = {
+    id: string;
+    idea_id: string;
+    author_id: string;
+    body: string;
+    created_at?: string;
 };
 
 type PulseForm = {
@@ -24,12 +32,14 @@ export function ParticipateClient({
     ideas,
     userId,
     votedIds,
+    comments: initialComments,
 }: {
     form: PulseForm | null;
     hasSubmitted: boolean;
     ideas: Idea[];
     userId: string;
     votedIds: string[];
+    comments: IdeaComment[];
 }) {
     const [tab, setTab] = useState<"prompt" | "ideas">("prompt");
     const [pending, startTransition] = useTransition();
@@ -39,6 +49,8 @@ export function ParticipateClient({
     const [pulseDone, setPulseDone] = useState(hasSubmitted);
     const [localVotes, setLocalVotes] = useState<Set<string>>(new Set(votedIds));
     const [localIdeas, setLocalIdeas] = useState(ideas);
+    const [localComments, setLocalComments] = useState(initialComments);
+    const [draftByIdea, setDraftByIdea] = useState<Record<string, string>>({});
 
     function submitPulse() {
         if (!form) return;
@@ -239,7 +251,9 @@ export function ParticipateClient({
                                 No ideas yet — be the first.
                             </li>
                         )}
-                        {localIdeas.map((idea) => (
+                        {localIdeas.map((idea) => {
+                            const ideaComments = localComments.filter((c) => c.idea_id === idea.id);
+                            return (
                             <li
                                 key={idea.id}
                                 className="glass-panel rounded-2xl border border-white/5 p-5"
@@ -266,8 +280,53 @@ export function ParticipateClient({
                                         ▲ {idea.vote_count}
                                     </button>
                                 </div>
+                                {ideaComments.length > 0 && (
+                                    <ul className="mt-4 space-y-2 border-t border-white/5 pt-3">
+                                        {ideaComments.map((c) => (
+                                            <li key={c.id} className="font-mono text-[11px] text-text-secondary">
+                                                {c.body}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                                <form
+                                    className="mt-3 flex gap-2"
+                                    onSubmit={(e) => {
+                                        e.preventDefault();
+                                        const body = (draftByIdea[idea.id] || "").trim();
+                                        if (!body) return;
+                                        startTransition(async () => {
+                                            const fd = new FormData();
+                                            fd.set("idea_id", idea.id);
+                                            fd.set("body", body);
+                                            const res = await addIdeaComment(fd);
+                                            setMsg(res.message);
+                                            if (res.success && res.data) {
+                                                setLocalComments((prev) => [...prev, res.data as IdeaComment]);
+                                                setDraftByIdea((d) => ({ ...d, [idea.id]: "" }));
+                                            }
+                                        });
+                                    }}
+                                >
+                                    <input
+                                        value={draftByIdea[idea.id] || ""}
+                                        onChange={(e) =>
+                                            setDraftByIdea((d) => ({ ...d, [idea.id]: e.target.value }))
+                                        }
+                                        placeholder="Light comment…"
+                                        className="flex-1 min-w-0 rounded-full bg-black/40 border border-white/10 px-3 py-2 text-xs text-text-primary"
+                                    />
+                                    <button
+                                        type="submit"
+                                        disabled={pending}
+                                        className="shrink-0 font-mono text-[10px] text-accent-gold px-3"
+                                    >
+                                        Post
+                                    </button>
+                                </form>
                             </li>
-                        ))}
+                            );
+                        })}
                     </ul>
                 </div>
             )}
