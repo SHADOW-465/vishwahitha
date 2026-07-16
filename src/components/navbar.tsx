@@ -128,7 +128,7 @@ export const Navbar = () => {
                     <MagneticButton><Link href="/initiatives" className={linkClass}>Projects</Link></MagneticButton>
                     <MagneticButton><Link href="/contact" className={linkClass}>Contact</Link></MagneticButton>
                     <SignedIn>
-                        <MagneticButton><Link href="/hub" className={linkClass}>Member</Link></MagneticButton>
+                        <MagneticButton><Link href="/member" className={linkClass}>Member</Link></MagneticButton>
                     </SignedIn>
                     <SignedOut>
                         <MagneticButton><Link href="/sign-in" className={linkClass}>Member</Link></MagneticButton>
@@ -201,7 +201,7 @@ export const Navbar = () => {
                             ))}
                             <SignedIn>
                                 <Link
-                                    href="/hub"
+                                    href="/member"
                                     onClick={() => setMenuOpen(false)}
                                     className={`${linkClass} py-2.5 px-2 rounded-xl`}
                                 >

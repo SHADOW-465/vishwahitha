@@ -113,6 +113,8 @@ export async function toggleRSVP(event_id: string, currentStatus: string | null)
 
     if (error) return { success: false, message: error.message, error };
     revalidatePath("/hub");
+    revalidatePath("/member");
+    revalidatePath("/member/events");
     revalidatePath("/events");
     revalidatePath(`/events/${event_id}`);
     return { success: true, message: "RSVP updated successfully", data };
@@ -178,7 +180,82 @@ export async function submitPulseResponse(formData: FormData): Promise<ActionRes
 
     if (error) return { success: false, message: error.message, error };
     revalidatePath("/hub");
+    revalidatePath("/member");
+    revalidatePath("/member/participate");
     return { success: true, message: "Pulse response submitted successfully", data };
+}
+
+export async function createIdea(formData: FormData): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const title = String(formData.get("title") || "").trim();
+    const body = String(formData.get("body") || "").trim();
+    if (!title || !body) return { success: false, message: "Title and details are required." };
+
+    const { data, error } = await supabase
+        .from("ideas")
+        .insert([{ author_id: userId, title, body, status: "new", vote_count: 0 }])
+        .select()
+        .single();
+
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/member");
+    revalidatePath("/member/participate");
+    return { success: true, message: "Idea posted.", data };
+}
+
+export async function voteIdea(ideaId: string): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const { error: voteErr } = await supabase
+        .from("idea_votes")
+        .insert([{ idea_id: ideaId, member_id: userId }]);
+
+    if (voteErr) {
+        if (voteErr.code === "23505") {
+            return { success: false, message: "You already voted for this idea." };
+        }
+        return { success: false, message: voteErr.message, error: voteErr };
+    }
+
+    const { data: idea } = await supabase.from("ideas").select("vote_count").eq("id", ideaId).single();
+    const next = (idea?.vote_count ?? 0) + 1;
+    await supabase.from("ideas").update({ vote_count: next }).eq("id", ideaId);
+
+    revalidatePath("/member");
+    revalidatePath("/member/participate");
+    return { success: true, message: "Vote recorded." };
+}
+
+export async function completeTutorial(): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const { error } = await supabase
+        .from("users")
+        .update({ tutorial_completed_at: new Date().toISOString() })
+        .eq("id", userId);
+
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/member");
+    revalidatePath("/member/learn");
+    return { success: true, message: "Tutorial complete. Welcome in." };
+}
+
+export async function updateIdeaStatus(ideaId: string, status: string): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const allowed = ["new", "under_review", "planned", "done", "declined"];
+    if (!allowed.includes(status)) return { success: false, message: "Invalid status." };
+
+    const { error } = await supabase.from("ideas").update({ status }).eq("id", ideaId);
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/member/participate");
+    revalidatePath("/admin");
+    return { success: true, message: `Idea marked ${status}.` };
 }
 
 export async function createPulseForm(formData: FormData): Promise<ActionResponse> {

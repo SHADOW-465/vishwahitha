@@ -274,7 +274,7 @@ First paint: logo + club name centered → scroll (or timeout) rises into nav �
 | **3** | Admin completeness | All content types CMS; one-legacy enforcement; prompt workflow — **not in current ticket set** |
 | **4** | Habit amplifiers | Email digest / reminders (Resend); optional hard tutorial gate — **not in current ticket set** |
 
-**Next implementation work:** Phase 0 + Phase 1 largely shipped (2026-07-16). Apply SQL migration `supabase/migrations/20260716_phase1_public_house.sql` in Supabase. Then Phase 2 (clubroom) when ready.
+**Status (2026-07-16):** Phase 0–2 shipped. Remote Supabase bootstrapped via MCP. Next optional: Phase 3 admin completeness.
 
 ### Competitive references (context only)
 
