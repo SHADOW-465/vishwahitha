@@ -9,9 +9,12 @@ import { InitiativeManager } from "@/components/admin/initiative-manager";
 import { PulseFormBuilder } from "@/components/admin/pulse-form-builder";
 import { BoardManager } from "@/components/admin/board-manager";
 import { PageSectionsEditor } from "@/components/admin/page-sections-editor";
+import { IdeasModeration } from "@/components/admin/ideas-moderation";
+import { ContactInbox } from "@/components/admin/contact-inbox";
+import { MilestoneManager } from "@/components/admin/milestone-manager";
+import { PresidentChecklist } from "@/components/admin/president-checklist";
 import { EventManager } from "@/components/event-manager";
 import { BroadcastCenter } from "@/components/broadcast-center";
-import { WeeklyPulseAggregator } from "@/components/weekly-pulse-aggregator";
 
 export default async function AdminPage() {
     const { userId } = await auth();
@@ -28,19 +31,23 @@ export default async function AdminPage() {
         { data: members },
         { data: events },
         { data: pulseResponses },
-        { data: feedback },
         { data: initiatives },
         { data: boardMembers },
         { data: pageSections },
+        { data: ideas },
+        { data: contactMessages },
+        { data: milestones },
     ] = await Promise.all([
         getAllAnnouncements(),
         supabase.from("users").select("id"),
         supabase.from("events").select("id"),
         supabase.from("pulse_responses").select("id"),
-        supabase.from("feedback").select("*").order("created_at", { ascending: false }),
         supabase.from("initiatives").select("*").order("display_order"),
         supabase.from("board_members").select("*").order("display_order"),
         supabase.from("page_sections").select("*"),
+        supabase.from("ideas").select("*").order("created_at", { ascending: false }),
+        supabase.from("contact_messages").select("*").order("created_at", { ascending: false }),
+        supabase.from("milestones").select("*").order("display_order"),
     ]);
 
     const stats = {
@@ -50,24 +57,35 @@ export default async function AdminPage() {
         pulseResponses: pulseResponses?.length ?? 0,
     };
 
+    const sectionsMap = Object.fromEntries(
+        (pageSections ?? []).map((s: any) => [s.section_key, s])
+    );
+
     return (
         <div className="min-h-screen pt-32 pb-24 px-6 max-w-7xl mx-auto">
             <div className="mb-12">
                 <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-primary">
-                    Board <span className="font-drama italic gold-text font-light">Command</span>
+                    Board{" "}
+                    <span className="font-display-drama gold-text font-light">Command</span>
                 </h1>
-                <p className="font-mono text-text-secondary mt-3">Full CMS access. You can manage all site content from here.</p>
+                <p className="font-mono text-text-secondary mt-3">
+                    Full CMS — events, projects, ideas, inbox, milestones, and page copy.
+                </p>
             </div>
 
             <AdminShell
                 stats={stats}
                 panels={{
+                    checklist: <PresidentChecklist />,
                     announcements: <AnnouncementManager announcements={announcements} />,
                     initiatives: <InitiativeManager initiatives={initiatives ?? []} />,
                     events: <EventManager />,
+                    ideas: <IdeasModeration ideas={ideas ?? []} />,
+                    inbox: <ContactInbox messages={contactMessages ?? []} />,
+                    milestones: <MilestoneManager milestones={milestones ?? []} />,
                     pulse: <PulseFormBuilder />,
                     board: <BoardManager members={boardMembers ?? []} />,
-                    sections: <PageSectionsEditor sections={Object.fromEntries((pageSections ?? []).map((s: any) => [s.section_key, s]))} />,
+                    sections: <PageSectionsEditor sections={sectionsMap} />,
                     broadcast: <BroadcastCenter />,
                 }}
             />

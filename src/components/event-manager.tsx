@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { createEvent } from "@/lib/server-actions";
-import { Plus, Calendar, MapPin, Globe, Lock } from "lucide-react";
+import { Plus, MapPin, Calendar } from "lucide-react";
 
 export const EventManager = () => {
     const [loading, setLoading] = useState(false);
@@ -66,21 +66,26 @@ export const EventManager = () => {
                             />
                         </div>
                     </div>
-                    <div className="flex items-end pb-3">
+                    <div className="flex flex-col gap-3 pb-3 justify-end">
                         <label className="flex items-center gap-3 cursor-pointer group">
-                            <div className="relative flex items-center">
-                                <input
-                                    type="checkbox"
-                                    name="isPublic"
-                                    defaultChecked
-                                    className="peer appearance-none w-6 h-6 border border-white/20 rounded-lg bg-white/5 checked:bg-accent-gold checked:border-accent-gold transition-all"
-                                />
-                                <div className="absolute inset-0 flex items-center justify-center opacity-0 peer-checked:opacity-100 transition-opacity text-primary">
-                                    <Globe size={14} />
-                                </div>
-                            </div>
+                            <input
+                                type="checkbox"
+                                name="isPublic"
+                                defaultChecked
+                                className="w-5 h-5 rounded border-white/20 bg-white/5 accent-[#D4AF37]"
+                            />
                             <span className="text-sm font-mono text-text-secondary group-hover:text-text-primary transition-colors">
-                                Make this event <span className="text-accent-gold font-bold">Public</span>
+                                <span className="text-accent-gold font-bold">Public</span> (homepage + /events)
+                            </span>
+                        </label>
+                        <label className="flex items-center gap-3 cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                name="isOnline"
+                                className="w-5 h-5 rounded border-white/20 bg-white/5 accent-[#D4AF37]"
+                            />
+                            <span className="text-sm font-mono text-text-secondary group-hover:text-text-primary transition-colors">
+                                <span className="text-accent-cranberry font-bold">Online</span> event
                             </span>
                         </label>
                     </div>

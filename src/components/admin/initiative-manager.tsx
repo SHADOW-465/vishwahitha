@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { CMSDrawer } from "./cms-drawer";
-import { createInitiative, deleteInitiative } from "@/lib/server-actions";
-import { Plus, Trash2, ExternalLink } from "lucide-react";
+import { createInitiative, deleteInitiative, setInitiativeLegacy } from "@/lib/server-actions";
+import { Plus, Trash2, ExternalLink, Star } from "lucide-react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
@@ -12,6 +12,7 @@ interface Props { initiatives: any[] }
 export const InitiativeManager = ({ initiatives: initial }: Props) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState(initial);
 
     async function handleCreate(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -22,6 +23,7 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
         if (res.success) {
             toast.success(res.message);
             setDrawerOpen(false);
+            if (res.data) setItems((list) => [...list, res.data]);
         } else {
             toast.error(res.message);
         }
@@ -30,8 +32,24 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
     async function handleDelete(id: string) {
         if (!confirm("Delete initiative?")) return;
         const res = await deleteInitiative(id);
-        if (res.success) toast.success(res.message);
-        else toast.error(res.message);
+        if (res.success) {
+            toast.success(res.message);
+            setItems((list) => list.filter((i) => i.id !== id));
+        } else toast.error(res.message);
+    }
+
+    async function handleLegacy(id: string) {
+        const res = await setInitiativeLegacy(id);
+        if (res.success) {
+            toast.success(res.message);
+            setItems((list) =>
+                list.map((i) => ({
+                    ...i,
+                    is_legacy: i.id === id,
+                    is_featured: i.id === id ? true : i.is_featured,
+                }))
+            );
+        } else toast.error(res.message);
     }
 
     return (
@@ -39,7 +57,9 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
             <div className="flex items-center justify-between">
                 <div>
                     <h2 className="font-heading text-2xl font-bold text-text-primary">Initiatives</h2>
-                    <p className="font-mono text-xs text-text-secondary mt-1">{initial.length} total</p>
+                    <p className="font-mono text-xs text-text-secondary mt-1">
+                        {items.length} total · only one can be Legacy flagship
+                    </p>
                 </div>
                 <button onClick={() => setDrawerOpen(true)} className="flex items-center gap-2 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold text-sm px-5 py-2.5 rounded-full hover:scale-[1.03] transition-transform">
                     <Plus size={16} /> New Initiative
@@ -47,13 +67,30 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
             </div>
 
             <div className="space-y-3">
-                {initial.map((init) => (
-                    <div key={init.id} className="glass-panel rounded-2xl p-5 flex items-center justify-between group">
-                        <div>
-                            <h4 className="font-heading font-bold text-text-primary">{init.title}</h4>
+                {items.map((init) => (
+                    <div key={init.id} className="glass-panel rounded-2xl p-5 flex items-center justify-between group gap-3">
+                        <div className="min-w-0">
+                            <h4 className="font-heading font-bold text-text-primary flex flex-wrap items-center gap-2">
+                                {init.title}
+                                {init.is_legacy && (
+                                    <span className="font-mono text-[9px] uppercase tracking-wider text-accent-gold border border-accent-gold/30 rounded-full px-2 py-0.5">
+                                        Legacy
+                                    </span>
+                                )}
+                            </h4>
                             <p className="font-mono text-xs text-text-secondary">{init.category} · /{init.slug}</p>
                         </div>
-                        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex gap-2 shrink-0">
+                            {!init.is_legacy && (
+                                <button
+                                    type="button"
+                                    onClick={() => handleLegacy(init.id)}
+                                    title="Set as sole legacy project"
+                                    className="p-2 rounded-xl bg-white/5 text-text-secondary hover:text-accent-gold transition-colors"
+                                >
+                                    <Star size={14} />
+                                </button>
+                            )}
                             <Link href={`/initiatives/${init.slug}`} target="_blank" className="p-2 rounded-xl bg-white/5 text-text-secondary hover:text-text-primary transition-colors">
                                 <ExternalLink size={14} />
                             </Link>
@@ -87,6 +124,10 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
                         <label className="block font-mono text-xs text-text-secondary mb-2 uppercase tracking-widest">Full Description (detail page)</label>
                         <textarea name="full_description" rows={5} className="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-text-primary focus:outline-none focus:border-accent-gold resize-none" />
                     </div>
+                    <label className="flex items-center gap-2 font-mono text-xs text-text-secondary">
+                        <input type="checkbox" name="is_legacy" className="rounded" />
+                        Set as sole Legacy flagship (clears previous)
+                    </label>
                     <button type="submit" disabled={loading} className="w-full py-3.5 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50">
                         {loading ? "Creating..." : "Create Initiative"}
                     </button>

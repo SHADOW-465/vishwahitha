@@ -274,7 +274,7 @@ First paint: logo + club name centered → scroll (or timeout) rises into nav �
 | **3** | Admin completeness | All content types CMS; one-legacy enforcement; prompt workflow — **not in current ticket set** |
 | **4** | Habit amplifiers | Email digest / reminders (Resend); optional hard tutorial gate — **not in current ticket set** |
 
-**Status (2026-07-16):** Phase 0–2 shipped. Remote Supabase bootstrapped via MCP. Next optional: Phase 3 admin completeness.
+**Status (2026-07-16):** Phase 0–3 shipped. Remote Supabase bootstrapped via MCP. Optional next: Phase 4 habit amplifiers (email digests).
 
 ### Competitive references (context only)
 

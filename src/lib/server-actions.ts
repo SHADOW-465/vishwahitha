@@ -82,6 +82,8 @@ export async function createEvent(formData: FormData): Promise<ActionResponse> {
         location: formData.get("location") as string,
         description: formData.get("description") as string,
         is_public: formData.get("isPublic") === "on",
+        is_online: formData.get("isOnline") === "on",
+        created_by: userId,
     });
 
     const { data, error } = await supabase
@@ -126,6 +128,11 @@ export async function createInitiative(formData: FormData): Promise<ActionRespon
 
     const title = formData.get("title") as string;
     const slug = title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+    const isLegacy = formData.get("is_legacy") === "on" || formData.get("is_legacy") === "true";
+
+    if (isLegacy) {
+        await supabase.from("initiatives").update({ is_legacy: false }).eq("is_legacy", true);
+    }
 
     const payload = sanitizePayload({
         slug,
@@ -137,6 +144,8 @@ export async function createInitiative(formData: FormData): Promise<ActionRespon
         impact_label: formData.get("impact_label") as string,
         hero_image_url: formData.get("hero_image_url") as string,
         color_class: (formData.get("color_class") as string) || "border-white/10",
+        is_featured: formData.get("is_featured") !== "off",
+        is_legacy: isLegacy,
     });
 
     const message = !payload.hero_image_url ? "Initiative created without hero image" : "Initiative created successfully";
@@ -150,6 +159,20 @@ export async function createInitiative(formData: FormData): Promise<ActionRespon
     revalidatePath("/");
     revalidatePath("/initiatives");
     return { success: true, message, data };
+}
+
+/** Enforce exactly one legacy project */
+export async function setInitiativeLegacy(id: string): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    await supabase.from("initiatives").update({ is_legacy: false }).eq("is_legacy", true);
+    const { error } = await supabase.from("initiatives").update({ is_legacy: true, is_featured: true }).eq("id", id);
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/");
+    revalidatePath("/initiatives");
+    revalidatePath("/admin");
+    return { success: true, message: "Legacy flagship updated (only one allowed)." };
 }
 
 export async function deleteInitiative(id: string): Promise<ActionResponse> {
@@ -258,6 +281,43 @@ export async function updateIdeaStatus(ideaId: string, status: string): Promise<
     return { success: true, message: `Idea marked ${status}.` };
 }
 
+export async function createMilestone(formData: FormData): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const payload = sanitizePayload({
+        year: formData.get("year") as string,
+        title: formData.get("title") as string,
+        body: formData.get("body") as string,
+        display_order: Number(formData.get("display_order") || 0),
+    });
+
+    const { data, error } = await supabase.from("milestones").insert([payload]).select().single();
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/");
+    revalidatePath("/admin");
+    return { success: true, message: "Milestone added.", data };
+}
+
+export async function deleteMilestone(id: string): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+    const { error } = await supabase.from("milestones").delete().eq("id", id);
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/");
+    revalidatePath("/admin");
+    return { success: true, message: "Milestone deleted." };
+}
+
+export async function deleteContactMessage(id: string): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+    const { error } = await supabase.from("contact_messages").delete().eq("id", id);
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/admin");
+    return { success: true, message: "Message removed." };
+}
+
 export async function createPulseForm(formData: FormData): Promise<ActionResponse> {
     const { userId } = await auth();
     if (!userId) return { success: false, message: "Unauthorized" };
@@ -321,6 +381,8 @@ export async function updatePageSection(sectionKey: string, content: Record<stri
     if (error) return { success: false, message: error.message, error };
     revalidatePath("/");
     revalidatePath("/about");
+    revalidatePath("/contact");
+    revalidatePath("/admin");
     return { success: true, message: "Page section updated successfully" };
 }
 
