@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ClubLogoMark } from "@/components/club-logo";
 
 const KEY = "vishwahita_brand_intro_seen";
 
 /**
- * P1-1 — First-load brand moment (session).
- * Calm centered logo + name, then fade so sticky nav remains the durable brand.
+ * First-load brand moment (session) — official club logo.
  */
 export function BrandIntro() {
     const [visible, setVisible] = useState(false);
@@ -44,7 +44,7 @@ export function BrandIntro() {
             window.setTimeout(() => setVisible(false), 700);
         };
 
-        const t = window.setTimeout(dismiss, 1400);
+        const t = window.setTimeout(dismiss, 1600);
         const onScroll = () => {
             if (window.scrollY > 8) dismiss();
         };
@@ -65,13 +65,9 @@ export function BrandIntro() {
             }`}
             aria-hidden
         >
-            <div className="text-center px-6 space-y-4">
-                <div className="mx-auto w-14 h-14 rounded-full border-2 border-accent-cranberry/80 flex items-center justify-center">
-                    <svg className="w-8 h-8 text-accent-cranberry" viewBox="0 0 100 100" fill="currentColor">
-                        <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" strokeWidth="6" />
-                        <circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" strokeWidth="3" />
-                        <circle cx="50" cy="50" r="10" />
-                    </svg>
+            <div className="text-center px-6 space-y-5">
+                <div className="mx-auto flex justify-center">
+                    <ClubLogoMark size={120} priority className="w-24 h-24 sm:w-28 sm:h-28 drop-shadow-lg" />
                 </div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent-gold">
                     RI District 3234

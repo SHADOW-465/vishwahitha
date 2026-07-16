@@ -11,9 +11,13 @@ export const Footer = async () => {
 
             <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
                 <div className="md:col-span-2 space-y-6">
-                    <h2 className="font-heading text-3xl font-bold tracking-tighter text-text-primary">
-                        VISHWAHITA
-                    </h2>
+                    <div className="flex items-center gap-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/club-logo.png" alt="" className="w-12 h-12 object-contain opacity-90" />
+                        <h2 className="font-heading text-3xl font-bold tracking-tighter text-text-primary">
+                            VISHWAHITA
+                        </h2>
+                    </div>
                     <p className="font-mono text-sm text-text-secondary max-w-sm leading-relaxed">
                         {tagline}
                     </p>

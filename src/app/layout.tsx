@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, JetBrains_Mono, Instrument_Serif } from "next/
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { ClubLogoWatermark } from "@/components/club-logo";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "react-hot-toast";
@@ -44,11 +45,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <html lang="en">
                 <body className={`${inter.variable} ${playfairDisplay.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}>
                     <ThemeProvider>
-                        {/* Phase 0: solid paper only — no particle/connector cinematic layer */}
+                        {/* Solid paper + dim official mark (not particles) */}
                         <div
                             className="fixed inset-0 -z-50 pointer-events-none bg-primary"
                             aria-hidden
                         />
+                        <ClubLogoWatermark />
                         <Navbar />
                         {children}
                         <Toaster position="bottom-right" toastOptions={{ style: { background: '#111', color: '#fff', border: '1px solid #333' } }} />

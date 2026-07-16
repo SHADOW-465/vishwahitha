@@ -7,44 +7,7 @@ import { useUser, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
 import { MagneticButton } from "./ui/magnetic-button";
 import { useTheme } from "@/components/theme-provider";
-
-const RotaryLogo = () => (
-    <svg className="w-7 h-7 text-accent-cranberry shrink-0" viewBox="0 0 100 100" fill="currentColor">
-        {/* Outer Wheel Rim */}
-        <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" strokeWidth="6" />
-        <circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" strokeWidth="3" />
-        {/* Inner Hub */}
-        <circle cx="50" cy="50" r="10" />
-        <circle cx="50" cy="50" r="6" fill="#020617" />
-        {/* Gear Teeth (24 teeth) */}
-        {Array.from({ length: 24 }).map((_, i) => (
-            <rect
-                key={i}
-                x="47"
-                y="6"
-                width="6"
-                height="8"
-                rx="1"
-                transform={`rotate(${i * 15} 50 50)`}
-            />
-        ))}
-        {/* Spokes (6 spokes) */}
-        {Array.from({ length: 6 }).map((_, i) => (
-            <line
-                key={i}
-                x1="50"
-                y1="50"
-                x2="50"
-                y2="12"
-                stroke="currentColor"
-                strokeWidth="4"
-                transform={`rotate(${i * 60} 50 50)`}
-            />
-        ))}
-        {/* Keyway slot */}
-        <rect x="48" y="44" width="4" height="6" fill="currentColor" />
-    </svg>
-);
+import { ClubLogoMark } from "@/components/club-logo";
 
 export const Navbar = () => {
     const { scrollY } = useScroll();
@@ -108,9 +71,9 @@ export const Navbar = () => {
 
             {/* Top row: logo + desktop nav + auth + hamburger */}
             <div className="relative z-10 flex items-center justify-between gap-4 md:gap-8">
-                {/* Logo */}
+                {/* Official club logo + wordmark */}
                 <Link href="/" className="flex items-center gap-2.5 shrink-0 hover:opacity-95 transition-opacity group">
-                    <RotaryLogo />
+                    <ClubLogoMark size={40} priority className="w-9 h-9 md:w-10 md:h-10" />
                     <div className="flex flex-col items-start leading-none">
                         <div className="flex items-center gap-1">
                             <span className="font-heading font-black text-[10px] md:text-xs tracking-widest text-accent-cranberry uppercase">Rotaract</span>
@@ -121,18 +84,16 @@ export const Navbar = () => {
                     </div>
                 </Link>
 
-                {/* Desktop nav — Phase 0 public IA: Events · Contact · Member · Admin */}
+                {/* Slim public IA — not the full 8-item brochure menu (avoids bloat) */}
                 <nav className="hidden lg:flex items-center gap-3 lg:gap-5">
                     <MagneticButton><Link href="/about" className={linkClass}>About</Link></MagneticButton>
-                    <MagneticButton><Link href="/events" className={linkClass}>Events</Link></MagneticButton>
                     <MagneticButton><Link href="/initiatives" className={linkClass}>Projects</Link></MagneticButton>
+                    <MagneticButton><Link href="/events" className={linkClass}>Events</Link></MagneticButton>
+                    <MagneticButton><Link href="/gallery" className={linkClass}>Gallery</Link></MagneticButton>
                     <MagneticButton><Link href="/contact" className={linkClass}>Contact</Link></MagneticButton>
                     <SignedIn>
                         <MagneticButton><Link href="/member" className={linkClass}>Member</Link></MagneticButton>
                     </SignedIn>
-                    <SignedOut>
-                        <MagneticButton><Link href="/sign-in" className={linkClass}>Member</Link></MagneticButton>
-                    </SignedOut>
                     {isAdmin && (
                         <MagneticButton>
                             <Link href="/admin" className="text-sm font-medium gold-text hover:opacity-80 transition-opacity inline-block hover:-translate-y-[1px]">
@@ -147,8 +108,8 @@ export const Navbar = () => {
                     <SignedOut>
                         <MagneticButton>
                             <Link
-                                href="/sign-up"
-                                className="bg-gradient-to-r from-accent-cranberry to-accent-gold text-white px-4 md:px-5 py-2.5 rounded-full text-xs md:text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block shadow-lg shadow-accent-cranberry/15"
+                                href="/#join"
+                                className="bg-gradient-to-r from-accent-cranberry to-accent-gold text-white px-4 md:px-5 py-2.5 rounded-full text-xs md:text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block shadow-lg shadow-accent-cranberry/15 whitespace-nowrap"
                             >
                                 Join Us
                             </Link>
@@ -185,13 +146,17 @@ export const Navbar = () => {
                     >
                         <div className="flex flex-col gap-0.5 pt-3 pb-2 border-t border-white/10 mt-2">
                             {[
+                                { href: "/", label: "Home" },
                                 { href: "/about", label: "About" },
-                                { href: "/events", label: "Events" },
+                                { href: "/#mission", label: "Avenues" },
                                 { href: "/initiatives", label: "Projects" },
+                                { href: "/gallery", label: "Gallery" },
+                                { href: "/events", label: "Events" },
+                                { href: "/about#board", label: "Team" },
                                 { href: "/contact", label: "Contact" },
                             ].map(({ href, label }) => (
                                 <Link
-                                    key={href}
+                                    key={href + label}
                                     href={href}
                                     onClick={() => setMenuOpen(false)}
                                     className={`${linkClass} py-2.5 px-2 rounded-xl flex items-center gap-2`}
@@ -210,11 +175,11 @@ export const Navbar = () => {
                             </SignedIn>
                             <SignedOut>
                                 <Link
-                                    href="/sign-in"
+                                    href="/#join"
                                     onClick={() => setMenuOpen(false)}
-                                    className={`${linkClass} py-2.5 px-2 rounded-xl`}
+                                    className="mt-2 text-center bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-4 py-3 rounded-full"
                                 >
-                                    Member
+                                    Join Us
                                 </Link>
                             </SignedOut>
                             {isAdmin && (

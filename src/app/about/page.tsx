@@ -150,10 +150,10 @@ export default async function AboutPage() {
             </section>
 
             {/* Leadership Section */}
-            <section>
+            <section id="board">
                 <div className="mb-12">
                     <h2 className="font-heading text-3xl font-bold text-text-primary">
-                        Leadership <span className="font-drama italic gold-text font-light">Board</span>
+                        Leadership <span className="font-display-drama gold-text font-light">Board</span>
                     </h2>
                     <p className="font-mono text-xs text-text-secondary mt-2">The dedicated team driving Vishwahita forward.</p>
                 </div>
