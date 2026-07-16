@@ -87,7 +87,6 @@ export const Navbar = () => {
                 {/* Slim public IA — not the full 8-item brochure menu (avoids bloat) */}
                 <nav className="hidden lg:flex items-center gap-3 lg:gap-5">
                     <MagneticButton><Link href="/about" className={linkClass}>About</Link></MagneticButton>
-                    <MagneticButton><Link href="/about#board" className={linkClass}>Team</Link></MagneticButton>
                     <MagneticButton><Link href="/initiatives" className={linkClass}>Projects</Link></MagneticButton>
                     <MagneticButton><Link href="/events" className={linkClass}>Events</Link></MagneticButton>
                     <MagneticButton><Link href="/gallery" className={linkClass}>Gallery</Link></MagneticButton>
@@ -153,7 +152,6 @@ export const Navbar = () => {
                                 { href: "/initiatives", label: "Projects" },
                                 { href: "/gallery", label: "Gallery" },
                                 { href: "/events", label: "Events" },
-                                { href: "/about#board", label: "Team" },
                                 { href: "/contact", label: "Contact" },
                             ].map(({ href, label }) => (
                                 <Link
