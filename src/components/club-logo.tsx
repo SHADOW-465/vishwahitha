@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-/** Official club mark — gold horse/wings emblem */
+/** Official club mark — gold horse/wings emblem (true alpha PNG) */
 export function ClubLogoMark({
     size = 36,
     className = "",
@@ -16,15 +16,15 @@ export function ClubLogoMark({
             alt="Rotaract Club of Vishwahita"
             width={size}
             height={size}
-            className={`object-contain shrink-0 ${className}`}
+            className={`object-contain shrink-0 bg-transparent ${className}`}
             priority={priority}
+            unoptimized
         />
     );
 }
 
 /**
- * Dim fixed watermark — brand presence without fighting text.
- * Uses CSS mask-friendly opacity; pointer-events none; below content.
+ * Dim fixed watermark — gold mark only, no white plate.
  */
 export function ClubLogoWatermark() {
     return (
@@ -33,20 +33,20 @@ export function ClubLogoWatermark() {
             aria-hidden
         >
             <div className="absolute inset-0 flex items-center justify-center">
-                {/* Large centered mark — very low opacity on dark paper */}
-                <div
-                    className="relative w-[min(92vw,720px)] aspect-square opacity-[0.045] sm:opacity-[0.055]"
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src="/club-logo.png"
+                    alt=""
+                    className="w-[min(90vw,680px)] h-auto max-h-[70vh] object-contain opacity-[0.07] sm:opacity-[0.08]"
                     style={{
-                        backgroundImage: "url(/club-logo.png)",
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center",
-                        backgroundSize: "contain",
-                        filter: "grayscale(0.15)",
+                        // On dark paper: lighten gold slightly so watermark reads soft, not milky
+                        mixBlendMode: "screen",
+                        filter: "brightness(1.05)",
                     }}
+                    draggable={false}
                 />
             </div>
-            {/* Soft vignette so edges stay clean behind footer/nav */}
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-transparent to-primary/90" />
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-transparent to-primary/85" />
         </div>
     );
 }

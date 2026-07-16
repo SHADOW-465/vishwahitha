@@ -13,7 +13,7 @@ export const Footer = async () => {
                 <div className="md:col-span-2 space-y-6">
                     <div className="flex items-center gap-3">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/club-logo.png" alt="" className="w-12 h-12 object-contain opacity-90" />
+                        <img src="/club-logo.png" alt="" className="w-12 h-12 object-contain bg-transparent" />
                         <h2 className="font-heading text-3xl font-bold tracking-tighter text-text-primary">
                             VISHWAHITA
                         </h2>
