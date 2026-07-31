@@ -438,8 +438,8 @@ WHERE slug = 'vaagai'
 
 INSERT INTO public.board_members (name, role, display_order)
 SELECT * FROM (VALUES
-    ('Rtr. Shivanandhini', 'Club President', 1),
-    ('Rtr. Yogi', 'Club Secretary', 2),
+    ('Rtr. Mahalakshmi', 'Club President', 1),
+    ('Rtr. Nandhini', 'Club Secretary', 2),
     ('Rtr. IPP. Ashwin', 'Group Rotaract Representative', 3)
 ) AS v(name, role, display_order)
 WHERE NOT EXISTS (SELECT 1 FROM public.board_members LIMIT 1);

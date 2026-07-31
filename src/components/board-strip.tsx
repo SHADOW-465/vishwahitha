@@ -3,8 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { getBoardMembers } from "@/lib/actions";
 
 const FALLBACK = [
-    { id: "fb-1", name: "Rtr. Shivanandhini", role: "Club President", image_url: null as string | null },
-    { id: "fb-2", name: "Rtr. Yogi", role: "Club Secretary", image_url: null },
+    { id: "fb-1", name: "Rtr. Mahalakshmi", role: "Club President", image_url: null as string | null },
+    { id: "fb-2", name: "Rtr. Nandhini", role: "Club Secretary", image_url: null },
     { id: "fb-3", name: "Rtr. IPP. Ashwin", role: "Group Rotaract Representative", image_url: null },
 ];
 

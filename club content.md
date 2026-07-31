@@ -9,10 +9,10 @@ Mottos: "Unite for Good" & "Rise Above".
 
 ### 👥 Club Leadership (2025-2026)
 
-* **President**: Rtr. Shivanandhini
+* **President**: Rtr. Mahalakshmi
 
 
-* **Secretary**: Rtr. Yogi
+* **Secretary**: Rtr. Nandhini
 
 
 * **Group Rotaract Representative (Group 1)**: Rtr. IPP. Ashwin

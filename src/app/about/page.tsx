@@ -18,14 +18,14 @@ export default async function AboutPage() {
     const fallbackBoardMembers = [
         {
             id: "fb-1",
-            name: "Rtr. Shivanandhini",
+            name: "Rtr. Mahalakshmi",
             role: "Club President",
             email: "president.vishwahita@gmail.com",
             image_url: null,
         },
         {
             id: "fb-2",
-            name: "Rtr. Yogi",
+            name: "Rtr. Nandhini",
             role: "Club Secretary",
             email: "secretary.vishwahita@gmail.com",
             image_url: null,

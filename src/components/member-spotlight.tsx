@@ -166,14 +166,14 @@ export const MemberSpotlight = ({ members }: { members: BoardMember[] }) => {
     const displayMembers = members && members.length > 0 ? members.slice(0, 3) : [
         {
             id: "1",
-            name: "Rtr. Harish Kumar",
+            name: "Rtr. Mahalakshmi",
             role: "Club President",
             email: "president@vishwahitha.org",
             image_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400"
         },
         {
             id: "2",
-            name: "Rtr. Sneha Iyer",
+            name: "Rtr. Nandhini",
             role: "Club Secretary",
             email: "secretary@vishwahitha.org",
             image_url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400"
