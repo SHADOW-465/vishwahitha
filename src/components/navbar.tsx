@@ -60,9 +60,8 @@ export const Navbar = () => {
             className={`fixed top-4 md:top-6 left-1/2 z-50 transition-all duration-500 ${pillRadius} px-4 md:px-6 py-2.5 md:py-3 flex flex-col w-[calc(100vw-2rem)] md:w-max max-w-[calc(100vw-2rem)] md:max-w-[calc(100vw-2rem)]`}
             style={{ background: "transparent" }}
             animate={{ y: 0, x: "-50%", opacity: 1 }}
-            initial={{ y: -24, x: "-50%", opacity: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            data-nav-brand
+            initial={{ y: -100, x: "-50%", opacity: 0 }}
+            transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
         >
             {/* Pill background */}
             <motion.div
@@ -90,7 +89,6 @@ export const Navbar = () => {
                     <MagneticButton><Link href="/about" className={linkClass}>About</Link></MagneticButton>
                     <MagneticButton><Link href="/initiatives" className={linkClass}>Projects</Link></MagneticButton>
                     <MagneticButton><Link href="/events" className={linkClass}>Events</Link></MagneticButton>
-                    <MagneticButton><Link href="/announcements" className={linkClass}>Notices</Link></MagneticButton>
                     <MagneticButton><Link href="/gallery" className={linkClass}>Gallery</Link></MagneticButton>
                     <MagneticButton><Link href="/contact" className={linkClass}>Contact</Link></MagneticButton>
                     <SignedIn>
@@ -98,7 +96,7 @@ export const Navbar = () => {
                     </SignedIn>
                     {isAdmin && (
                         <MagneticButton>
-                            <Link href="/admin" className="text-sm font-medium text-accent-gold hover:opacity-80 transition-opacity inline-block hover:-translate-y-[1px]">
+                            <Link href="/admin" className="text-sm font-medium gold-text hover:opacity-80 transition-opacity inline-block hover:-translate-y-[1px]">
                                 Admin
                             </Link>
                         </MagneticButton>
@@ -111,9 +109,9 @@ export const Navbar = () => {
                         <MagneticButton>
                             <Link
                                 href="/#join"
-                                className="bg-accent-cranberry text-white px-4 md:px-5 py-2.5 rounded-full text-xs md:text-sm font-bold tracking-wide hover:scale-[1.03] hover:bg-[#e01872] transition-all duration-300 inline-block shadow-lg shadow-accent-cranberry/20 whitespace-nowrap"
+                                className="bg-gradient-to-r from-accent-cranberry to-accent-gold text-white px-4 md:px-5 py-2.5 rounded-full text-xs md:text-sm font-bold tracking-wide hover:scale-[1.03] transition-transform duration-300 inline-block shadow-lg shadow-accent-cranberry/15 whitespace-nowrap"
                             >
-                                Apply
+                                Join Us
                             </Link>
                         </MagneticButton>
                     </SignedOut>
@@ -147,13 +145,13 @@ export const Navbar = () => {
                         className="overflow-hidden lg:hidden relative z-10"
                     >
                         <div className="flex flex-col gap-0.5 pt-3 pb-2 border-t border-white/10 mt-2">
-                            {/* Match desktop public IA */}
                             {[
+                                { href: "/", label: "Home" },
                                 { href: "/about", label: "About" },
+                                { href: "/#mission", label: "Avenues" },
                                 { href: "/initiatives", label: "Projects" },
-                                { href: "/events", label: "Events" },
-                                { href: "/announcements", label: "Notices" },
                                 { href: "/gallery", label: "Gallery" },
+                                { href: "/events", label: "Events" },
                                 { href: "/contact", label: "Contact" },
                             ].map(({ href, label }) => (
                                 <Link
@@ -178,16 +176,16 @@ export const Navbar = () => {
                                 <Link
                                     href="/#join"
                                     onClick={() => setMenuOpen(false)}
-                                    className="mt-2 text-center bg-accent-cranberry text-text-primary font-bold text-sm px-4 py-3 rounded-full"
+                                    className="mt-2 text-center bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-4 py-3 rounded-full"
                                 >
-                                    Apply
+                                    Join Us
                                 </Link>
                             </SignedOut>
                             {isAdmin && (
                                 <Link
                                     href="/admin"
                                     onClick={() => setMenuOpen(false)}
-                                    className="text-sm font-medium text-accent-gold hover:opacity-80 transition-opacity py-2.5 px-2 rounded-xl"
+                                    className="text-sm font-medium gold-text hover:opacity-80 transition-opacity py-2.5 px-2 rounded-xl"
                                 >
                                     Admin
                                 </Link>

@@ -94,7 +94,7 @@ export function ProspectJoinForm() {
             <button
                 type="submit"
                 disabled={pending}
-                className="w-full sm:w-auto rounded-full bg-accent-cranberry text-text-primary font-bold text-sm px-8 py-3.5 disabled:opacity-60 hover:bg-[#e01872] transition-colors"
+                className="w-full sm:w-auto rounded-full bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-8 py-3.5 disabled:opacity-60 transition-opacity"
             >
                 {pending ? "Sending…" : "Submit application"}
             </button>

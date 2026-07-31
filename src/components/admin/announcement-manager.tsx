@@ -49,7 +49,7 @@ export const AnnouncementManager = ({ announcements: initial }: Props) => {
                 </div>
                 <button
                     onClick={() => setDrawerOpen(true)}
-                    className="flex items-center gap-2 bg-accent-gold text-primary font-bold text-sm px-5 py-2.5 rounded-full hover:scale-[1.03] transition-transform"
+                    className="flex items-center gap-2 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold text-sm px-5 py-2.5 rounded-full hover:scale-[1.03] transition-transform"
                 >
                     <Plus size={16} /> New Post
                 </button>
@@ -109,7 +109,7 @@ export const AnnouncementManager = ({ announcements: initial }: Props) => {
                         <input type="checkbox" name="is_pinned" value="true" id="is_pinned" className="accent-accent-gold" />
                         <label htmlFor="is_pinned" className="font-mono text-sm text-text-secondary">Pin to top</label>
                     </div>
-                    <button type="submit" disabled={loading} className="w-full py-3.5 bg-accent-gold text-primary font-bold rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50">
+                    <button type="submit" disabled={loading} className="w-full py-3.5 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50">
                         {loading ? "Publishing..." : "Publish Announcement"}
                     </button>
                 </form>

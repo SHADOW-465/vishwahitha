@@ -28,17 +28,20 @@ export async function OfficialStanding() {
             className="w-full border-y border-white/10 bg-white/[0.02]"
         >
             <div className="max-w-7xl mx-auto px-6 py-12 md:py-14">
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-gold mb-2">
+                    Official standing
+                </p>
                 <h2
                     id="standing-heading"
                     className="font-heading font-extrabold text-2xl sm:text-3xl text-text-primary tracking-tight mb-8 text-balance"
                 >
-                    Official standing
+                    Where we sit in Rotary
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                     {cards.map((card) => (
                         <div
                             key={card.label}
-                            className="rounded-2xl p-6 border border-white/8 bg-white/[0.03] min-w-0"
+                            className="glass-panel rounded-2xl p-6 border border-white/5 min-w-0"
                         >
                             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-text-secondary">
                                 {card.label}

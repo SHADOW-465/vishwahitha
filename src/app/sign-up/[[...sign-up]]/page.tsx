@@ -7,16 +7,10 @@ export default function SignUpPage() {
 
             <div className="relative z-10 w-full max-w-md">
                 <div className="flex flex-col items-center mb-10">
-                    <h1 className="text-3xl font-heading font-bold tracking-tight text-text-primary text-center">
-                        Create a member login
+                    <h1 className="text-4xl font-heading font-bold tracking-tighter text-text-primary text-center">
+                        Join <span className="text-accent-gold font-drama italic tracking-normal font-light">Vishwahita</span>
                     </h1>
-                    <p className="text-sm text-text-secondary mt-2 text-center max-w-sm">
-                        For inducted members. Prefer to apply first?{" "}
-                        <a href="/#join" className="text-accent-gold hover:underline">
-                            Use the prospect form
-                        </a>
-                        .
-                    </p>
+                    <p className="text-sm font-mono text-text-secondary mt-2 uppercase tracking-[0.2em]">Member Registration</p>
                 </div>
 
                 <div className="flex justify-center">

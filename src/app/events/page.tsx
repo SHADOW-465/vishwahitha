@@ -30,7 +30,7 @@ function EventCard({
     return (
         <Link
             href={`/events/${event.id}`}
-            className="block rounded-2xl border border-white/8 bg-white/[0.03] p-6 hover:border-accent-cranberry/30 transition-colors min-w-0 h-full"
+            className="block glass-panel rounded-2xl border border-white/5 p-6 hover:border-accent-cranberry/30 transition-colors min-w-0 h-full"
         >
             <p className="font-mono text-[10px] uppercase tracking-wider text-accent-cranberry">
                 {formatDate(event.date)}
@@ -72,11 +72,14 @@ export default async function EventsPage({
     return (
         <main className="min-h-screen bg-primary pt-28 md:pt-32 pb-20 px-6">
             <div className="max-w-7xl mx-auto">
-                <h1 className="font-heading font-extrabold text-4xl sm:text-5xl text-text-primary tracking-tight text-balance">
-                    Events
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-cranberry">
+                    Calendar
+                </p>
+                <h1 className="mt-2 font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl text-text-primary tracking-tighter text-balance">
+                    Club <span className="font-display-drama gold-text">events</span>
                 </h1>
-                <p className="mt-3 text-sm text-text-secondary max-w-xl leading-relaxed">
-                    Meetings, service days, fellowship, and online sessions · RI District 3234.
+                <p className="mt-3 font-mono text-sm text-text-secondary max-w-xl leading-relaxed">
+                    Meetings, service days, fellowship, and online sessions for Rotaract Club of Vishwahita · District 3234.
                 </p>
 
                 <div className="mt-10 flex flex-wrap gap-2">

@@ -205,7 +205,7 @@ export function ParticipateClient({
                                 type="button"
                                 disabled={pending}
                                 onClick={submitPulse}
-                                className="rounded-full bg-accent-cranberry text-text-primary font-bold text-sm px-6 py-3 disabled:opacity-60"
+                                className="rounded-full bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-6 py-3 disabled:opacity-60"
                             >
                                 {pending ? "Submitting…" : "Submit answer"}
                             </button>

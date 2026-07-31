@@ -13,9 +13,9 @@ interface HeroProps {
 }
 
 export const Hero = ({
-    headlineLine1 = "Rotaract Club of Vishwahita",
-    headlineLine2 = "Universal friendship, youth-led service.",
-    subtext = "Chartered 10 March 1999 · Sponsored by the Rotary Club of Madras Industrial City · RI District 3234, Group 01, Chennai. Apply below — the board will follow up.",
+    headlineLine1 = "Rotaract Club of Vishwahita:",
+    headlineLine2 = "27 Years of Youth-Led Service in Chennai.",
+    subtext = "Chartered on March 10, 1999, and sponsored by the Rotary Club of Madras Industrial City, we are one of the most active Rotaract clubs in District 3234 — 500+ projects, 2,000+ people reached, one club.",
 }: HeroProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -28,21 +28,19 @@ export const Hero = ({
 
         const ctx = gsap.context(() => {
             gsap.from(".hero-reveal", {
-                y: 40,
+                y: 60,
                 opacity: 0,
-                filter: "blur(6px)",
-                duration: 1.1,
-                stagger: 0.12,
+                duration: 1.4,
+                stagger: 0.15,
                 ease: "power4.out",
-                delay: 0.35,
-                clearProps: "filter",
+                delay: 0.2,
             });
 
             gsap.from(".hero-scroll-indicator", {
                 opacity: 0,
-                y: 8,
-                duration: 0.8,
-                delay: 1.2,
+                y: 10,
+                duration: 1,
+                delay: 1.5,
                 ease: "power2.out",
             });
         }, containerRef);
@@ -56,6 +54,7 @@ export const Hero = ({
             ref={containerRef}
             className="relative w-full min-h-[100dvh] flex items-center justify-start overflow-hidden bg-transparent pt-24"
         >
+            {/* Soft bottom fade into paper — no cursor spotlight / particle trail */}
             <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-primary to-transparent z-10 pointer-events-none" />
 
             <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
@@ -64,13 +63,14 @@ export const Hero = ({
                         RI District 3234 · Group 01 · Chennai
                     </p>
 
+                    {/* Novel display: Inter extrabold + Instrument Serif drama at large scale */}
                     <div className="space-y-2 sm:space-y-3 min-w-0">
-                        <h1 className="hero-reveal font-heading font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tighter leading-[0.92] text-text-primary text-balance break-words min-w-0">
+                        <h1 className="hero-reveal font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tighter leading-[0.9] text-text-primary text-balance break-words min-w-0">
                             {headlineLine1}
                         </h1>
-                        <p className="hero-reveal font-display-drama text-[2.25rem] sm:text-[3.5rem] md:text-[5.5rem] lg:text-[6.5rem] leading-[0.85] text-accent-gold tracking-tight pb-2 text-balance break-words min-w-0">
+                        <h1 className="hero-reveal font-display-drama text-[2.75rem] sm:text-[4.5rem] md:text-[7.5rem] lg:text-[9rem] leading-[0.78] gold-text tracking-tight pb-2 text-balance break-words min-w-0">
                             {headlineLine2}
-                        </p>
+                        </h1>
                     </div>
 
                     <p className="hero-reveal text-sm sm:text-base md:text-lg text-text-secondary font-heading max-w-xl leading-relaxed pt-2">
@@ -80,10 +80,10 @@ export const Hero = ({
                     <div className="hero-reveal flex flex-wrap items-center gap-3 sm:gap-4 pt-6">
                         <MagneticButton>
                             <Link
-                                href="/#join"
-                                className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-accent-cranberry text-text-primary font-bold text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-accent-cranberry/20 hover:shadow-accent-cranberry/30 hover:bg-[#e01872] whitespace-nowrap"
+                                href="/sign-up"
+                                className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-accent-cranberry/15 hover:shadow-accent-cranberry/25 whitespace-nowrap"
                             >
-                                <span className="relative z-10">Apply to join</span>
+                                <span className="relative z-10">Become a member</span>
                                 <ArrowRight
                                     size={16}
                                     className="relative z-10 group-hover:translate-x-1 transition-transform"
@@ -100,13 +100,6 @@ export const Hero = ({
                             </Link>
                         </MagneticButton>
                     </div>
-
-                    <p className="hero-reveal font-mono text-[11px] text-text-secondary pt-1">
-                        Already inducted?{" "}
-                        <Link href="/sign-in" className="text-accent-gold hover:underline">
-                            Member sign-in
-                        </Link>
-                    </p>
                 </div>
             </div>
 

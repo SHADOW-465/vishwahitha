@@ -55,59 +55,23 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--glass-border);
 }
 
-/* Solid brand accents (no gradient-text clip — quieter / anti-slop) */
+/* ── Gold Gradient Text ──────────────────────────────────── */
 .gold-text {
-  color: #D4AF37;
+  background: linear-gradient(90deg, #D4AF37, #F5E6C4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
+
+/* ── Cranberry Gradient Text ─────────────────────────────── */
 .cranberry-text {
-  color: #D41367;
+  background: linear-gradient(90deg, #D41367, #F53B86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Phase 0: noise overlay removed — was reading as texture chrome / childish */
-
-/* ── Cinematic scroll house ─────────────────────────────── */
-/* Sections stay fully visible without JS; .cinema-in only softens entry */
-.cinema-section.cinema-ready {
-  opacity: 1;
-  transform: none;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .cinema-section.cinema-ready:not(.cinema-in) {
-    opacity: 0.92;
-    transform: translateY(12px);
-  }
-  .cinema-section.cinema-in {
-    opacity: 1;
-    transform: translateY(0);
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  /* Brand intro playing: dim main slightly so rise reads cleanly */
-  html[data-brand-intro="playing"] main {
-    opacity: 0.35;
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  html[data-brand-intro="done"] main,
-  html:not([data-brand-intro]) main {
-    opacity: 1;
-  }
-}
-
-@supports (animation-timeline: scroll()) {
-  @media (prefers-reduced-motion: no-preference) {
-    #cinema-progress {
-      animation: cinema-progress linear both;
-      animation-timeline: scroll(root);
-    }
-  }
-}
-
-@keyframes cinema-progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -116,13 +80,6 @@ h1, h2, h3, h4, h5, h6 {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-  .cinema-section.cinema-ready:not(.cinema-in) {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  html[data-brand-intro="playing"] main {
-    opacity: 1 !important;
   }
 }
 

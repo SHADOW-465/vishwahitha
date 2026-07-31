@@ -32,11 +32,15 @@ export async function FeaturedBento() {
     return (
         <section id="initiatives" className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="mb-12 max-w-2xl min-w-0">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight text-balance">
-                    Signature programmes
+                <span className="font-mono text-xs text-accent-gold uppercase tracking-[0.22em]">
+                    Signature &amp; ongoing
+                </span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight mt-2 text-balance">
+                    Programmes the board{" "}
+                    <span className="font-display-drama gold-text">runs</span>
                 </h2>
-                <p className="text-sm text-text-secondary mt-3 max-w-md leading-relaxed">
-                    Flagship work edited by the board — new programmes appear when published.
+                <p className="font-mono text-sm text-text-secondary mt-3 max-w-md leading-relaxed">
+                    Daily series and flagship work — edited from Admin so the president can post new ones anytime.
                 </p>
                 <Link
                     href="/initiatives"
@@ -56,32 +60,27 @@ export async function FeaturedBento() {
                         const theme = THEMES[index % THEMES.length];
                         const t = themeClasses(theme);
                         const wide = index === 0 || index === 3;
-                        const image = init.hero_image_url as string | null | undefined;
+                        const image =
+                            init.hero_image_url ||
+                            "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800";
 
                         return (
                             <Link
                                 key={init.id || init.slug}
                                 href={`/initiatives/${init.slug}`}
-                                className={`group relative block overflow-hidden rounded-[2rem] border border-white/8 bg-white/[0.03] transition-all duration-500 hover:shadow-2xl ${t.border} ${
+                                className={`group relative block overflow-hidden rounded-[2rem] glass-panel border border-white/5 transition-all duration-500 hover:shadow-2xl ${t.border} ${
                                     wide ? "md:col-span-2" : ""
                                 }`}
                             >
                                 <div className="absolute inset-0 z-0">
-                                    {image ? (
-                                        // eslint-disable-next-line @next/next/no-img-element
-                                        <img
-                                            src={image}
-                                            alt=""
-                                            className="h-full w-full object-cover opacity-35 group-hover:opacity-55 transition-opacity duration-700"
-                                        />
-                                    ) : (
-                                        <div
-                                            className={`absolute inset-0 bg-gradient-to-br ${t.gradient} opacity-80`}
-                                            aria-hidden
-                                        />
-                                    )}
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img
+                                        src={image}
+                                        alt={init.title}
+                                        className="h-full w-full object-cover opacity-35 group-hover:opacity-55 transition-all duration-700"
+                                    />
                                     <div
-                                        className={`absolute inset-0 bg-gradient-to-t ${t.gradient} opacity-40`}
+                                        className={`absolute inset-0 bg-gradient-to-t ${t.gradient} opacity-50`}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
                                 </div>
@@ -109,7 +108,7 @@ export async function FeaturedBento() {
                                             <div>
                                                 {(init.impact_stat || init.impact_label) && (
                                                     <>
-                                                        <span className="block font-heading font-extrabold text-2xl sm:text-3xl text-accent-gold">
+                                                        <span className="block font-heading font-extrabold text-2xl sm:text-3xl gold-text">
                                                             {init.impact_stat}
                                                         </span>
                                                         <span className="block font-mono text-[9px] uppercase tracking-wider text-text-secondary mt-1">

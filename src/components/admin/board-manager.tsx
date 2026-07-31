@@ -36,7 +36,7 @@ export const BoardManager = ({ members: initial }: Props) => {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h2 className="font-heading text-2xl font-bold text-text-primary">Board Members</h2>
-                <button onClick={() => setDrawerOpen(true)} className="flex items-center gap-2 bg-accent-gold text-primary font-bold text-sm px-5 py-2.5 rounded-full hover:scale-[1.03] transition-transform">
+                <button onClick={() => setDrawerOpen(true)} className="flex items-center gap-2 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold text-sm px-5 py-2.5 rounded-full hover:scale-[1.03] transition-transform">
                     <Plus size={16} /> Add Member
                 </button>
             </div>
@@ -71,7 +71,7 @@ export const BoardManager = ({ members: initial }: Props) => {
                             <input name={f.name} required={f.required} className="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-text-primary focus:outline-none focus:border-accent-gold" />
                         </div>
                     ))}
-                    <button type="submit" disabled={loading} className="w-full py-3.5 bg-accent-gold text-primary font-bold rounded-full disabled:opacity-50">
+                    <button type="submit" disabled={loading} className="w-full py-3.5 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold rounded-full disabled:opacity-50">
                         {loading ? "Adding..." : "Add to Board"}
                     </button>
                 </form>

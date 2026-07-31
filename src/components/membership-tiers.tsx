@@ -73,7 +73,7 @@ export const MembershipTiers = () => {
                         ? "border-accent-gold/40 shadow-2xl bg-white/2" 
                         : "border-white/5 bg-transparent hover:border-white/10";
                     const btnClass = card.featured
-                        ? "bg-accent-cranberry text-text-primary"
+                        ? "bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary"
                         : "border border-white/10 hover:bg-white/5 text-text-primary";
 
                     return (

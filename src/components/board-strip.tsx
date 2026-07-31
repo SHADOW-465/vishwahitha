@@ -17,8 +17,11 @@ export async function BoardStrip() {
         <section id="board" className="py-20 md:py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
                 <div>
-                    <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight text-balance">
-                        Leadership this term
+                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-gold">
+                        Leadership
+                    </p>
+                    <h2 className="mt-1 font-heading font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight text-balance">
+                        Who you&apos;ll <span className="font-display-drama gold-text">meet</span>
                     </h2>
                 </div>
                 <Link
@@ -33,7 +36,7 @@ export async function BoardStrip() {
                 {list.map((m: { id: string; name: string; role: string; image_url?: string | null }) => (
                     <div
                         key={m.id}
-                        className="rounded-2xl border border-white/8 bg-white/[0.03] p-5 flex items-center gap-4 min-w-0"
+                        className="glass-panel rounded-2xl border border-white/5 p-5 flex items-center gap-4 min-w-0"
                     >
                         <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 shrink-0 overflow-hidden flex items-center justify-center">
                             {m.image_url ? (

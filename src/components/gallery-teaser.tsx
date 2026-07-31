@@ -14,8 +14,11 @@ export async function GalleryTeaser() {
         <section id="gallery-preview" className="py-20 md:py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
                 <div>
-                    <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight text-balance">
-                        From club projects
+                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-gold">
+                        Proof in pictures
+                    </p>
+                    <h2 className="mt-1 font-heading font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight text-balance">
+                        From the <span className="font-display-drama gold-text">field</span>
                     </h2>
                 </div>
                 <Link

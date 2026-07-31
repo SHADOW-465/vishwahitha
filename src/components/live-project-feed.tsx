@@ -54,7 +54,7 @@ export const LiveProjectFeed = ({ projects }: ProjectFeedProps) => {
             category: "Elderly Care",
             short_description: "An ongoing companionship initiative connecting youth with regional old age homes for recreational games, tech training, and story archiving.",
             created_at: new Date().toISOString(),
-            hero_image_url: undefined
+            hero_image_url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=600"
         },
         {
             id: "2",
@@ -63,7 +63,7 @@ export const LiveProjectFeed = ({ projects }: ProjectFeedProps) => {
             category: "Daily Knowledge",
             short_description: "Providing continuous bite-sized cognitive insights in historical philosophy, technology, and global policy for Chennai students.",
             created_at: new Date(Date.now() - 86400000).toISOString(),
-            hero_image_url: undefined
+            hero_image_url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600"
         },
         {
             id: "3",
@@ -72,7 +72,7 @@ export const LiveProjectFeed = ({ projects }: ProjectFeedProps) => {
             category: "Community Relief",
             short_description: "A major district-wide donation operation collecting, sorting, and delivering quality clothing items to shelter networks.",
             created_at: new Date(Date.now() - 86400000 * 3).toISOString(),
-            hero_image_url: undefined
+            hero_image_url: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=600"
         }
     ];
 
@@ -81,7 +81,7 @@ export const LiveProjectFeed = ({ projects }: ProjectFeedProps) => {
             <div className="mb-16">
                 <span className="font-mono text-xs text-accent-gold uppercase tracking-[0.3em]">Operational Flow</span>
                 <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight mt-2">
-                    Project feed
+                    Live Project <span className="font-drama italic font-light gold-text">Feed</span>
                 </h2>
                 <p className="font-mono text-sm text-text-secondary mt-3 max-w-md">
                     Recent initiatives synced directly with our Board Command database. Updates appear instantly.
@@ -96,19 +96,13 @@ export const LiveProjectFeed = ({ projects }: ProjectFeedProps) => {
                         className="feed-item group flex flex-col md:flex-row items-stretch justify-between gap-6 p-6 rounded-3xl glass-panel border border-white/5 hover:border-accent-gold/20 hover:bg-white/2 transition-all duration-300"
                     >
                         {/* Image preview box */}
-                        <div className="relative w-full md:w-48 h-36 rounded-2xl overflow-hidden border border-white/10 shrink-0 bg-gradient-to-br from-accent-gold/10 to-primary">
-                            {project.hero_image_url ? (
-                                // eslint-disable-next-line @next/next/no-img-element
-                                <img
-                                    src={project.hero_image_url}
-                                    alt=""
-                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                                />
-                            ) : (
-                                <div className="w-full h-full flex items-center justify-center font-heading text-2xl font-bold text-accent-gold/30">
-                                    {(project.title || "?")[0]}
-                                </div>
-                            )}
+                        <div className="relative w-full md:w-48 h-36 rounded-2xl overflow-hidden border border-white/10 shrink-0">
+                            <img
+                                src={project.hero_image_url || "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=400"}
+                                alt={project.title}
+                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
                         </div>
 
                         {/* Text info block */}

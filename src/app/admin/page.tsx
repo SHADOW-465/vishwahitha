@@ -66,7 +66,8 @@ export default async function AdminPage() {
         <div className="min-h-screen pt-32 pb-24 px-6 max-w-7xl mx-auto">
             <div className="mb-12">
                 <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-primary">
-                    Admin
+                    Board{" "}
+                    <span className="font-display-drama gold-text font-light">Command</span>
                 </h1>
                 <p className="font-mono text-text-secondary mt-3">
                     Full CMS — events, projects, ideas, inbox, milestones, and page copy.

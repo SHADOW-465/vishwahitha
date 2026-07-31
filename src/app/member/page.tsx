@@ -68,7 +68,7 @@ export default async function MemberHomePage() {
                     </div>
                     <Link
                         href="/member/learn"
-                        className="shrink-0 rounded-full bg-accent-cranberry text-text-primary font-bold text-sm px-5 py-2.5 hover:bg-[#e01872] transition-colors"
+                        className="shrink-0 rounded-full bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-5 py-2.5"
                     >
                         Open Learn
                     </Link>

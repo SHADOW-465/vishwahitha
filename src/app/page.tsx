@@ -1,15 +1,18 @@
-/* Public house — thin story beats (critique 2026-07-31)
- * Hook · Standing · Now · Signature · Legacy · Board · Gallery · Join
+/* Hallmark · Phase 1 Public House
+ * beats: Intro · Hook · Standing · Now · Events · Signature · Legacy · Board · Gallery · Mission · FAQ · Join
  */
 import { BrandIntro } from "@/components/brand-intro";
-import { ScrollCinema } from "@/components/scroll-cinema";
 import { Hero } from "@/components/hero";
 import { OfficialStanding } from "@/components/official-standing";
 import { ClubBulletin } from "@/components/club-bulletin";
+import { EventsCarousel } from "@/components/events-carousel";
 import { FeaturedBento } from "@/components/featured-bento";
 import { LegacySpotlight } from "@/components/legacy-spotlight";
 import { BoardStrip } from "@/components/board-strip";
 import { GalleryTeaser } from "@/components/gallery-teaser";
+import { MissionAvenues } from "@/components/mission-avenues";
+import { MilestonesStrip } from "@/components/milestones-strip";
+import { FAQSection } from "@/components/faq-section";
 import { JoinSection } from "@/components/join-section";
 import { getPageSection } from "@/lib/actions";
 
@@ -24,43 +27,52 @@ export default async function Home() {
     return (
         <>
             <BrandIntro />
-            <ScrollCinema />
             <main className="min-h-screen bg-primary overflow-x-clip">
+                {/* 1 · HOOK */}
                 <Hero
                     headlineLine1={
-                        heroHeadline?.line1 || "Rotaract Club of Vishwahita"
+                        heroHeadline?.line1 || "Rotaract Club of Vishwahita:"
                     }
                     headlineLine2={
-                        heroHeadline?.line2 || "Universal friendship, youth-led service."
+                        heroHeadline?.line2 || "27 Years of Youth-Led Service in Chennai."
                     }
                     subtext={
                         heroSubtext?.text ||
-                        "Vishwahita means universal friendship. Young leaders in Chennai running real service under RI District 3234 — apply below and the board will follow up."
+                        "Chartered 10 March 1999 · Sponsored by the Rotary Club of Madras Industrial City · District 3234. One club, real projects, a clear path to join."
                     }
                 />
 
-                <div className="cinema-section">
-                    <OfficialStanding />
-                </div>
+                {/* 2 · OFFICIAL STANDING */}
+                <OfficialStanding />
 
+                {/* 3 · NOW — bulletin */}
                 <ClubBulletin />
 
-                <div className="cinema-section">
-                    <FeaturedBento />
-                </div>
+                {/* 4 · EVENTS CAROUSEL */}
+                <EventsCarousel />
 
-                <div className="cinema-section">
-                    <LegacySpotlight />
-                </div>
+                {/* 5 · SIGNATURE PROJECTS */}
+                <FeaturedBento />
 
-                <div className="cinema-section">
-                    <BoardStrip />
-                </div>
+                {/* 6 · LEGACY SPOTLIGHT */}
+                <LegacySpotlight />
 
-                <div className="cinema-section">
-                    <GalleryTeaser />
-                </div>
+                {/* 7 · BOARD */}
+                <BoardStrip />
 
+                {/* 8 · GALLERY (only if photos exist) */}
+                <GalleryTeaser />
+
+                {/* 9 · MISSION + AVENUES */}
+                <MissionAvenues />
+
+                {/* 10 · MILESTONES (CMS) */}
+                <MilestonesStrip />
+
+                {/* 11 · FAQ */}
+                <FAQSection />
+
+                {/* 12 · JOIN + PROSPECT FORM */}
                 <JoinSection />
             </main>
         </>

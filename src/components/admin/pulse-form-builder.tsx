@@ -116,7 +116,7 @@ export const PulseFormBuilder = () => {
                 </button>
             </div>
 
-            <button onClick={handlePublish} disabled={loading} className="w-full py-4 bg-accent-gold text-primary font-bold rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50">
+            <button onClick={handlePublish} disabled={loading} className="w-full py-4 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50">
                 {loading ? "Publishing..." : "Publish & Activate Form"}
             </button>
         </div>

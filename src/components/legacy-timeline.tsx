@@ -19,39 +19,39 @@ const timelineData: TimelineEvent[] = [
         title: "Founding the Vision",
         description: "Rotaract Club of Vishwahita is officially chartered under Rotary International, pledging to serve the local community with dedicated youth leaders.",
         achievement: "Charter Night & First General Body Assembly",
-        image: "",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
         tag: "Foundation"
     },
     {
         year: "2005",
         title: "Sustained Regional Camps",
         description: "Initiated long-term medical checkups and blood donation networks across schools and community centers in Chennai.",
-        achievement: "Community health and school hygiene programmes",
-        image: "",
+        achievement: "10+ Blood Drives & School Hygiene Support Schemes",
+        image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop",
         tag: "Service"
     },
     {
         year: "2012",
         title: "Pioneering Leadership Forums",
         description: "Designed local training academies for public speech, career development, and leadership workshops for college students.",
-        achievement: "Youth leadership forums in Chennai",
-        image: "",
+        achievement: "Youth Leadership Summit launched",
+        image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800&auto=format&fit=crop",
         tag: "Mentorship"
     },
     {
         year: "2018",
         title: "Chennai Relief Mobilization",
         description: "Deployed rapid-action volunteer networks for disaster response, helping distribute critical supplies and clean water.",
-        achievement: "Flood relief mobilisation",
-        image: "",
+        achievement: "Flood Relief & Local Supply Chain Portal launch",
+        image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop",
         tag: "Crisis Response"
     },
     {
         year: "2026",
-        title: "Digital clubhouse",
-        description: "Public house and member clubroom for events, RSVP, and board-managed content — one official home for District 3234 visitors and members.",
-        achievement: "Official digital home launched",
-        image: "",
+        title: "The Next 27 Years",
+        description: "Transitioning into a fully digital living ecosystem, merging community development projects with high-fidelity Web experiences.",
+        achievement: "Vaagai Phase 3 & Launch of The Digital Home",
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
         tag: "Evolution"
     }
 ];
@@ -64,7 +64,8 @@ export const LegacyTimeline = () => {
         <section id="legacy" className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                 <div>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight text-balance">
+                    <span className="font-mono text-xs text-accent-gold uppercase tracking-[0.22em]">Legacy · 1999–today</span>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight mt-2 text-balance">
                         From charter night to this term
                     </h2>
                 </div>
@@ -133,12 +134,15 @@ export const LegacyTimeline = () => {
                         transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
                         className="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch bg-white/2 rounded-3xl overflow-hidden border border-white/5 p-6 md:p-8"
                     >
-                        {/* Year panel — no stock photography */}
-                        <div className="relative h-64 md:h-auto min-h-[280px] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-accent-gold/10 via-primary to-accent-cranberry/10 flex flex-col justify-between p-6">
-                            <span className="font-heading text-6xl font-extrabold text-text-primary/20">
-                                {activeEvent.year}
-                            </span>
-                            <span className="font-mono text-[10px] uppercase bg-accent-gold/15 text-accent-gold border border-accent-gold/25 rounded-full px-3 py-1 tracking-wider w-fit">
+                        {/* Image Panel */}
+                        <div className="relative h-64 md:h-auto min-h-[300px] rounded-2xl overflow-hidden border border-white/10 group">
+                            <img
+                                src={activeEvent.image}
+                                alt={activeEvent.title}
+                                className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:opacity-85 transition-all duration-700"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
+                            <span className="absolute bottom-6 left-6 font-mono text-[10px] uppercase bg-accent-gold/15 text-accent-gold border border-accent-gold/25 rounded-full px-3 py-1 tracking-wider backdrop-blur-md">
                                 {activeEvent.tag}
                             </span>
                         </div>

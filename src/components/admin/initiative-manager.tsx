@@ -98,7 +98,7 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
                         setEditing(null);
                         setDrawerOpen(true);
                     }}
-                    className="flex items-center gap-2 bg-accent-gold text-primary font-bold text-sm px-5 py-2.5 rounded-full hover:scale-[1.03] transition-transform shrink-0"
+                    className="flex items-center gap-2 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold text-sm px-5 py-2.5 rounded-full hover:scale-[1.03] transition-transform shrink-0"
                 >
                     <Plus size={16} /> New
                 </button>
@@ -310,7 +310,7 @@ function InitiativeForm({
             <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3.5 bg-accent-gold text-primary font-bold rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50"
+                className="w-full py-3.5 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50"
             >
                 {loading ? "Saving…" : defaults?.id ? "Save changes" : "Create"}
             </button>
