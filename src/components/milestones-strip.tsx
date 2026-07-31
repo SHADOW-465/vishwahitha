@@ -1,6 +1,12 @@
 import { supabase } from "@/lib/supabase";
 
-/** Public milestones strip (CMS-backed) */
+/**
+ * Act IV close · the record.
+ *
+ * A genuine chronology, so it's set as one — years at display scale down the
+ * left, entries hanging off a single rule. Four equal boxes hid the fact that
+ * this is a sequence at all.
+ */
 export async function MilestonesStrip() {
     const { data } = await supabase
         .from("milestones")
@@ -12,34 +18,42 @@ export async function MilestonesStrip() {
     if (items.length === 0) return null;
 
     return (
-        <section id="milestones" className="py-16 md:py-20 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-gold">
-                Milestones
-            </p>
-            <h2 className="mt-1 font-heading font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight text-balance">
-                Along the <span className="font-display-drama gold-text">way</span>
+        <div id="milestones" className="max-w-7xl mx-auto px-6">
+            <h2
+                className="font-heading font-extrabold text-step-3 text-text-primary tracking-tight mb-act-beat"
+                data-reveal
+            >
+                Along the <span className="font-display-drama text-gold-ink">way</span>
             </h2>
 
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {items.map((m: { id: string; year: string; title: string; body?: string | null }) => (
-                    <div
+            <ol className="border-l border-white/10 pl-6 sm:pl-10 space-y-10 sm:space-y-12">
+                {items.map((m: { id: string; year: string; title: string; body?: string | null }, i: number) => (
+                    <li
                         key={m.id}
-                        className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 min-w-0"
+                        className="relative grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-8"
+                        data-reveal
+                        data-reveal-delay={i * 80}
                     >
-                        <p className="font-mono text-[10px] uppercase tracking-wider text-accent-gold">
+                        <span
+                            className="absolute -left-6 sm:-left-10 top-3 w-1.5 h-1.5 rounded-full bg-accent-gold -translate-x-[3.5px]"
+                            aria-hidden
+                        />
+                        <p className="sm:col-span-3 font-heading font-extrabold text-step-2 text-gold-ink tabular-nums leading-none">
                             {m.year}
                         </p>
-                        <h3 className="mt-2 font-heading font-bold text-text-primary text-lg leading-snug">
-                            {m.title}
-                        </h3>
-                        {m.body && (
-                            <p className="mt-2 font-mono text-xs text-text-secondary leading-relaxed">
-                                {m.body}
-                            </p>
-                        )}
-                    </div>
+                        <div className="sm:col-span-9">
+                            <h3 className="font-heading font-bold text-step-1 text-text-primary leading-snug">
+                                {m.title}
+                            </h3>
+                            {m.body && (
+                                <p className="mt-2 text-step-0 text-text-secondary measure">
+                                    {m.body}
+                                </p>
+                            )}
+                        </div>
+                    </li>
                 ))}
-            </div>
-        </section>
+            </ol>
+        </div>
     );
 }

@@ -8,6 +8,8 @@ colors:
   neutral-bg: "#020617"
   neutral-fg: "#FAF8F5"
   neutral-muted: "#A1A1AA"
+  gold-ink: "#E8C766"
+  cranberry-ink: "#FF619F"
 typography:
   display:
     fontFamily: "Inter, sans-serif"
@@ -84,8 +86,23 @@ The color palette is composed of prestigious Rotaract Cranberry, traditional Rot
 - **Ivory Cream** (#FAF8F5): Used for high-contrast heading text and primary body copy to maintain readability.
 - **Zinc Gray** (#A1A1AA): Used for secondary indicators, sub-labels, and metadata to reduce visual weight.
 
+### Ink vs. surface
+`#D4AF37` and `#D41367` are **surface** colours — fills, rules, dots, buttons. At
+body size on `#020617` they measure 4.0:1 and 3.6:1, under the AA floor. Text
+therefore uses the ink pair:
+
+- **Gold Ink** (`--gold-ink`, #E8C766) — 10.4:1. Every gold *word* on the site.
+- **Cranberry Ink** (`--cranberry-ink`, #FF619F) — 6.6:1. Cranberry labels and metadata.
+
+Never set type in the raw surface golds. Both inks flip automatically under
+`body[data-theme="light"]`.
+
 ### Named Rules
 **The Cranberry Focus Rule.** The official brand color (#D41367) is used exclusively as a focal accent on less than 15% of any screen surface to preserve its energetic premium impact.
+
+**No gradient type.** Accent words are solid ink. `background-clip: text` was
+removed sitewide: it reads as decoration rather than emphasis, and any browser
+that fails the clip renders the headline fully transparent.
 
 ## 3. Typography
 
@@ -95,12 +112,63 @@ The color palette is composed of prestigious Rotaract Cranberry, traditional Rot
 
 The pairing blends the structured, geometric precision of Inter with the elegant, italic curves of Playfair Display to create a contrasting, high-prestige editorial layout.
 
-### Hierarchy
-- **Display** (Extra Bold (800), clamp(2.5rem, 7vw, 4.5rem), 0.9): Used for primary hero headlines.
-- **Drama** (Light (300) Italic, clamp(3.8rem, 8vw, 9.5rem), 0.75): Used for secondary display and emphasis keywords.
-- **Title** (Bold (700), 1.5rem to 2.25rem, 1.2): Used for card headings and section titles.
-- **Body** (Regular (400), 1rem, 1.6): Used for description copy, limited to a max line length of 70ch.
-- **Label** (Medium (500), 0.75rem, letter-spacing: 0.15em, uppercase): Used for eyebrows, metadata tags, and small badges.
+### Scale
+
+One fluid modular scale (ratio 1.25) defined in `globals.css` and exposed as
+Tailwind `text-step-*`. Use the steps; don't hand-pick `text-4xl`-style sizes.
+
+| Token | Range | Used for |
+|---|---|---|
+| `step-5` | 2.75 → 5.5rem | Hero headline, flagship project title |
+| `step-4` | 2.25 → 3.75rem | Act-closing headline, big figures |
+| `step-3` | 1.875 → 2.75rem | Section headings |
+| `step-2` | 1.5 → 2rem | Lead sub-headings |
+| `step-1` | 1.25 → 1.5rem | Card/entry titles, lead body |
+| `step-0` | 1 → 1.125rem | Body copy |
+| `step--1` | 0.8125 → 0.875rem | Secondary copy, links |
+
+**Display ceiling: 5.5rem.** The previous hero ran to 9.5rem, which overflowed
+on tablet with real CMS copy and read as shouting rather than leading.
+
+**Letter-spacing floor: -0.035em.** Tighter than that and the extrabold Inter
+capitals collide.
+
+- **Body copy is Inter, not mono.** JetBrains Mono is reserved for genuine
+  metadata: dates, district codes, counts, and the rail labels. Mono paragraphs
+  were the single biggest drag on how the site read.
+- **Measure:** body copy is capped at 68ch via the `.measure` utility.
+
+## 3b. Page structure — The Charter Ledger
+
+The homepage is **five acts**, not twelve sections. `ChapterRail` fixes a ledger
+down the left edge (xl and up) naming the current act; below xl it degrades to a
+1px scroll-progress hairline.
+
+| Act | Contains |
+|---|---|
+| I · Charter | Hero, then the registry line of institutional facts |
+| II · This week | Board announcements, then the events ledger |
+| III · The work | Flagship project full-bleed, programme index, contact sheet |
+| IV · The club | Mission and Avenues, board portraits, chronology |
+| V · Join | FAQ, then the single ask |
+
+### Named Rules
+
+**The rail names the act, so sections don't announce themselves.** Every section
+used to open with a 10px uppercase gold kicker. That kicker is now the rail's
+job. A section gets a real headline and nothing above it. The one surviving
+kicker is the bulletin masthead, because a bulletin genuinely has one.
+
+**Acts breathe unevenly.** `--act-lead` opens an act, `--act-beat` separates
+beats inside one, `--act-tight` groups. Uniform `py-24` on every section is what
+made a story read as a list.
+
+**Each act gets its own layout logic.** A registry line, a masthead, a scrolling
+ledger, a full-bleed plate, a chronology — deliberately not one card grid
+repeated. Consistency of voice, not of treatment.
+
+**xl:pl-28 is the ledger gutter.** It keeps content clear of the rail at
+1280–1440px. Clearance measured at 1280: 20px.
 
 ## 4. Elevation
 
@@ -143,3 +211,13 @@ The system is built on depth, relying on glassmorphic borders and glowing backdr
 - **Don't** use standard emojis as icons; always implement clean vector SVGs from the Lucide set.
 - **Don't** use side-stripe borders (e.g. `border-left-4`) to highlight card categories.
 - **Don't** animate or scale direct image tags on hover; animate container backgrounds instead.
+- **Don't** set body copy in JetBrains Mono. Mono is metadata only.
+- **Don't** put a small uppercase tracked kicker above a section heading. The rail already says where you are.
+- **Don't** reach for a glass card by default. Hairline-divided lists, registry
+  rows, and full-bleed plates carry most of the page; the card is right for the
+  membership form and little else. Nested cards are always wrong.
+- **Don't** gate content visibility on a reveal. `[data-reveal]` elements are
+  visible by default; `js-reveal` is only added once JS is running, and a 4s
+  failsafe reveals anything the observer missed.
+- **Don't** tint a set of items on a rotating accent cycle when the colour
+  carries no meaning.

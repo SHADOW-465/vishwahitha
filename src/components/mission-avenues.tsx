@@ -20,7 +20,13 @@ const AVENUES = [
     },
 ];
 
-/** P1-10 + P1-11 — Mission + avenues map (not generic feature cards) */
+/**
+ * Act IV opener · what the club is for.
+ *
+ * The mission gets the largest type in the act rather than being set in a
+ * label-sized paragraph. The Avenues are Rotary's own named taxonomy, so
+ * they're set as a list of terms — not four feature cards.
+ */
 export async function MissionAvenues() {
     const section = await getPageSection("mission");
     const mission =
@@ -31,52 +37,54 @@ export async function MissionAvenues() {
         "A club known for reliable service, clear leadership, and universal friendship — Vishwahita.";
 
     return (
-        <section id="mission" className="py-20 md:py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-                <div className="lg:col-span-5 min-w-0 space-y-6">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-gold">
-                        Mission
-                    </p>
-                    <p className="font-heading font-bold text-xl sm:text-2xl text-text-primary leading-snug text-balance">
-                        {mission}
-                    </p>
-                    <div className="border-l-2 border-accent-gold/30 pl-4">
-                        <p className="font-mono text-[10px] uppercase tracking-wider text-text-secondary mb-1">
-                            Vision
-                        </p>
-                        <p className="font-display-drama text-xl sm:text-2xl gold-text leading-snug">
-                            {vision}
-                        </p>
-                    </div>
-                </div>
-
-                <div className="lg:col-span-7 min-w-0">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-cranberry mb-4">
-                        Avenues of service
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {AVENUES.map((a) => (
-                            <div
-                                key={a.name}
-                                className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 min-w-0"
-                            >
-                                <h3 className="font-heading font-bold text-text-primary text-base">
-                                    {a.name}
-                                </h3>
-                                <p className="mt-2 font-mono text-xs text-text-secondary leading-relaxed">
-                                    {a.desc}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                    <Link
-                        href="/initiatives"
-                        className="inline-flex mt-5 font-mono text-xs text-accent-gold hover:underline"
-                    >
-                        See projects by avenue →
-                    </Link>
-                </div>
+        <div id="mission" className="max-w-7xl mx-auto px-6">
+            <div className="max-w-4xl">
+                <p
+                    className="font-heading font-bold text-step-3 text-text-primary tracking-tight leading-[1.15]"
+                    data-reveal
+                >
+                    {mission}
+                </p>
+                <p
+                    className="mt-8 font-display-drama text-step-2 text-gold-ink leading-snug measure"
+                    data-reveal
+                    data-reveal-delay="140"
+                >
+                    {vision}
+                </p>
             </div>
-        </section>
+
+            <div className="mt-act-lead">
+                <h3
+                    className="font-mono text-[10px] uppercase tracking-[0.28em] text-text-secondary pb-5 border-b border-white/10"
+                    data-reveal
+                >
+                    Avenues of service
+                </h3>
+                <dl className="divide-y divide-white/10">
+                    {AVENUES.map((a, i) => (
+                        <div
+                            key={a.name}
+                            className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-8 py-6"
+                            data-reveal
+                            data-reveal-delay={i * 90}
+                        >
+                            <dt className="sm:col-span-4 font-heading font-bold text-step-1 text-text-primary">
+                                {a.name}
+                            </dt>
+                            <dd className="sm:col-span-8 text-step-0 text-text-secondary measure">
+                                {a.desc}
+                            </dd>
+                        </div>
+                    ))}
+                </dl>
+                <Link
+                    href="/initiatives"
+                    className="inline-flex mt-8 text-step--1 text-gold-ink border-b border-accent-gold/40 pb-1 hover:border-accent-gold transition-colors"
+                >
+                    See projects by avenue →
+                </Link>
+            </div>
+        </div>
     );
 }

@@ -12,6 +12,14 @@ interface HeroProps {
     subtext?: string;
 }
 
+/**
+ * Act I · the opening shot.
+ *
+ * One h1 in two voices, not two competing h1 elements. The display size is
+ * capped at 5.5rem (--step-5): the old 9rem clamp overflowed on tablet with
+ * the real CMS copy, and past ~6rem a headline is shouting rather than
+ * leading.
+ */
 export const Hero = ({
     headlineLine1 = "Rotaract Club of Vishwahita:",
     headlineLine2 = "27 Years of Youth-Led Service in Chennai.",
@@ -20,27 +28,34 @@ export const Hero = ({
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const reduce =
-            typeof window !== "undefined" &&
-            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (reduce) return;
 
         const ctx = gsap.context(() => {
+            // The page's one orchestrated entrance. Everything below the fold
+            // reveals on scroll instead, so this stays the only choreography.
             gsap.from(".hero-reveal", {
-                y: 60,
+                y: 44,
                 opacity: 0,
-                duration: 1.4,
-                stagger: 0.15,
-                ease: "power4.out",
-                delay: 0.2,
+                duration: 1.3,
+                stagger: 0.11,
+                ease: "expo.out",
+                delay: 0.15,
+            });
+
+            gsap.from(".hero-rule", {
+                scaleX: 0,
+                transformOrigin: "left center",
+                duration: 1.6,
+                ease: "expo.out",
+                delay: 0.5,
             });
 
             gsap.from(".hero-scroll-indicator", {
                 opacity: 0,
                 y: 10,
                 duration: 1,
-                delay: 1.5,
+                delay: 1.4,
                 ease: "power2.out",
             });
         }, containerRef);
@@ -49,44 +64,46 @@ export const Hero = ({
     }, []);
 
     return (
-        <section
-            id="hero"
+        <div
             ref={containerRef}
-            className="relative w-full min-h-[100dvh] flex items-center justify-start overflow-hidden bg-transparent pt-24"
+            className="relative w-full min-h-[100dvh] flex items-center justify-start overflow-hidden bg-transparent pt-28 pb-16"
         >
-            {/* Soft bottom fade into paper — no cursor spotlight / particle trail */}
             <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-primary to-transparent z-10 pointer-events-none" />
 
-            <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-                <div className="max-w-5xl space-y-6 min-w-0">
-                    <p className="hero-reveal font-mono text-[10px] md:text-xs text-accent-gold uppercase tracking-[0.22em] font-medium">
+            <div className="relative z-20 w-full max-w-7xl mx-auto px-6">
+                <div className="max-w-5xl min-w-0">
+                    <p className="hero-reveal font-mono text-[10px] md:text-[11px] text-gold-ink uppercase tracking-[0.28em]">
                         RI District 3234 · Group 01 · Chennai
                     </p>
 
-                    {/* Novel display: Inter extrabold + Instrument Serif drama at large scale */}
-                    <div className="space-y-2 sm:space-y-3 min-w-0">
-                        <h1 className="hero-reveal font-heading font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tighter leading-[0.9] text-text-primary text-balance break-words min-w-0">
-                            {headlineLine1}
-                        </h1>
-                        <h1 className="hero-reveal font-display-drama text-[2.75rem] sm:text-[4.5rem] md:text-[7.5rem] lg:text-[9rem] leading-[0.78] gold-text tracking-tight pb-2 text-balance break-words min-w-0">
-                            {headlineLine2}
-                        </h1>
-                    </div>
+                    <span
+                        className="hero-rule mt-6 block h-px w-full max-w-md bg-gradient-to-r from-accent-gold/60 to-transparent"
+                        aria-hidden
+                    />
 
-                    <p className="hero-reveal text-sm sm:text-base md:text-lg text-text-secondary font-heading max-w-xl leading-relaxed pt-2">
+                    <h1 className="mt-8 min-w-0 text-balance">
+                        <span className="hero-reveal block font-heading font-extrabold text-step-5 tracking-[-0.035em] text-text-primary">
+                            {headlineLine1}
+                        </span>
+                        <span className="hero-reveal mt-2 block font-display-drama text-step-5 leading-[0.95] text-gold-ink">
+                            {headlineLine2}
+                        </span>
+                    </h1>
+
+                    <p className="hero-reveal mt-8 text-step-1 text-text-secondary measure leading-relaxed">
                         {subtext}
                     </p>
 
-                    <div className="hero-reveal flex flex-wrap items-center gap-3 sm:gap-4 pt-6">
+                    <div className="hero-reveal flex flex-wrap items-center gap-3 sm:gap-4 pt-10">
                         <MagneticButton>
                             <Link
-                                href="/sign-up"
-                                className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-accent-cranberry/15 hover:shadow-accent-cranberry/25 whitespace-nowrap"
+                                href="/#join"
+                                className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-white font-bold text-step--1 px-8 py-4 rounded-full transition-shadow duration-300 shadow-lg shadow-accent-cranberry/15 hover:shadow-accent-cranberry/30 whitespace-nowrap"
                             >
-                                <span className="relative z-10">Become a member</span>
+                                Become a member
                                 <ArrowRight
                                     size={16}
-                                    className="relative z-10 group-hover:translate-x-1 transition-transform"
+                                    className="group-hover:translate-x-1 transition-transform duration-300"
                                 />
                             </Link>
                         </MagneticButton>
@@ -94,21 +111,21 @@ export const Hero = ({
                         <MagneticButton>
                             <Link
                                 href="/events"
-                                className="inline-flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 text-text-primary font-medium text-sm px-8 py-4 rounded-full transition-colors whitespace-nowrap"
+                                className="inline-flex items-center gap-2 border border-white/15 hover:border-white/30 text-text-primary font-medium text-step--1 px-8 py-4 rounded-full transition-colors whitespace-nowrap"
                             >
-                                See events
+                                See what&apos;s on
                             </Link>
                         </MagneticButton>
                     </div>
                 </div>
             </div>
 
-            <div className="hero-scroll-indicator absolute bottom-12 right-12 z-20 hidden md:flex flex-col items-center gap-3 opacity-30">
+            <div className="hero-scroll-indicator absolute bottom-10 right-8 z-20 hidden md:flex flex-col items-center gap-3 opacity-40">
                 <span className="font-mono text-[9px] text-text-secondary uppercase tracking-[0.3em]">
                     Scroll
                 </span>
                 <div className="w-px h-16 bg-gradient-to-b from-accent-gold to-transparent" />
             </div>
-        </section>
+        </div>
     );
 };

@@ -2,15 +2,21 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface FAQItem {
     question: string;
     answer: string;
 }
 
+/**
+ * Act V opener · answer the objections before the ask.
+ *
+ * Hairline rows, not stacked glass cards — an accordion already has enough
+ * affordance without giving each question its own container.
+ */
 export const FAQSection = () => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
     const faqs: FAQItem[] = [
         {
@@ -40,55 +46,54 @@ export const FAQSection = () => {
     };
 
     return (
-        <section id="faq" className="py-24 px-6 w-full max-w-4xl mx-auto border-t border-white/5 bg-transparent">
-            <div className="text-center mb-12 md:mb-16 space-y-3">
-                <p className="font-mono text-[10px] text-accent-gold uppercase tracking-[0.18em] font-medium">
-                    Before you join
-                </p>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-primary text-balance">
-                    Questions people ask before joining
-                </h2>
-                <p className="font-mono text-xs text-text-secondary max-w-md mx-auto leading-relaxed">
-                    Membership, charter, and where to find what&apos;s happening this week.
-                </p>
-            </div>
+        <div id="faq" className="w-full max-w-3xl mx-auto px-6">
+            <h2
+                className="font-heading font-extrabold text-step-3 text-text-primary tracking-tight mb-act-beat"
+                data-reveal
+            >
+                Questions people ask{" "}
+                <span className="font-display-drama text-gold-ink">before joining</span>
+            </h2>
 
-            {/* Accordion List */}
-            <div className="space-y-4">
+            <div className="border-t border-white/10" data-reveal>
                 {faqs.map((faq, index) => {
                     const isOpen = activeIndex === index;
                     return (
-                        <div 
-                            key={index}
-                            className="glass-panel rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-colors duration-300 bg-black/10"
-                        >
-                            <button
-                                onClick={() => toggleFAQ(index)}
-                                className="w-full px-6 py-5 flex items-center justify-between text-left text-text-primary transition-colors duration-200 group"
-                            >
-                                <span className="font-heading font-semibold text-base sm:text-lg group-hover:text-accent-gold transition-colors duration-250 pr-4">
-                                    {faq.question}
-                                </span>
-                                <motion.span
-                                    animate={{ rotate: isOpen ? 180 : 0 }}
-                                    transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-                                    className="text-text-secondary group-hover:text-accent-gold transition-colors"
+                        <div key={faq.question} className="border-b border-white/10">
+                            <h3>
+                                <button
+                                    onClick={() => toggleFAQ(index)}
+                                    aria-expanded={isOpen}
+                                    aria-controls={`faq-panel-${index}`}
+                                    className="w-full py-6 flex items-start justify-between gap-6 text-left group"
                                 >
-                                    <ChevronDown size={18} />
-                                </motion.span>
-                            </button>
-                            
+                                    <span className="font-heading font-semibold text-step-1 text-text-primary group-hover:text-gold-ink transition-colors duration-300">
+                                        {faq.question}
+                                    </span>
+                                    <motion.span
+                                        animate={{ rotate: isOpen ? 45 : 0 }}
+                                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                                        className="shrink-0 mt-1 text-text-secondary group-hover:text-gold-ink transition-colors"
+                                        aria-hidden
+                                    >
+                                        <Plus size={18} />
+                                    </motion.span>
+                                </button>
+                            </h3>
+
                             <AnimatePresence initial={false}>
                                 {isOpen && (
                                     <motion.div
+                                        id={`faq-panel-${index}`}
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+                                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                        className="overflow-hidden"
                                     >
-                                        <div className="px-6 pb-6 pt-1 border-t border-white/5 font-mono text-xs sm:text-sm text-text-secondary leading-relaxed">
+                                        <p className="pb-7 pr-10 text-step-0 text-text-secondary measure">
                                             {faq.answer}
-                                        </div>
+                                        </p>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
@@ -96,6 +101,6 @@ export const FAQSection = () => {
                     );
                 })}
             </div>
-        </section>
+        </div>
     );
 };

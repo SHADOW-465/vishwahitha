@@ -7,7 +7,13 @@ const DEFAULTS = {
     group: "01",
 };
 
-/** P1-3 — Institutional spine: charter · sponsor · District */
+/**
+ * Act I · the charter line.
+ *
+ * These are registry facts, so they're set as a registry line — one rule of
+ * hairline-separated entries directly under the hero. Three glass cards made
+ * institutional standing look like a feature comparison.
+ */
 export async function OfficialStanding() {
     const section = await getPageSection("standing");
     const charter = section?.charter || DEFAULTS.charter;
@@ -15,45 +21,36 @@ export async function OfficialStanding() {
     const district = section?.district || DEFAULTS.district;
     const group = section?.group || DEFAULTS.group;
 
-    const cards = [
-        { label: "Chartered", value: charter, hint: "Rotaract Club of Vishwahita" },
-        { label: "Sponsored by", value: sponsor, hint: "Parent Rotary club" },
-        { label: "District", value: `RI ${district}`, hint: `Group ${group} · Chennai` },
+    const entries = [
+        { label: "Chartered", value: charter },
+        { label: "Sponsored by", value: sponsor },
+        { label: "District", value: `RI ${district} · Group ${group}` },
+        { label: "Based in", value: "Chennai, Tamil Nadu" },
     ];
 
     return (
-        <section
+        <div
             id="standing"
-            aria-labelledby="standing-heading"
-            className="w-full border-y border-white/10 bg-white/[0.02]"
+            aria-label="Official standing"
+            className="w-full border-y border-white/10 bg-white/[0.015]"
         >
-            <div className="max-w-7xl mx-auto px-6 py-12 md:py-14">
-                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-gold mb-2">
-                    Official standing
-                </p>
-                <h2
-                    id="standing-heading"
-                    className="font-heading font-extrabold text-2xl sm:text-3xl text-text-primary tracking-tight mb-8 text-balance"
-                >
-                    Where we sit in Rotary
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                    {cards.map((card) => (
-                        <div
-                            key={card.label}
-                            className="glass-panel rounded-2xl p-6 border border-white/5 min-w-0"
-                        >
-                            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-text-secondary">
-                                {card.label}
-                            </p>
-                            <p className="mt-2 font-heading font-bold text-lg sm:text-xl text-text-primary leading-snug text-balance">
-                                {card.value}
-                            </p>
-                            <p className="mt-2 font-mono text-xs text-text-secondary">{card.hint}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
+            <dl className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x divide-white/10">
+                {entries.map((entry, i) => (
+                    <div
+                        key={entry.label}
+                        className="py-6 lg:py-7 lg:px-7 lg:first:pl-0 lg:last:pr-0 border-b border-white/5 sm:border-b-0 last:border-b-0"
+                        data-reveal
+                        data-reveal-delay={i * 80}
+                    >
+                        <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-text-secondary">
+                            {entry.label}
+                        </dt>
+                        <dd className="mt-2 font-heading font-semibold text-step-0 text-text-primary leading-snug">
+                            {entry.value}
+                        </dd>
+                    </div>
+                ))}
+            </dl>
+        </div>
     );
 }
