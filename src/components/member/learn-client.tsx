@@ -57,7 +57,7 @@ export function LearnClient({ alreadyComplete }: { alreadyComplete: boolean }) {
                 <div className="flex flex-wrap justify-center gap-3 pt-2">
                     <a
                         href="/member/events"
-                        className="rounded-full bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-5 py-2.5"
+                        className="rounded-full bg-accent-cranberry text-text-primary font-bold text-sm px-5 py-2.5"
                     >
                         Events
                     </a>
@@ -109,7 +109,7 @@ export function LearnClient({ alreadyComplete }: { alreadyComplete: boolean }) {
                     <button
                         type="button"
                         onClick={() => setStep((s) => s + 1)}
-                        className="rounded-full bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-6 py-2.5"
+                        className="rounded-full bg-accent-cranberry text-text-primary font-bold text-sm px-6 py-2.5"
                     >
                         Continue
                     </button>
@@ -118,7 +118,7 @@ export function LearnClient({ alreadyComplete }: { alreadyComplete: boolean }) {
                         type="button"
                         disabled={pending}
                         onClick={finish}
-                        className="rounded-full bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-6 py-2.5 disabled:opacity-60"
+                        className="rounded-full bg-accent-cranberry text-text-primary font-bold text-sm px-6 py-2.5 disabled:opacity-60"
                     >
                         {pending ? "Saving…" : "Mark complete"}
                     </button>

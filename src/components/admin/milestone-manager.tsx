@@ -72,7 +72,7 @@ export function MilestoneManager({ milestones: initial }: { milestones: any[] })
                 <button
                     type="submit"
                     disabled={pending}
-                    className="block rounded-full bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold text-sm px-6 py-2.5 disabled:opacity-50"
+                    className="block rounded-full bg-accent-gold text-primary font-bold text-sm px-6 py-2.5 disabled:opacity-50"
                 >
                     Add milestone
                 </button>

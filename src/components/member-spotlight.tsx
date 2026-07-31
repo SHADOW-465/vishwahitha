@@ -58,8 +58,7 @@ const SpotlightCard = ({ member }: SpotlightCardProps) => {
         mouseY.set(0);
     };
 
-    // Fallback avatar image
-    const avatarUrl = member.image_url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400";
+    const avatarUrl = member.image_url || "";
 
     return (
         <div
@@ -93,10 +92,17 @@ const SpotlightCard = ({ member }: SpotlightCardProps) => {
                 <div style={{ transform: "translateZ(40px)" }} className="space-y-4">
                     <div className="relative w-full h-48 rounded-2xl overflow-hidden border border-white/10">
                         <img
-                            src={avatarUrl}
+                            src={avatarUrl || undefined}
                             alt={member.name}
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                            className={`w-full h-full object-cover ${avatarUrl ? "grayscale group-hover:grayscale-0" : "opacity-0"} group-hover:scale-105 transition-all duration-700`}
                         />
+                        {!avatarUrl && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-white/5">
+                                <span className="font-heading text-3xl font-bold text-accent-gold/40">
+                                    {(member.name || "?")[0]}
+                                </span>
+                            </div>
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent" />
                     </div>
 
@@ -163,29 +169,32 @@ const SpotlightCard = ({ member }: SpotlightCardProps) => {
 
 export const MemberSpotlight = ({ members }: { members: BoardMember[] }) => {
     // Fallback board members stub if DB is empty
-    const displayMembers = members && members.length > 0 ? members.slice(0, 3) : [
-        {
-            id: "1",
-            name: "Rtr. Harish Kumar",
-            role: "Club President",
-            email: "president@vishwahitha.org",
-            image_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400"
-        },
-        {
-            id: "2",
-            name: "Rtr. Sneha Iyer",
-            role: "Club Secretary",
-            email: "secretary@vishwahitha.org",
-            image_url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400"
-        },
-        {
-            id: "3",
-            name: "Rtr. Rajesh Pillai",
-            role: "Director of Initiatives",
-            email: "initiatives@vishwahitha.org",
-            image_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400"
-        }
-    ];
+    const displayMembers: BoardMember[] =
+        members && members.length > 0
+            ? members.slice(0, 3)
+            : [
+                  {
+                      id: "1",
+                      name: "Rtr. Shivanandhini",
+                      role: "Club President",
+                      email: "president.vishwahita@gmail.com",
+                      image_url: undefined,
+                  },
+                  {
+                      id: "2",
+                      name: "Rtr. Yogi",
+                      role: "Club Secretary",
+                      email: "secretary.vishwahita@gmail.com",
+                      image_url: undefined,
+                  },
+                  {
+                      id: "3",
+                      name: "Rtr. IPP. Ashwin",
+                      role: "Group Rotaract Representative",
+                      email: "grr.group1@gmail.com",
+                      image_url: undefined,
+                  },
+              ];
 
     return (
         <section className="py-24 px-6 w-full max-w-7xl mx-auto border-t border-white/5">
@@ -195,7 +204,7 @@ export const MemberSpotlight = ({ members }: { members: BoardMember[] }) => {
                     <span className="font-mono text-[10px] text-accent-gold uppercase tracking-[0.15em] font-medium">Spotlight</span>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-text-primary tracking-tight">
-                    Executive <span className="font-drama italic font-light gold-text">Leaders</span>
+                    Leadership
                 </h2>
                 <p className="font-mono text-sm text-text-secondary">
                     Our weekly spotlight features members and board executives directing initiatives and driving impact in Chennai.

@@ -49,7 +49,7 @@ export function EventRsvpButton({
                 className={`inline-flex rounded-full px-6 py-3 font-bold text-sm transition-opacity disabled:opacity-60 ${
                     attending
                         ? "bg-white/10 border border-white/15 text-text-primary"
-                        : "bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary"
+                        : "bg-accent-cranberry text-text-primary"
                 }`}
             >
                 {pending ? "Updating…" : attending ? "You're going · Change" : "RSVP — I'm going"}

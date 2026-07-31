@@ -1,0 +1,41 @@
+[
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "file": "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\member-spotlight.tsx",
+    "line": 78,
+    "snippet": "Undocumented color rgba(212,175,76,0.18) is outside DESIGN.md colors",
+    "ignoreValue": "rgba(212,175,76,0.18)"
+  },
+  {
+    "antipattern": "gradient-text",
+    "name": "Gradient text",
+    "description": "Gradient text is decorative rather than meaningful ΓÇö a common AI tell, especially on headings and metrics. Use solid colors for text.",
+    "severity": "warning",
+    "file": "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\sponsor-showcase.tsx",
+    "line": 50,
+    "snippet": "bg-clip-text + bg-gradient"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "file": "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\ui\\particles-background.tsx",
+    "line": 53,
+    "snippet": "Undocumented color #FBD300 is outside DESIGN.md colors",
+    "ignoreValue": "#FBD300"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "file": "C:\\Users\\acer\\Documents\\GitHub\\vishwahitha\\src\\components\\ui\\particles-background.tsx",
+    "line": 63,
+    "snippet": "Undocumented color #ffffff is outside DESIGN.md colors",
+    "ignoreValue": "#ffffff"
+  }
+]

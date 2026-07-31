@@ -7,10 +7,12 @@ export default function SignInPage() {
 
             <div className="relative z-10 w-full max-w-md">
                 <div className="flex flex-col items-center mb-10">
-                    <h1 className="text-4xl font-heading font-bold tracking-tighter text-text-primary text-center">
-                        Welcome to <span className="text-accent-gold font-drama italic tracking-normal font-light">Vishwahita</span>
+                    <h1 className="text-3xl font-heading font-bold tracking-tight text-text-primary text-center">
+                        Member sign-in
                     </h1>
-                    <p className="text-sm font-mono text-text-secondary mt-2 uppercase tracking-[0.2em]">Member Portal</p>
+                    <p className="text-sm text-text-secondary mt-2 text-center">
+                        Rotaract Club of Vishwahita · clubroom access
+                    </p>
                 </div>
 
                 <div className="flex justify-center">

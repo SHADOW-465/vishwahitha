@@ -10,14 +10,10 @@ export default function ContactPage() {
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
                 <div className="lg:col-span-5 space-y-8 min-w-0">
                     <div>
-                        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-gold">
+                        <h1 className="font-heading font-extrabold text-4xl sm:text-5xl text-text-primary tracking-tight text-balance">
                             Contact
-                        </p>
-                        <h1 className="mt-2 font-heading font-extrabold text-4xl sm:text-5xl text-text-primary tracking-tighter text-balance">
-                            Reach the{" "}
-                            <span className="font-display-drama gold-text">club</span>
                         </h1>
-                        <p className="mt-3 font-mono text-sm text-text-secondary leading-relaxed">
+                        <p className="mt-3 text-sm text-text-secondary leading-relaxed">
                             Rotaract Club of Vishwahita · RI District 3234 · Chennai.
                             Sponsored by the Rotary Club of Madras Industrial City.
                         </p>
@@ -48,7 +44,7 @@ export default function ContactPage() {
                     </p>
                 </div>
 
-                <div className="lg:col-span-7 glass-panel rounded-[2rem] border border-white/5 p-6 sm:p-8 min-w-0">
+                <div className="lg:col-span-7 rounded-[2rem] border border-white/8 bg-white/[0.03] p-6 sm:p-8 min-w-0">
                     <h2 className="font-heading font-bold text-xl text-text-primary mb-6">
                         Send a message
                     </h2>

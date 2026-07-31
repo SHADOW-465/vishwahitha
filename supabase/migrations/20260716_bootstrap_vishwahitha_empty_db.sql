@@ -1,8 +1,13 @@
--- Applied via Supabase MCP to project Vishwahitha-1 (mxeptmylucphyjueldcf)
--- on 2026-07-16 when remote public schema was empty.
--- Record only — remote already has: bootstrap_core_schema, bootstrap_rls_policies,
--- bootstrap_seed_content, tighten_write_rls_for_service_role_app.
+-- Record only. The canonical greenfield script is:
+--   supabase/bootstrap.sql
 --
--- Tables: users, events, event_rsvps, documents, board_members, announcements,
--- initiatives (+ is_legacy), initiative_gallery, pulse_forms, pulse_responses,
--- page_sections, gallery_media, feedback, contact_messages.
+-- Apply that single file in the Supabase SQL Editor on any empty project.
+-- Incremental history remains in this migrations/ folder for reference;
+-- you do not need to run those files in order if you use bootstrap.sql.
+--
+-- Tables covered by bootstrap.sql:
+--   users, events, event_rsvps, documents, board_members, announcements,
+--   initiatives (+ is_legacy), initiative_gallery, gallery_media,
+--   pulse_forms, pulse_responses, page_sections, feedback, contact_messages,
+--   milestones, ideas, idea_votes, idea_comments
+-- Plus RLS + seed page_sections / sample initiatives / board / milestones.

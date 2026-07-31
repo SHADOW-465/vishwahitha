@@ -47,7 +47,7 @@ export const SponsorShowcase = () => {
                         >
                             {/* Gold diamond separator */}
                             <span className="text-accent-gold/30 text-xs font-mono">◆</span>
-                            <span className="font-heading font-black text-lg sm:text-2xl md:text-3xl text-white/20 group-hover:text-transparent bg-clip-text group-hover:bg-gradient-to-r group-hover:from-accent-gold group-hover:to-accent-gold-light transition-all duration-500">
+                            <span className="font-heading font-black text-lg sm:text-2xl md:text-3xl text-white/20 group-hover:text-accent-gold transition-colors duration-500">
                                 {sponsor.name}
                             </span>
                         </div>

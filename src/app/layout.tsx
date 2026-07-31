@@ -35,8 +35,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Rotaract Club of Vishwahita | Youth Leadership, Chennai",
-    description: "Chartered in 1999, Rotaract Club of Vishwahita has delivered 500+ projects reaching 2,000+ people across District 3234. Chennai's youth-led service club.",
+    title: "Rotaract Club of Vishwahita | RI District 3234, Chennai",
+    description:
+        "Official digital home of the Rotaract Club of Vishwahita. Chartered 10 March 1999, sponsored by Rotary Club of Madras Industrial City, RI District 3234 Group 01. Events, projects, and membership applications.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

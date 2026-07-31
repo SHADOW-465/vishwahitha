@@ -56,7 +56,7 @@ export function ContactForm() {
             <button
                 type="submit"
                 disabled={pending}
-                className="rounded-full bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-8 py-3.5 disabled:opacity-60"
+                className="rounded-full bg-accent-cranberry text-text-primary font-bold text-sm px-8 py-3.5 disabled:opacity-60 hover:bg-[#e01872] transition-colors"
             >
                 {pending ? "Sending…" : "Send message"}
             </button>

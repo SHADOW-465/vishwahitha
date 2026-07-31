@@ -35,7 +35,7 @@ export const HubTabs = ({ announcements, members, documents, myRsvps, activePuls
                         {activeTab === i && (
                             <motion.div
                                 layoutId="tab-indicator"
-                                className="absolute inset-0 bg-gradient-to-r from-accent-gold to-accent-gold-light rounded-xl"
+                                className="absolute inset-0 bg-accent-gold rounded-xl"
                                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
                             />
                         )}
@@ -171,7 +171,7 @@ const PulseFormWidget = ({ form }: { form: any }) => {
             {/* Progress bar */}
             <div className="w-full h-1 bg-white/10 rounded-full">
                 <motion.div
-                    className="h-1 bg-gradient-to-r from-accent-gold to-accent-gold-light rounded-full"
+                    className="h-1 bg-accent-gold rounded-full"
                     animate={{ width: `${progress}%` }}
                     transition={{ duration: 0.3 }}
                 />
@@ -243,7 +243,7 @@ const PulseFormWidget = ({ form }: { form: any }) => {
             <button
                 onClick={handleSubmit}
                 disabled={loading}
-                className="w-full py-4 bg-gradient-to-r from-accent-gold to-accent-gold-light text-primary font-bold rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50"
+                className="w-full py-4 bg-accent-gold text-primary font-bold rounded-full hover:scale-[1.02] transition-transform disabled:opacity-50"
             >
                 {loading ? "Submitting..." : "Submit Pulse"}
             </button>
