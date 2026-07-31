@@ -48,7 +48,7 @@ export default async function Home() {
 
             {/* xl:pl-28 is the ledger gutter — it keeps the rail clear of the
                 content instead of overlapping it at 1280–1440px. */}
-            <main className="min-h-screen bg-primary overflow-x-clip xl:pl-28">
+            <main className="min-h-screen bg-transparent overflow-x-clip xl:pl-28">
                 {/* ── I · CHARTER ───────────────────────────────────
                     Holds the fold alone, then lands on the registry line. */}
                 <section id="act-charter" aria-label="Charter">

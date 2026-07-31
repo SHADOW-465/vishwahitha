@@ -6,7 +6,7 @@ export const revalidate = 60;
 
 export default function ContactPage() {
     return (
-        <main className="min-h-screen bg-primary pt-28 md:pt-32 pb-20 px-6">
+        <main className="min-h-screen bg-transparent pt-28 md:pt-32 pb-20 px-6">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
                 <div className="lg:col-span-5 space-y-8 min-w-0">
                     <div>

@@ -37,16 +37,16 @@ export function ClubLogoWatermark() {
                 <img
                     src="/club-logo.png"
                     alt=""
-                    className="w-[min(90vw,680px)] h-auto max-h-[70vh] object-contain opacity-[0.07] sm:opacity-[0.08]"
+                    className="w-[min(90vw,720px)] h-auto max-h-[75vh] object-contain opacity-[0.12] sm:opacity-[0.14]"
                     style={{
                         // On dark paper: lighten gold slightly so watermark reads soft, not milky
                         mixBlendMode: "screen",
-                        filter: "brightness(1.05)",
+                        filter: "brightness(1.1)",
                     }}
                     draggable={false}
                 />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-transparent to-primary/85" />
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-transparent to-primary/40 pointer-events-none" />
         </div>
     );
 }

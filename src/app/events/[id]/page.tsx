@@ -43,7 +43,7 @@ export default async function EventDetailPage({
     }
 
     return (
-        <main className="min-h-screen bg-primary pt-28 md:pt-32 pb-20 px-6">
+        <main className="min-h-screen bg-transparent pt-28 md:pt-32 pb-20 px-6">
             <div className="max-w-3xl mx-auto">
                 <Link
                     href="/events"

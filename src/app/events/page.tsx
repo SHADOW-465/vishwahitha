@@ -70,7 +70,7 @@ export default async function EventsPage({
     ] as const;
 
     return (
-        <main className="min-h-screen bg-primary pt-28 md:pt-32 pb-20 px-6">
+        <main className="min-h-screen bg-transparent pt-28 md:pt-32 pb-20 px-6">
             <div className="max-w-7xl mx-auto">
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-cranberry">
                     Calendar
