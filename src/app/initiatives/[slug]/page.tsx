@@ -3,6 +3,7 @@ import { ImpactCounter } from "@/components/impact-counter";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SignatureText } from "@/components/ui/signature-text";
 
 export async function generateStaticParams() {
     const initiatives = await getInitiatives();
@@ -34,8 +35,25 @@ export default async function InitiativeDetailPage({ params }: { params: Promise
                     <Link href="/initiatives" className="flex items-center gap-2 font-mono text-xs text-text-secondary hover:text-text-primary transition-colors mb-6 w-fit">
                         <ArrowLeft size={14} /> All Initiatives
                     </Link>
-                    <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-gold mb-3">{initiative.category}</p>
-                    <h1 className="font-heading text-5xl md:text-7xl font-bold text-text-primary">{initiative.title}</h1>
+                    <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold-ink mb-3">
+                        {initiative.is_signature ? "Signature project" : initiative.category}
+                    </p>
+                    {initiative.is_signature ? (
+                        /* A signature project signs its own page. */
+                        <>
+                            <SignatureText as="h1" className="text-step-5 leading-[1.15] text-text-primary">
+                                {initiative.title}
+                            </SignatureText>
+                            <span
+                                className="mt-4 block h-px w-full max-w-sm bg-gradient-to-r from-accent-gold/50 to-transparent"
+                                aria-hidden
+                            />
+                        </>
+                    ) : (
+                        <h1 className="font-heading text-step-5 font-extrabold tracking-[-0.035em] text-text-primary">
+                            {initiative.title}
+                        </h1>
+                    )}
                 </div>
             </section>
 

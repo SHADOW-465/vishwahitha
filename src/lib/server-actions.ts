@@ -150,6 +150,7 @@ export async function createInitiative(formData: FormData): Promise<ActionRespon
         color_class: (formData.get("color_class") as string) || "border-white/10",
         is_featured: isFeatured,
         is_legacy: isLegacy,
+        is_signature: formData.get("is_signature") === "true",
         display_order: Number(formData.get("display_order") || 0) || undefined,
     });
 
@@ -211,6 +212,7 @@ export async function updateInitiative(id: string, formData: FormData): Promise<
         hero_image_url: formData.get("hero_image_url") as string,
         is_featured: formData.get("is_featured") === "on" || formData.get("is_featured") === "true",
         is_legacy: isLegacy,
+        is_signature: formData.get("is_signature") === "true",
         display_order: Number(formData.get("display_order") || 0),
     });
 
@@ -340,6 +342,46 @@ export async function createMilestone(formData: FormData): Promise<ActionRespons
     revalidatePath("/");
     revalidatePath("/admin");
     return { success: true, message: "Milestone added.", data };
+}
+
+export async function createPastPresident(formData: FormData): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+
+    const name = ((formData.get("name") as string) || "").trim();
+    const term = ((formData.get("term") as string) || "").trim();
+    if (!name || !term) {
+        return { success: false, message: "Name and term are both required." };
+    }
+
+    const payload = sanitizePayload({
+        name,
+        term,
+        note: formData.get("note") as string,
+        image_url: formData.get("image_url") as string,
+        display_order: Number(formData.get("display_order") || 0),
+    });
+
+    const { data, error } = await supabase
+        .from("past_presidents")
+        .insert([payload])
+        .select()
+        .single();
+
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/about");
+    revalidatePath("/admin");
+    return { success: true, message: `${name} added to the roll.`, data };
+}
+
+export async function deletePastPresident(id: string): Promise<ActionResponse> {
+    const { userId } = await auth();
+    if (!userId) return { success: false, message: "Unauthorized" };
+    const { error } = await supabase.from("past_presidents").delete().eq("id", id);
+    if (error) return { success: false, message: error.message, error };
+    revalidatePath("/about");
+    revalidatePath("/admin");
+    return { success: true, message: "Removed from the roll." };
 }
 
 export async function deleteMilestone(id: string): Promise<ActionResponse> {

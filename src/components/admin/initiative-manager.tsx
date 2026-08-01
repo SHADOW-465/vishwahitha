@@ -27,6 +27,7 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
         setLoading(true);
         const fd = new FormData(e.currentTarget);
         if (fd.get("is_featured_check")) fd.set("is_featured", "true");
+        fd.set("is_signature", fd.get("is_signature_check") ? "true" : "false");
         const res = await createInitiative(fd);
         setLoading(false);
         if (res.success) {
@@ -43,6 +44,7 @@ export const InitiativeManager = ({ initiatives: initial }: Props) => {
         const fd = new FormData(e.currentTarget);
         if (fd.get("is_featured_check")) fd.set("is_featured", "true");
         else fd.set("is_featured", "false");
+        fd.set("is_signature", fd.get("is_signature_check") ? "true" : "false");
         const res = await updateInitiative(editing.id, fd);
         setLoading(false);
         if (res.success) {
@@ -297,6 +299,15 @@ function InitiativeForm({
                     className="rounded"
                 />
                 Featured on homepage
+            </label>
+            <label className="flex items-center gap-2 font-mono text-xs text-text-secondary">
+                <input
+                    type="checkbox"
+                    name="is_signature_check"
+                    defaultChecked={Boolean(defaults?.is_signature)}
+                    className="rounded"
+                />
+                Signature project (signed block on homepage)
             </label>
             <label className="flex items-center gap-2 font-mono text-xs text-text-secondary">
                 <input

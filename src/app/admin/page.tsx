@@ -12,6 +12,7 @@ import { PageSectionsEditor } from "@/components/admin/page-sections-editor";
 import { IdeasModeration } from "@/components/admin/ideas-moderation";
 import { ContactInbox } from "@/components/admin/contact-inbox";
 import { MilestoneManager } from "@/components/admin/milestone-manager";
+import { PastPresidentsManager } from "@/components/admin/past-presidents-manager";
 import { PresidentChecklist } from "@/components/admin/president-checklist";
 import { HabitsPanel } from "@/components/admin/habits-panel";
 import { EventManager } from "@/components/event-manager";
@@ -38,6 +39,7 @@ export default async function AdminPage() {
         { data: ideas },
         { data: contactMessages },
         { data: milestones },
+        { data: pastPresidents },
     ] = await Promise.all([
         getAllAnnouncements(),
         supabase.from("users").select("id"),
@@ -49,6 +51,7 @@ export default async function AdminPage() {
         supabase.from("ideas").select("*").order("created_at", { ascending: false }),
         supabase.from("contact_messages").select("*").order("created_at", { ascending: false }),
         supabase.from("milestones").select("*").order("display_order"),
+        supabase.from("past_presidents").select("*").order("display_order"),
     ]);
 
     const stats = {
@@ -87,6 +90,7 @@ export default async function AdminPage() {
                     habits: <HabitsPanel />,
                     pulse: <PulseFormBuilder />,
                     board: <BoardManager members={boardMembers ?? []} />,
+                    presidents: <PastPresidentsManager presidents={pastPresidents ?? []} />,
                     sections: <PageSectionsEditor sections={sectionsMap} />,
                     broadcast: <BroadcastCenter />,
                 }}

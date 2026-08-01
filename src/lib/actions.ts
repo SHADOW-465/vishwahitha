@@ -124,6 +124,43 @@ export async function getInitiatives() {
     return data ?? [];
 }
 
+/** The club's signature projects — the signed block in Act III. */
+export async function getSignatureInitiatives() {
+    const { data, error } = await supabase
+        .from("initiatives")
+        .select("*")
+        .eq("is_signature", true)
+        .order("display_order", { ascending: true });
+
+    if (error) { console.error("getSignatureInitiatives:", error); return []; }
+    return data ?? [];
+}
+
+/** Everything featured that is NOT a signature project, so the two homepage
+ *  blocks never show the same project twice. */
+export async function getOtherInitiatives() {
+    const { data, error } = await supabase
+        .from("initiatives")
+        .select("*")
+        .eq("is_featured", true)
+        .or("is_signature.is.null,is_signature.eq.false")
+        .order("display_order", { ascending: true });
+
+    if (error) { console.error("getOtherInitiatives:", error); return []; }
+    return data ?? [];
+}
+
+/** Roll of past club presidents, most recent first. */
+export async function getPastPresidents() {
+    const { data, error } = await supabase
+        .from("past_presidents")
+        .select("*")
+        .order("display_order", { ascending: true });
+
+    if (error) { console.error("getPastPresidents:", error); return []; }
+    return data ?? [];
+}
+
 export async function getPublicAnnouncements() {
     const { data, error } = await supabase
         .from("announcements")

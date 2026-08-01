@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { getInitiatives } from "@/lib/actions";
+import { getOtherInitiatives } from "@/lib/actions";
 
 const FALLBACK_IMAGE =
     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200";
@@ -17,26 +17,21 @@ type Initiative = {
 };
 
 /**
- * Act III · the programme index.
+ * Act III · the rest of the work.
+ *
+ * Sits under the signed block, so it explicitly reads as "everything else"
+ * rather than a second, unrelated project list. Signature projects are
+ * excluded at the query, so nothing appears in both places.
  *
  * One lead programme at plate scale, the rest as an indexed run of entries.
- * The old version was six equal cards tinted gold/teal/red on rotation — the
- * colour carried no meaning, and equal weight meant nothing led.
  */
 export async function FeaturedBento() {
-    const initiatives = (await getInitiatives()) as Initiative[];
+    const initiatives = (await getOtherInitiatives()) as Initiative[];
     const list = initiatives.slice(0, 6);
 
-    if (list.length === 0) {
-        return (
-            <div id="initiatives" className="max-w-7xl mx-auto px-6" data-reveal>
-                <p className="text-step-0 text-text-secondary">
-                    No featured programmes yet. The president can add them under Admin →
-                    Initiatives.
-                </p>
-            </div>
-        );
-    }
+    // The signed block above already carries the act. With nothing else to
+    // show, an empty-state paragraph is just noise on a public page.
+    if (list.length === 0) return null;
 
     const [lead, ...rest] = list;
 
@@ -48,11 +43,12 @@ export async function FeaturedBento() {
             >
                 <div>
                     <h2 className="font-heading font-extrabold text-step-3 text-text-primary tracking-tight max-w-2xl">
-                        Programmes the board{" "}
-                        <span className="font-display-drama text-gold-ink">runs</span>
+                        Other{" "}
+                        <span className="font-display-drama text-gold-ink">projects</span>
                     </h2>
                     <p className="mt-4 text-step-0 text-text-secondary measure">
-                        Daily series and flagship work, kept current by the board.
+                        Daily series, drives, and one-off work the board runs alongside
+                        the signature five.
                     </p>
                 </div>
                 <Link

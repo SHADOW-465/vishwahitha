@@ -15,6 +15,7 @@ import { OfficialStanding } from "@/components/official-standing";
 import { ClubBulletin } from "@/components/club-bulletin";
 import { EventsCarousel } from "@/components/events-carousel";
 import { FeaturedBento } from "@/components/featured-bento";
+import { SignatureProjects } from "@/components/signature-projects";
 import { LegacySpotlight } from "@/components/legacy-spotlight";
 import { BoardStrip } from "@/components/board-strip";
 import { GalleryTeaser } from "@/components/gallery-teaser";
@@ -82,6 +83,10 @@ export default async function Home() {
                     flagship project full-bleed before the programme grid. */}
                 <section id="act-work" aria-label="The work" className="pt-act-lead">
                     <LegacySpotlight />
+                    {/* The club signs its five, then everything else follows. */}
+                    <div className="pt-act-lead">
+                        <SignatureProjects />
+                    </div>
                     <div className="pt-act-lead">
                         <FeaturedBento />
                     </div>

@@ -42,6 +42,7 @@ export default {
                 drama: ["var(--font-drama)"],
                 mono: ["var(--font-mono)"],
                 serifItalic: ["var(--font-serif-italic)"],
+                signature: ["var(--font-signature)", "cursive"],
             },
             backgroundImage: {
                 "gold-gradient": "linear-gradient(135deg, #C9A84C, #FFD97D)",

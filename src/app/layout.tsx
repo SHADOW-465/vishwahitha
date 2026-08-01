@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { Inter, Playfair_Display, JetBrains_Mono, Instrument_Serif, Style_Script } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -28,6 +28,16 @@ const instrumentSerif = Instrument_Serif({
     style: ["italic"],
 });
 
+// Signature hand. Used only for the signed project block — a real signature
+// face rather than a generic script, and heavy enough to stay legible on
+// midnight where hairline signature fonts disappear.
+const styleScript = Style_Script({
+    subsets: ["latin"],
+    variable: "--font-signature",
+    weight: ["400"],
+    display: "swap",
+});
+
 const jetbrainsMono = JetBrains_Mono({
     subsets: ["latin"],
     variable: "--font-mono",
@@ -43,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <ClerkProvider>
             <html lang="en">
-                <body className={`${inter.variable} ${playfairDisplay.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}>
+                <body className={`${inter.variable} ${playfairDisplay.variable} ${instrumentSerif.variable} ${styleScript.variable} ${jetbrainsMono.variable} antialiased`}>
                     <ThemeProvider>
                         {/* Solid paper + dim official mark (not particles) */}
                         <div

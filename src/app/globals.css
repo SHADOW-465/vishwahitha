@@ -132,6 +132,71 @@ p, li, dd {
   clip-path: inset(0 0 0 0);
 }
 
+/* ── Signature ink ────────────────────────────────────────
+ * A signature that writes itself. The ink is a soft-edged mask sweeping
+ * across the glyphs, so the letters appear to flow from a nib rather than
+ * being wiped in by a hard edge.
+ *
+ * --ink runs 0 → 1. It is registered so it can be animated at all; an
+ * unregistered custom property is a string and will not interpolate.
+ *
+ * Default state is FULLY INKED. The unwritten state is only ever applied by
+ * JS (.is-pending), so no-JS, headless, and failed-observer renders all show
+ * a complete signature instead of nothing. */
+@property --ink {
+    syntax: "<number>";
+    initial-value: 1;
+    inherits: false;
+}
+
+.signature-ink {
+    --ink: 1;
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        #000 calc(var(--ink) * 116% - 16%),
+        transparent calc(var(--ink) * 116%)
+    );
+    mask-image: linear-gradient(
+        90deg,
+        #000 calc(var(--ink) * 116% - 16%),
+        transparent calc(var(--ink) * 116%)
+    );
+}
+
+.signature-ink.is-pending {
+    --ink: 0;
+}
+
+.signature-ink.is-signing {
+    animation: sign-in var(--sign-dur, 1.8s) cubic-bezier(0.62, 0.03, 0.31, 1) forwards;
+}
+
+@keyframes sign-in {
+    from { --ink: 0; }
+    to   { --ink: 1; }
+}
+
+/* The nib: rides the leading edge of the ink, fades out on the last stroke. */
+.signature-nib {
+    left: calc(var(--ink) * 100%);
+    opacity: 0;
+}
+.signature-ink.is-signing .signature-nib {
+    animation: nib-travel var(--sign-dur, 1.8s) cubic-bezier(0.62, 0.03, 0.31, 1) forwards;
+}
+@keyframes nib-travel {
+    0%   { opacity: 0; }
+    8%   { opacity: 1; }
+    82%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* No @property support: the animation can't interpolate, so skip straight to
+   a fully inked signature rather than animating to nothing. */
+@supports not (background: paint(x)) {
+    .signature-ink.is-pending { --ink: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -147,6 +212,16 @@ p, li, dd {
     transform: none !important;
     clip-path: none !important;
   }
+  /* The signature is presented already signed. */
+  .signature-ink,
+  .signature-ink.is-pending,
+  .signature-ink.is-signing {
+    --ink: 1 !important;
+    animation: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  .signature-nib { display: none !important; }
 }
 
 /* ── Scrollbar ───────────────────────────────────────────── */

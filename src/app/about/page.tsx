@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { User, Users, Award, TrendingUp, Target, Calendar } from "lucide-react";
+import { PastPresidents } from "@/components/past-presidents";
 
 export const revalidate = 60;
 
@@ -165,6 +166,9 @@ export default async function AboutPage() {
                     ))}
                 </div>
             </section>
+
+            {/* Succession — who held the chair before this board */}
+            <PastPresidents />
 
             {/* Roadmap & Priorities */}
             <section className="space-y-8 border-t border-white/5 pt-16">

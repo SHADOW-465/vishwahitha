@@ -2,7 +2,7 @@
 
 import { useState, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { LayoutDashboard, Megaphone, Zap, Calendar, Image, Users, FileText, BarChart2, Radio, Menu, X, Lightbulb, Inbox, Flag, ClipboardList, Mail } from "lucide-react";
+import { LayoutDashboard, Megaphone, Zap, Calendar, Image, Users, FileText, BarChart2, Radio, Menu, X, Lightbulb, Inbox, Flag, ClipboardList, Mail, History } from "lucide-react";
 
 const NAV_ITEMS = [
     { label: "Overview", icon: LayoutDashboard, id: "overview" },
@@ -16,6 +16,7 @@ const NAV_ITEMS = [
     { label: "Habits / Email", icon: Mail, id: "habits" },
     { label: "Gallery", icon: Image, id: "gallery" },
     { label: "Board Members", icon: Users, id: "board" },
+    { label: "Past Presidents", icon: History, id: "presidents" },
     { label: "Page Sections", icon: FileText, id: "sections" },
     { label: "Pulse Forms", icon: BarChart2, id: "pulse" },
     { label: "Broadcast", icon: Radio, id: "broadcast" },
