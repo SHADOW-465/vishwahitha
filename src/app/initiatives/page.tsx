@@ -1,6 +1,8 @@
 import { getInitiatives } from "@/lib/actions";
 import { InitiativesClient } from "@/components/initiatives-client";
 
+export const revalidate = 0;
+
 export default async function InitiativesPage() {
     const initiatives = await getInitiatives();
 

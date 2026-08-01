@@ -30,11 +30,11 @@ export const JoinMission = () => {
                     Join a 27-year club that runs real service, meets in Chennai, and builds leaders who take ownership — not spectators.
                 </p>
 
-                <div className="flex flex-wrap justify-center gap-3 pt-4">
-                    <MagneticButton>
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-4">
+                    <MagneticButton className="w-full sm:w-auto">
                         <Link
                             href="/sign-up"
-                            className="group relative overflow-hidden inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-10 py-5 rounded-full transition-all duration-300 shadow-xl shadow-accent-cranberry/15 hover:shadow-accent-cranberry/25 whitespace-nowrap"
+                            className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-text-primary font-bold text-sm px-10 py-5 rounded-full transition-all duration-300 shadow-xl shadow-accent-cranberry/15 hover:shadow-accent-cranberry/25 whitespace-nowrap w-full sm:w-auto min-h-[44px]"
                         >
                             <span className="relative z-10">Become a member</span>
                             <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
@@ -43,7 +43,7 @@ export const JoinMission = () => {
                     </MagneticButton>
                     <Link
                         href="/about"
-                        className="inline-flex items-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 text-text-primary font-medium text-sm px-8 py-5 rounded-full transition-colors whitespace-nowrap"
+                        className="inline-flex items-center justify-center gap-2 border border-white/10 bg-white/5 hover:bg-white/10 text-text-primary font-medium text-sm px-8 py-5 rounded-full transition-colors whitespace-nowrap w-full sm:w-auto min-h-[44px]"
                     >
                         Meet the club
                     </Link>

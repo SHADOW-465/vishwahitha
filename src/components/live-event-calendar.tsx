@@ -59,7 +59,7 @@ export const LiveEventCalendar = async () => {
                             <MagneticButton>
                                 <Link 
                                     href={`/events/${event.id}`} 
-                                    className="text-text-primary text-xs font-mono border border-accent-cranberry/35 hover:border-accent-cranberry hover:bg-accent-cranberry/5 rounded-full px-5 py-2.5 inline-block transition-colors"
+                                    className="text-text-primary text-xs font-mono border border-accent-cranberry/35 hover:border-accent-cranberry hover:bg-accent-cranberry/5 rounded-full px-5 py-2.5 inline-flex items-center justify-center min-h-[44px] transition-colors"
                                 >
                                     Learn More
                                 </Link>
