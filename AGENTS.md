@@ -13,7 +13,7 @@
 
 ## 1. What this product is
 
-Official digital home of the **Rotaract Club of Vishwahita**, **RI District 3234**, Group 01, Chennai.
+Official digital home of the **Rotaract Club of Vishwahita**, **RI District 3234**, Group 02, Chennai.
 
 - Chartered **10 March 1999**
 - Sponsored by **Rotary Club of Madras Industrial City**

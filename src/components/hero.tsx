@@ -73,7 +73,7 @@ export const Hero = ({
             <div className="relative z-20 w-full max-w-7xl mx-auto px-6">
                 <div className="max-w-5xl min-w-0">
                     <p className="hero-reveal font-mono text-[10px] md:text-[11px] text-gold-ink uppercase tracking-[0.28em]">
-                        RI District 3234 · Group 01 · Chennai
+                        RI District 3234 · Group 02 · Chennai
                     </p>
 
                     <span

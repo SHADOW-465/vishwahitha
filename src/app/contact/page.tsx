@@ -35,7 +35,7 @@ export default function ContactPage() {
                         </li>
                         <li className="flex items-start gap-3">
                             <MapPin size={16} className="text-accent-gold shrink-0 mt-0.5" />
-                            <span>Chennai · District 3234 · Group 01</span>
+                            <span>Chennai · District 3234 · Group 02</span>
                         </li>
                     </ul>
 

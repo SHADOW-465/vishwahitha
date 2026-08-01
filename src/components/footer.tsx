@@ -43,7 +43,7 @@ export const Footer = async () => {
                         </li>
                         <li className="flex items-start gap-3">
                             <MapPin size={16} className="text-accent-gold shrink-0 mt-1" />
-                            <span>Chennai · RI District 3234 · Group 01</span>
+                            <span>Chennai · RI District 3234 · Group 02</span>
                         </li>
                         <li>
                             <a href="/contact" className="hover:text-accent-gold transition-colors">Contact form →</a>

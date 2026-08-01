@@ -2,27 +2,29 @@ import { getPageSection } from "@/lib/actions";
 
 const DEFAULTS = {
     charter: "10 March 1999",
+    clubNumber: "46323",
     sponsor: "Rotary Club of Madras Industrial City",
     district: "3234",
-    group: "01",
+    group: "02",
 };
 
 /**
  * Act I · the charter line.
  *
  * These are registry facts, so they're set as a registry line — one rule of
- * hairline-separated entries directly under the hero. Three glass cards made
- * institutional standing look like a feature comparison.
+ * hairline-separated entries directly under the hero.
  */
 export async function OfficialStanding() {
     const section = await getPageSection("standing");
     const charter = section?.charter || DEFAULTS.charter;
+    const clubNumber = section?.club_number || section?.clubNumber || DEFAULTS.clubNumber;
     const sponsor = section?.sponsor || DEFAULTS.sponsor;
     const district = section?.district || DEFAULTS.district;
     const group = section?.group || DEFAULTS.group;
 
     const entries = [
         { label: "Chartered", value: charter },
+        { label: "Club No.", value: `RI Club #${clubNumber}` },
         { label: "Sponsored by", value: sponsor },
         { label: "District", value: `RI ${district} · Group ${group}` },
         { label: "Based in", value: "Chennai, Tamil Nadu" },
@@ -34,13 +36,13 @@ export async function OfficialStanding() {
             aria-label="Official standing"
             className="w-full border-y border-white/10 bg-white/[0.015]"
         >
-            <dl className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x divide-white/10">
+            <dl className="max-w-7xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 lg:divide-x divide-white/10">
                 {entries.map((entry, i) => (
                     <div
                         key={entry.label}
-                        className="py-6 lg:py-7 lg:px-7 lg:first:pl-0 lg:last:pr-0 border-b border-white/5 sm:border-b-0 last:border-b-0"
+                        className="py-6 lg:py-7 lg:px-6 lg:first:pl-0 lg:last:pr-0 border-b border-white/5 lg:border-b-0 last:border-b-0"
                         data-reveal
-                        data-reveal-delay={i * 80}
+                        data-reveal-delay={i * 70}
                     >
                         <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-text-secondary">
                             {entry.label}

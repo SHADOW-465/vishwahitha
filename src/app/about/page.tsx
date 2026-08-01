@@ -29,13 +29,6 @@ export default async function AboutPage() {
             role: "Club Secretary",
             email: "secretary.vishwahita@gmail.com",
             image_url: null,
-        },
-        {
-            id: "fb-3",
-            name: "Rtr. IPP. Ashwin",
-            role: "Group Rotaract Representative",
-            email: "grr.group1@gmail.com",
-            image_url: null,
         }
     ];
 
@@ -62,7 +55,7 @@ export default async function AboutPage() {
                     <h2 className="font-heading text-3xl font-bold text-text-primary">
                         Club <span className="font-drama italic gold-text font-light">Demographics</span> & Profile
                     </h2>
-                    <p className="font-mono text-xs text-text-secondary mt-2">A data-driven breakdown of our active leadership profile in District 3234 Group 01.</p>
+                    <p className="font-mono text-xs text-text-secondary mt-2">A data-driven breakdown of our active leadership profile in District 3234 Group 02.</p>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

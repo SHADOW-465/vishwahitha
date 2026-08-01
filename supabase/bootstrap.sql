@@ -383,10 +383,10 @@ CREATE POLICY "events_all_select" ON public.events
 INSERT INTO public.page_sections (section_key, content) VALUES
     ('hero_headline', '{"line1": "Service Above", "line2": "Self."}'::jsonb),
     ('hero_subtext', '{"text": "Rotaract Club of Vishwahita — young leaders in Chennai, RI District 3234. Unite for Good. Rise Above."}'::jsonb),
-    ('about_story', '{"paragraphs": ["The Rotaract Club of Vishwahita is a community of young leaders dedicated to service, fellowship, and professional growth in Chennai.", "Chartered 10 March 1999 and sponsored by the Rotary Club of Madras Industrial City, we serve under RI District 3234, Group 01. Vishwahita means universal friendship."]}'::jsonb),
+    ('about_story', '{"paragraphs": ["The Rotaract Club of Vishwahita is a community of young leaders dedicated to service, fellowship, and professional growth in Chennai.", "Chartered 10 March 1999 and sponsored by the Rotary Club of Madras Industrial City, we serve under RI District 3234, Group 02. Vishwahita means universal friendship."]}'::jsonb),
     ('footer_tagline', '{"text": "Unite for Good · Rise Above — Rotaract Club of Vishwahita, RI District 3234."}'::jsonb),
     ('mission', '{"mission": "Empower young leaders in Chennai to drive community-led change through service, fellowship, and professional growth.", "vision": "A club known for reliable service, clear leadership, and universal friendship — Vishwahita."}'::jsonb),
-    ('standing', '{"charter": "10 March 1999", "sponsor": "Rotary Club of Madras Industrial City", "district": "3234", "group": "01"}'::jsonb)
+    ('standing', '{"charter": "10 March 1999", "sponsor": "Rotary Club of Madras Industrial City", "district": "3234", "group": "02"}'::jsonb)
 ON CONFLICT (section_key) DO NOTHING;
 
 INSERT INTO public.initiatives (
@@ -439,8 +439,7 @@ WHERE slug = 'vaagai'
 INSERT INTO public.board_members (name, role, display_order)
 SELECT * FROM (VALUES
     ('Rtr. Mahalakshmi', 'Club President', 1),
-    ('Rtr. Nandhini', 'Club Secretary', 2),
-    ('Rtr. IPP. Ashwin', 'Group Rotaract Representative', 3)
+    ('Rtr. Nandhini', 'Club Secretary', 2)
 ) AS v(name, role, display_order)
 WHERE NOT EXISTS (SELECT 1 FROM public.board_members LIMIT 1);
 
@@ -448,7 +447,7 @@ INSERT INTO public.milestones (year, title, body, display_order)
 SELECT * FROM (VALUES
     ('1999', 'Club chartered', 'Rotaract Club of Vishwahita chartered on 10 March 1999.', 1),
     ('—', 'Sponsored by Rotary Club of Madras Industrial City', 'Parent Rotary club partnership.', 2),
-    ('—', 'RI District 3234 · Group 01', 'Serving Chennai under District 3234.', 3)
+    ('—', 'RI District 3234 · Group 02', 'Serving Chennai under District 3234.', 3)
 ) AS v(year, title, body, display_order)
 WHERE NOT EXISTS (SELECT 1 FROM public.milestones LIMIT 1);
 

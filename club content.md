@@ -1,6 +1,6 @@
 Here is the structured content extracted from the provided document, organized and formatted for a club website:
 
-## Rotaract Club of Vishwahita (RI District 3234, Group 01)
+## Rotaract Club of Vishwahita (RI District 3234, Group 02 — RI Club No. 46323)
 
 Sponsored by the Rotary Club of Madras Industrial City.
 Mottos: "Unite for Good" & "Rise Above".
@@ -13,9 +13,6 @@ Mottos: "Unite for Good" & "Rise Above".
 
 
 * **Secretary**: Rtr. Nandhini
-
-
-* **Group Rotaract Representative (Group 1)**: Rtr. IPP. Ashwin
 
 
 
