@@ -94,11 +94,11 @@ export const Hero = ({
                         {subtext}
                     </p>
 
-                    <div className="hero-reveal flex flex-wrap items-center gap-3 sm:gap-4 pt-10">
-                        <MagneticButton>
+                    <div className="hero-reveal flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 pt-8 sm:pt-10">
+                        <MagneticButton className="w-full sm:w-auto">
                             <Link
                                 href="/#join"
-                                className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-white font-bold text-step--1 px-8 py-4 rounded-full transition-shadow duration-300 shadow-lg shadow-accent-cranberry/15 hover:shadow-accent-cranberry/30 whitespace-nowrap"
+                                className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-accent-cranberry to-accent-gold text-white font-bold text-step--1 px-8 py-4 rounded-full transition-shadow duration-300 shadow-lg shadow-accent-cranberry/15 hover:shadow-accent-cranberry/30 whitespace-nowrap w-full sm:w-auto min-h-[44px]"
                             >
                                 Become a member
                                 <ArrowRight
@@ -108,10 +108,10 @@ export const Hero = ({
                             </Link>
                         </MagneticButton>
 
-                        <MagneticButton>
+                        <MagneticButton className="w-full sm:w-auto">
                             <Link
                                 href="/events"
-                                className="inline-flex items-center gap-2 border border-white/15 hover:border-white/30 text-text-primary font-medium text-step--1 px-8 py-4 rounded-full transition-colors whitespace-nowrap"
+                                className="inline-flex items-center justify-center gap-2 border border-white/15 hover:border-white/30 text-text-primary font-medium text-step--1 px-8 py-4 rounded-full transition-colors whitespace-nowrap w-full sm:w-auto min-h-[44px]"
                             >
                                 See what&apos;s on
                             </Link>

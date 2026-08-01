@@ -125,7 +125,7 @@ export const Navbar = () => {
                     </SignedIn>
                     {/* Hamburger — mobile/tablet only */}
                     <button
-                        className="lg:hidden p-1.5 rounded-xl text-text-secondary hover:text-text-primary transition-colors"
+                        className="lg:hidden p-2 rounded-xl text-text-secondary hover:text-text-primary transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
                         onClick={() => setMenuOpen((o) => !o)}
                         aria-label="Toggle navigation menu"
                     >

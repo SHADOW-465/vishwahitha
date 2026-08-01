@@ -33,7 +33,7 @@ export const WhoWeAre = () => {
         <section
             id="about"
             ref={sectionRef}
-            className="py-32 px-6 w-full max-w-7xl mx-auto border-t border-white/5 bg-transparent"
+            className="py-20 sm:py-32 px-6 w-full max-w-7xl mx-auto border-t border-white/5 bg-transparent"
         >
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
                 {/* Left Side: Editorial Typography & Narrative (7 cols) */}

@@ -36,18 +36,20 @@ export async function OfficialStanding() {
             aria-label="Official standing"
             className="w-full border-y border-white/10 bg-white/[0.015]"
         >
-            <dl className="max-w-7xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 lg:divide-x divide-white/10">
+            <dl className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 lg:divide-x divide-white/10">
                 {entries.map((entry, i) => (
                     <div
                         key={entry.label}
-                        className="py-6 lg:py-7 lg:px-6 lg:first:pl-0 lg:last:pr-0 border-b border-white/5 lg:border-b-0 last:border-b-0"
+                        className={`py-5 sm:py-6 lg:py-7 sm:px-4 lg:px-6 lg:first:pl-0 lg:last:pr-0 border-b border-white/10 lg:border-b-0 last:border-b-0 ${
+                            entry.label === "Sponsored by" ? "sm:col-span-2 lg:col-span-1" : ""
+                        }`}
                         data-reveal
                         data-reveal-delay={i * 70}
                     >
                         <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-text-secondary">
                             {entry.label}
                         </dt>
-                        <dd className="mt-2 font-heading font-semibold text-step-0 text-text-primary leading-snug">
+                        <dd className="mt-1.5 font-heading font-semibold text-sm sm:text-base md:text-step-0 text-text-primary leading-snug">
                             {entry.value}
                         </dd>
                     </div>
