@@ -1,22 +1,29 @@
 import Link from "next/link";
 import { getPageSection } from "@/lib/actions";
 
+/** Avenues, each with the projects planned against it in the 2026–27 year
+ *  plan. Naming the actual projects is what turns this from a definition
+ *  list into something that proves the club runs on all four. */
 const AVENUES = [
     {
         name: "Club Service",
         desc: "Fellowship, meetings, and the culture that keeps the club running.",
+        projects: ["Guess the Speaker", "Last Dance", "Potluck"],
     },
     {
         name: "Community Service",
         desc: "Local Chennai projects — elders, education, relief, and more.",
+        projects: ["Fashion to Funds", "Pages & Pixels", "Kodai Kalam"],
     },
     {
         name: "Professional Development",
         desc: "Skills, workshops, and careers built among peers.",
+        projects: ["INDRU", "Myth vs Reality", "Blueprint of Success"],
     },
     {
         name: "International Service",
         desc: "Cross-border fellowship and global-minded campaigns.",
+        projects: ["Culturals Exchange", "Culinary Cures", "Twin Club Agreement"],
     },
 ];
 
@@ -72,8 +79,18 @@ export async function MissionAvenues() {
                             <dt className="sm:col-span-4 font-heading font-bold text-step-1 text-text-primary">
                                 {a.name}
                             </dt>
-                            <dd className="sm:col-span-8 text-step-0 text-text-secondary measure">
-                                {a.desc}
+                            <dd className="sm:col-span-8">
+                                <p className="text-step-0 text-text-secondary measure">{a.desc}</p>
+                                <ul className="mt-3 flex flex-wrap gap-x-2 gap-y-1.5">
+                                    {a.projects.map((project) => (
+                                        <li
+                                            key={project}
+                                            className="font-mono text-[10px] uppercase tracking-[0.14em] text-text-secondary border border-white/12 rounded-full px-3 py-1.5"
+                                        >
+                                            {project}
+                                        </li>
+                                    ))}
+                                </ul>
                             </dd>
                         </div>
                     ))}

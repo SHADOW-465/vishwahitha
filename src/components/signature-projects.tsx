@@ -3,14 +3,44 @@ import { ArrowUpRight } from "lucide-react";
 import { getSignatureInitiatives } from "@/lib/actions";
 import { SignatureText } from "@/components/ui/signature-text";
 
-/** The five the club is known for. Used until the migration is applied and
- *  the board fills in copy — never an empty section on the flagship block. */
+/** The five the club is known for, with copy from the 2026–27 year plan.
+ *  Used until the migration is applied — never an empty flagship block. */
 const FALLBACK = [
-    { slug: "visil", title: "Visil", category: "Signature project", short_description: null },
-    { slug: "vawez", title: "Vawez", category: "Signature project", short_description: null },
-    { slug: "vaagai", title: "Vaagai", category: "Elder care", short_description: null },
-    { slug: "vannangal", title: "Vannangal", category: "Signature project", short_description: null },
-    { slug: "peace", title: "Peace", category: "Signature project", short_description: null },
+    {
+        slug: "visil",
+        title: "Visil",
+        category: "Back to school days",
+        short_description:
+            "Reviving classic school sports games to reignite the joy and camaraderie of childhood.",
+    },
+    {
+        slug: "vawez",
+        title: "Vawez",
+        category: "Culture for clean water",
+        short_description:
+            "A cultural dance showcase raising funds to fit water-saving taps in schools.",
+    },
+    {
+        slug: "vaagai",
+        title: "Vaagai",
+        category: "Elder care",
+        short_description:
+            "Ganesh Chaturthi celebrations in old age homes, so elderly residents share in the festival.",
+    },
+    {
+        slug: "vannangal",
+        title: "Vannangal",
+        category: "Orphanage outreach",
+        short_description:
+            "Speakers bringing knowledge, skills and support to young people living in orphanages.",
+    },
+    {
+        slug: "peace",
+        title: "Peace",
+        category: "International service",
+        short_description:
+            "Rotaractors worldwide sharing the peace symbol — one collective image of solidarity.",
+    },
 ];
 
 type Initiative = {

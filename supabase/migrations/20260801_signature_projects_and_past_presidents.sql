@@ -26,17 +26,37 @@ CREATE INDEX IF NOT EXISTS initiatives_is_signature_idx
 -- Seed the five signature projects. ON CONFLICT keeps any copy, imagery, or
 -- impact figures the board has already written for a slug that exists
 -- (Vaagai was seeded in phase 2) and only promotes it to signature.
+-- Copy transcribed from the 2026-27 President Elect year-plan deck (slide 12).
 INSERT INTO public.initiatives
-    (slug, title, category, short_description, is_signature, is_featured, display_order)
+    (slug, title, category, short_description, full_description, is_signature, is_featured, display_order)
 VALUES
-    ('visil',     'Visil',     'Signature project', 'A flagship Vishwahita programme.', true, true, 1),
-    ('vawez',     'Vawez',     'Signature project', 'A flagship Vishwahita programme.', true, true, 2),
-    ('vaagai',    'Vaagai',    'Elder Care',        'Connecting youth with elders through structured visits, skill-sharing and companionship programmes.', true, true, 3),
-    ('vannangal', 'Vannangal', 'Signature project', 'A flagship Vishwahita programme.', true, true, 4),
-    ('peace',     'Peace',     'Signature project', 'A flagship Vishwahita programme.', true, true, 5)
+    ('visil', 'Visil', 'Back to school days',
+     'Reviving classic school sports games to reignite the joy and camaraderie of childhood.',
+     'The "VISIL - Back to School Days" project aims to reignite the joy and camaraderie of childhood through the revival of classic school sports games, organising a series of events and activities that evoke nostalgia and fond memories of school days.',
+     true, true, 1),
+    ('vawez', 'Vawez', 'Culture for clean water',
+     'A cultural dance showcase raising funds to fit water-saving taps in schools.',
+     'VAWEZ is a cultural dance showcase designed to highlight the talents of performers. The event raises funds for fitting water-saving taps in schools, promoting sustainability and responsible water usage among students and staff.',
+     true, true, 2),
+    ('vaagai', 'Vaagai', 'Elder care',
+     'Ganesh Chaturthi celebrations in old age homes, so elderly residents share in the festival.',
+     'The VAAGAI project spreads joy and festive cheer by organising special events and activities in old age homes during Ganesh Chaturthi, creating a vibrant and inclusive environment where elderly residents can take part in cultural rituals.',
+     true, true, 3),
+    ('vannangal', 'Vannangal', 'Orphanage outreach',
+     'Speakers bringing knowledge, skills and support to young people living in orphanages.',
+     'Through the VANNANGAL project, speakers make a meaningful difference in the lives of people living in orphanages, empowering them with the knowledge, skills and support to overcome obstacles and pursue their dreams with confidence and resilience.',
+     true, true, 4),
+    ('peace', 'Peace', 'International service',
+     'Rotaractors worldwide sharing the peace symbol — one collective image of solidarity.',
+     'PEACE fosters global unity by showcasing solidarity through a simple but powerful act: Rotaractors worldwide sharing selfies with the peace symbol, creating a collective visual representation of our commitment to peace and unity.',
+     true, true, 5)
 ON CONFLICT (slug) DO UPDATE
-    SET is_signature  = true,
-        display_order = EXCLUDED.display_order;
+    SET is_signature     = true,
+        display_order    = EXCLUDED.display_order,
+        -- Only fill copy the board hasn't already written for itself.
+        category          = COALESCE(NULLIF(initiatives.category, ''), EXCLUDED.category),
+        short_description = COALESCE(NULLIF(initiatives.short_description, ''), EXCLUDED.short_description),
+        full_description  = COALESCE(NULLIF(initiatives.full_description, ''), EXCLUDED.full_description);
 
 -- ─────────────────────────────────────────────────────────────
 -- 2. Past presidents

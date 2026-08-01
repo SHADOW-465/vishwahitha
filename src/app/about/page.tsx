@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase";
-import { User, Users, Award, TrendingUp, Target, Calendar } from "lucide-react";
+import { User, Users, Award, TrendingUp } from "lucide-react";
 import { PastPresidents } from "@/components/past-presidents";
+import { YearPlanTimeline } from "@/components/year-plan-timeline";
 
 export const revalidate = 60;
 
@@ -170,79 +171,41 @@ export default async function AboutPage() {
             {/* Succession — who held the chair before this board */}
             <PastPresidents />
 
-            {/* Roadmap & Priorities */}
-            <section className="space-y-8 border-t border-white/5 pt-16">
-                <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-gold mb-3">Future Roadmap</p>
-                    <h2 className="font-heading text-3xl font-bold text-text-primary">
-                        Strategic Priorities <span className="font-drama italic gold-text font-light"> & Actions</span>
-                    </h2>
-                    <p className="font-mono text-xs text-text-secondary mt-2">Proposed action plan and strategic milestones for the remainder of the 2025-2026 term.</p>
-                </div>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    {/* Timeline (Proposed Projects) - 7 cols */}
-                    <div className="lg:col-span-7 glass-panel p-8 rounded-[2rem] border border-white/5 bg-black/10 space-y-6">
-                        <h3 className="font-heading text-xl font-bold text-text-primary border-b border-white/5 pb-4 flex items-center gap-2">
-                            <Calendar size={18} className="text-accent-gold" /> Term Milestones
-                        </h3>
-                        <div className="space-y-4 font-mono text-xs text-text-secondary">
-                            {[
-                                { month: "Jan 2026", actions: ["Vawez Initiative", "Bundle of Joy Project"] },
-                                { month: "Feb 2026", actions: ["Meet & Greet Assembly", "Vaanangal Service Run"] },
-                                { month: "Mar 2026", actions: ["27th Charter Day Celebration", "Visil Signature Project"] },
-                                { month: "Apr 2026", actions: ["Study Abroad Workshop", "Meet & Greet Networking"] },
-                                { month: "May 2026", actions: ["Lake Restoration Environmental Drive"] },
-                                { month: "Jun 2026", actions: ["Year-End Review Meet", "DRR Visit"] }
-                            ].map((item, idx) => (
-                                <div key={idx} className="flex gap-4 items-start border-b border-white/5 last:border-b-0 pb-3 last:pb-0">
-                                    <span className="text-accent-gold font-bold w-24 shrink-0">{item.month}</span>
-                                    <div className="flex flex-wrap gap-1.5">
-                                        {item.actions.map((act, aIdx) => (
-                                            <span key={aIdx} className="bg-white/5 border border-white/5 px-2 py-0.5 rounded text-[10px]">
-                                                {act}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+            {/* 2026–27 project timeline, from the President Elect's year plan */}
+            <div className="border-t border-white/5 pt-16">
+                <YearPlanTimeline />
+            </div>
 
-                    {/* Key Strategic Goals - 5 cols */}
-                    <div className="lg:col-span-5 glass-panel p-8 rounded-[2rem] border border-white/5 bg-black/10 flex flex-col justify-between h-full min-h-[350px]">
-                        <div>
-                            <h3 className="font-heading text-xl font-bold text-text-primary border-b border-white/5 pb-4 mb-6 flex items-center gap-2">
-                                <Target size={18} className="text-accent-teal" /> Key Term Goals
-                            </h3>
-                            <ul className="space-y-4 font-mono text-xs text-text-secondary">
-                                <li className="flex items-start gap-3">
-                                    <span className="text-accent-teal font-bold bg-accent-teal/10 border border-accent-teal/20 px-1.5 py-0.5 rounded text-[9px]">GOAL 1</span>
-                                    <span>Scale the club's active social media audience to more than 1,000+ followers.</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="text-accent-gold font-bold bg-accent-gold/10 border border-accent-gold/20 px-1.5 py-0.5 rounded text-[9px]">GOAL 2</span>
-                                    <span>Double the current total active membership base (2X Growth).</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="text-accent-red font-bold bg-accent-red/10 border border-accent-red/20 px-1.5 py-0.5 rounded text-[9px]">GOAL 3</span>
-                                    <span>Execute structured projects to directly impact 1,000+ beneficiaries.</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="text-text-primary font-bold bg-white/5 border border-white/10 px-1.5 py-0.5 rounded text-[9px]">GOAL 4</span>
-                                    <span>Deliver leadership election announcement on or before Charter Day.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div className="border-t border-white/5 pt-6 mt-8 font-mono text-[10px] text-text-secondary flex justify-between items-center">
-                            <span>Status: Operational</span>
-                            <span className="flex items-center gap-1">
-                                <span className="h-1.5 w-1.5 rounded-full bg-accent-teal animate-pulse" /> Active
-                            </span>
-                        </div>
-                    </div>
+            {/* Term goals */}
+            <section className="border-t border-white/5 pt-16">
+                <div className="mb-10">
+                    <h2 className="font-heading text-step-3 font-extrabold text-text-primary tracking-tight">
+                        Key term{" "}
+                        <span className="font-display-drama text-gold-ink font-light">goals</span>
+                    </h2>
+                    <p className="mt-3 text-step-0 text-text-secondary measure">
+                        What the board is measuring itself against this year.
+                    </p>
                 </div>
+
+                <ol className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 border-t border-white/10">
+                    {[
+                        "Scale the club's active social media audience past 1,000 followers.",
+                        "Double the current active membership base.",
+                        "Run structured projects that directly reach 1,000+ beneficiaries.",
+                        "Deliver the leadership election announcement on or before Charter Day.",
+                    ].map((goal, i) => (
+                        <li
+                            key={goal}
+                            className="flex items-baseline gap-5 py-5 border-b border-white/10"
+                        >
+                            <span className="font-mono text-[11px] text-gold-ink tabular-nums shrink-0">
+                                {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <span className="text-step-0 text-text-primary measure">{goal}</span>
+                        </li>
+                    ))}
+                </ol>
             </section>
         </div>
     );
