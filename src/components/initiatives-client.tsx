@@ -41,24 +41,42 @@ export const InitiativesClient = ({ initiatives }: { initiatives: Initiative[] }
         {
             id: "fb-1",
             slug: "vaagai",
-            title: "Vaagai — Mission Vinayaka",
+            title: "Vaagai",
             category: "Community Service",
-            short_description: "Organized a serene Ganesh Pooja and interactive games for 40 elders at Kalaivani Old Age Home.",
-            impact_stat: "40+",
-            impact_label: "Elders Comforted",
-            color_class: "border-accent-gold/30",
-            hero_image_url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800"
+            short_description: "Ganesh Chaturthi celebrations in old age homes, so elderly residents share in the festival.",
+            hero_image_url: "/Vaagai.jpeg"
         },
         {
             id: "fb-2",
-            slug: "indru",
-            title: "Indru (Know Your Day)",
-            category: "Professional Development",
-            short_description: "A daily news snippet initiative covering World News, Economics, Tech, Sports, and local Chennai updates.",
-            impact_stat: "150+",
-            impact_label: "Days Active",
-            color_class: "border-accent-teal/30",
-            hero_image_url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800"
+            slug: "vannangal",
+            title: "Vannangal",
+            category: "Community Service",
+            short_description: "Speakers bringing knowledge, skills and support to young people living in orphanages.",
+            hero_image_url: "/Vannangal.jpeg"
+        },
+        {
+            id: "fb-3",
+            slug: "visil",
+            title: "Visil",
+            category: "Club Service",
+            short_description: "Reviving classic school sports games to reignite the joy and camaraderie of childhood.",
+            hero_image_url: "/visil.jpeg"
+        },
+        {
+            id: "fb-4",
+            slug: "vawez",
+            title: "Vawez",
+            category: "Community Service",
+            short_description: "A cultural dance showcase raising funds to fit water-saving taps in schools.",
+            hero_image_url: "/Vawez.jpeg"
+        },
+        {
+            id: "fb-5",
+            slug: "peace",
+            title: "Peace",
+            category: "International Service",
+            short_description: "Rotaractors worldwide sharing the peace symbol — one collective image of solidarity.",
+            hero_image_url: "/Peace.jpeg"
         },
         {
             id: "fb-3",

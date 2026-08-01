@@ -436,11 +436,11 @@ SET is_legacy = true
 WHERE slug = 'vaagai'
   AND NOT EXISTS (SELECT 1 FROM public.initiatives WHERE is_legacy = true);
 
-INSERT INTO public.board_members (name, role, display_order)
+INSERT INTO public.board_members (name, role, image_url, display_order)
 SELECT * FROM (VALUES
-    ('Rtr. Mahalakshmi', 'Club President', 1),
-    ('Rtr. Nandhini', 'Club Secretary', 2)
-) AS v(name, role, display_order)
+    ('Rtr. Mahalakshmi', 'Club President', '/Mahalakshmi.jpeg', 1),
+    ('Rtr. Nandhini', 'Club Secretary', '/Nandhini.jpeg', 2)
+) AS v(name, role, image_url, display_order)
 WHERE NOT EXISTS (SELECT 1 FROM public.board_members LIMIT 1);
 
 INSERT INTO public.milestones (year, title, body, display_order)

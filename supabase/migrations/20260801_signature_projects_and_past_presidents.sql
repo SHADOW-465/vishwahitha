@@ -28,32 +28,32 @@ CREATE INDEX IF NOT EXISTS initiatives_is_signature_idx
 -- (Vaagai was seeded in phase 2) and only promotes it to signature.
 -- Copy transcribed from the 2026-27 President Elect year-plan deck (slide 12).
 INSERT INTO public.initiatives
-    (slug, title, category, short_description, full_description, is_signature, is_featured, display_order)
+    (slug, title, category, short_description, full_description, hero_image_url, is_signature, is_featured, display_order)
 VALUES
-    ('visil', 'Visil', 'Back to school days',
-     'Reviving classic school sports games to reignite the joy and camaraderie of childhood.',
-     'The "VISIL - Back to School Days" project aims to reignite the joy and camaraderie of childhood through the revival of classic school sports games, organising a series of events and activities that evoke nostalgia and fond memories of school days.',
-     true, true, 1),
-    ('vawez', 'Vawez', 'Culture for clean water',
-     'A cultural dance showcase raising funds to fit water-saving taps in schools.',
-     'VAWEZ is a cultural dance showcase designed to highlight the talents of performers. The event raises funds for fitting water-saving taps in schools, promoting sustainability and responsible water usage among students and staff.',
-     true, true, 2),
     ('vaagai', 'Vaagai', 'Elder care',
      'Ganesh Chaturthi celebrations in old age homes, so elderly residents share in the festival.',
      'The VAAGAI project spreads joy and festive cheer by organising special events and activities in old age homes during Ganesh Chaturthi, creating a vibrant and inclusive environment where elderly residents can take part in cultural rituals.',
-     true, true, 3),
+     '/Vaagai.jpeg', true, true, 1),
     ('vannangal', 'Vannangal', 'Orphanage outreach',
      'Speakers bringing knowledge, skills and support to young people living in orphanages.',
      'Through the VANNANGAL project, speakers make a meaningful difference in the lives of people living in orphanages, empowering them with the knowledge, skills and support to overcome obstacles and pursue their dreams with confidence and resilience.',
-     true, true, 4),
+     '/Vannangal.jpeg', true, true, 2),
+    ('visil', 'Visil', 'Back to school days',
+     'Reviving classic school sports games to reignite the joy and camaraderie of childhood.',
+     'The "VISIL - Back to School Days" project aims to reignite the joy and camaraderie of childhood through the revival of classic school sports games, organising a series of events and activities that evoke nostalgia and fond memories of school days.',
+     '/visil.jpeg', true, true, 3),
+    ('vawez', 'Vawez', 'Culture for clean water',
+     'A cultural dance showcase raising funds to fit water-saving taps in schools.',
+     'VAWEZ is a cultural dance showcase designed to highlight the talents of performers. The event raises funds for fitting water-saving taps in schools, promoting sustainability and responsible water usage among students and staff.',
+     '/Vawez.jpeg', true, true, 4),
     ('peace', 'Peace', 'International service',
      'Rotaractors worldwide sharing the peace symbol — one collective image of solidarity.',
      'PEACE fosters global unity by showcasing solidarity through a simple but powerful act: Rotaractors worldwide sharing selfies with the peace symbol, creating a collective visual representation of our commitment to peace and unity.',
-     true, true, 5)
+     '/Peace.jpeg', true, true, 5)
 ON CONFLICT (slug) DO UPDATE
     SET is_signature     = true,
         display_order    = EXCLUDED.display_order,
-        -- Only fill copy the board hasn't already written for itself.
+        hero_image_url   = EXCLUDED.hero_image_url,
         category          = COALESCE(NULLIF(initiatives.category, ''), EXCLUDED.category),
         short_description = COALESCE(NULLIF(initiatives.short_description, ''), EXCLUDED.short_description),
         full_description  = COALESCE(NULLIF(initiatives.full_description, ''), EXCLUDED.full_description);

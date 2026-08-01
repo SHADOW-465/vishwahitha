@@ -50,29 +50,29 @@ export const LiveProjectFeed = ({ projects }: ProjectFeedProps) => {
         {
             id: "1",
             slug: "vaagai",
-            title: "Vaagai Elder Care Companionship",
-            category: "Elderly Care",
-            short_description: "An ongoing companionship initiative connecting youth with regional old age homes for recreational games, tech training, and story archiving.",
+            title: "Vaagai",
+            category: "Elder care",
+            short_description: "Ganesh Chaturthi celebrations in old age homes, so elderly residents share in the festival.",
             created_at: new Date().toISOString(),
-            hero_image_url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=600"
+            hero_image_url: "/Vaagai.jpeg"
         },
         {
             id: "2",
-            slug: "indru",
-            title: "INDRU Daily Learning Movement",
-            category: "Daily Knowledge",
-            short_description: "Providing continuous bite-sized cognitive insights in historical philosophy, technology, and global policy for Chennai students.",
+            slug: "vannangal",
+            title: "Vannangal",
+            category: "Orphanage outreach",
+            short_description: "Speakers bringing knowledge, skills and support to young people living in orphanages.",
             created_at: new Date(Date.now() - 86400000).toISOString(),
-            hero_image_url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600"
+            hero_image_url: "/Vannangal.jpeg"
         },
         {
             id: "3",
-            slug: "wishfit",
-            title: "WishFit Winter Garment Drive",
-            category: "Community Relief",
-            short_description: "A major district-wide donation operation collecting, sorting, and delivering quality clothing items to shelter networks.",
+            slug: "visil",
+            title: "Visil",
+            category: "Back to school days",
+            short_description: "Reviving classic school sports games to reignite the joy and camaraderie of childhood.",
             created_at: new Date(Date.now() - 86400000 * 3).toISOString(),
-            hero_image_url: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=600"
+            hero_image_url: "/visil.jpeg"
         }
     ];
 

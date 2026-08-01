@@ -23,14 +23,14 @@ export default async function AboutPage() {
             name: "Rtr. Mahalakshmi",
             role: "Club President",
             email: "president.vishwahita@gmail.com",
-            image_url: null,
+            image_url: "/Mahalakshmi.jpeg",
         },
         {
             id: "fb-2",
             name: "Rtr. Nandhini",
             role: "Club Secretary",
             email: "secretary.vishwahita@gmail.com",
-            image_url: null,
+            image_url: "/Nandhini.jpeg",
         }
     ];
 
