@@ -35,8 +35,8 @@ type Entry = {
 };
 
 const YEAR_PLAN: Entry[] = [
-    { month: "July",      monthIndex: 6,  calendarYear: 2026, project: "Orientation",      kind: "district" },
-    { month: "August",    monthIndex: 7,  calendarYear: 2026, project: "Installation",     kind: "district" },
+    { month: "July",      monthIndex: 6,  calendarYear: 2026, project: "Installation",     kind: "district" },
+    { month: "August",    monthIndex: 7,  calendarYear: 2026, project: "Orientation",      kind: "district" },
     { month: "September", monthIndex: 8,  calendarYear: 2026, project: "Vaagai",           kind: "signature", slug: "vaagai" },
     { month: "October",   monthIndex: 9,  calendarYear: 2026, project: "Baby Boss",        kind: "multi" },
     { month: "November",  monthIndex: 10, calendarYear: 2026, project: "Visil",            kind: "signature", slug: "visil" },
