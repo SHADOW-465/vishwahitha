@@ -1,4 +1,4 @@
-import { Mail, Instagram, Twitter, Linkedin, MapPin, ExternalLink } from "lucide-react";
+import { Mail, Instagram, Twitter, Linkedin, MapPin, ExternalLink, LogIn } from "lucide-react";
 import { getPageSection } from "@/lib/actions";
 
 export const Footer = async () => {
@@ -50,6 +50,11 @@ export const Footer = async () => {
                         </li>
                         <li>
                             <a href="/events" className="hover:text-accent-gold transition-colors">Events calendar →</a>
+                        </li>
+                        <li>
+                            <a href="/sign-in" className="hover:text-accent-gold transition-colors flex items-center gap-1.5 font-semibold text-accent-gold">
+                                <LogIn size={14} /> Member Login →
+                            </a>
                         </li>
                     </ul>
                 </div>
