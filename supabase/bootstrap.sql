@@ -76,6 +76,16 @@ CREATE TABLE IF NOT EXISTS public.board_members (
     created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS public.past_presidents (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name TEXT NOT NULL,
+    term TEXT NOT NULL,                           -- e.g. '2024–25'
+    note TEXT,                                    -- one line on what defined the term
+    image_url TEXT,
+    display_order INT NOT NULL DEFAULT 0,          -- ascending = most recent first
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 CREATE TABLE IF NOT EXISTS public.announcements (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title TEXT NOT NULL,
@@ -100,6 +110,7 @@ CREATE TABLE IF NOT EXISTS public.initiatives (
     impact_label TEXT,
     hero_image_url TEXT,
     color_class TEXT DEFAULT 'border-white/10',
+    is_signature BOOLEAN NOT NULL DEFAULT false,
     is_featured BOOLEAN NOT NULL DEFAULT true,
     is_legacy BOOLEAN NOT NULL DEFAULT false,
     display_order INT NOT NULL DEFAULT 0,
@@ -228,6 +239,7 @@ ALTER TABLE public.events ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAUL
 
 ALTER TABLE public.documents ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT now();
 
+ALTER TABLE public.initiatives ADD COLUMN IF NOT EXISTS is_signature BOOLEAN DEFAULT false;
 ALTER TABLE public.initiatives ADD COLUMN IF NOT EXISTS is_legacy BOOLEAN DEFAULT false;
 ALTER TABLE public.initiatives ADD COLUMN IF NOT EXISTS full_description TEXT;
 ALTER TABLE public.initiatives ADD COLUMN IF NOT EXISTS is_featured BOOLEAN DEFAULT true;
@@ -251,8 +263,10 @@ CREATE INDEX IF NOT EXISTS idx_events_public ON public.events (is_public);
 CREATE INDEX IF NOT EXISTS idx_event_rsvps_member ON public.event_rsvps (member_id);
 CREATE INDEX IF NOT EXISTS idx_announcements_created ON public.announcements (created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_initiatives_featured ON public.initiatives (is_featured, display_order);
+CREATE INDEX IF NOT EXISTS idx_initiatives_signature ON public.initiatives (display_order) WHERE is_signature = true;
 CREATE INDEX IF NOT EXISTS idx_initiatives_legacy ON public.initiatives (is_legacy);
 CREATE INDEX IF NOT EXISTS idx_board_display ON public.board_members (display_order);
+CREATE INDEX IF NOT EXISTS idx_past_presidents_display ON public.past_presidents (display_order);
 CREATE INDEX IF NOT EXISTS idx_milestones_display ON public.milestones (display_order);
 CREATE INDEX IF NOT EXISTS idx_ideas_created ON public.ideas (created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_contact_created ON public.contact_messages (created_at DESC);
@@ -272,6 +286,7 @@ ALTER TABLE public.events ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.event_rsvps ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.documents ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.board_members ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.past_presidents ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.announcements ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.initiatives ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.initiative_gallery ENABLE ROW LEVEL SECURITY;
@@ -296,7 +311,7 @@ BEGIN
         FROM pg_policies
         WHERE schemaname = 'public'
           AND tablename IN (
-              'users','events','event_rsvps','documents','board_members',
+              'users','events','event_rsvps','documents','board_members','past_presidents',
               'announcements','initiatives','initiative_gallery','gallery_media',
               'pulse_forms','pulse_responses','page_sections','feedback',
               'contact_messages','milestones','ideas','idea_votes','idea_comments'
@@ -311,6 +326,9 @@ CREATE POLICY "events_public_select" ON public.events
     FOR SELECT USING (is_public = true);
 
 CREATE POLICY "board_public_select" ON public.board_members
+    FOR SELECT USING (true);
+
+CREATE POLICY "past_presidents_public_select" ON public.past_presidents
     FOR SELECT USING (true);
 
 CREATE POLICY "announcements_public_select" ON public.announcements
@@ -390,45 +408,75 @@ INSERT INTO public.page_sections (section_key, content) VALUES
 ON CONFLICT (section_key) DO NOTHING;
 
 INSERT INTO public.initiatives (
-    slug, title, category, short_description, impact_stat, impact_label, color_class, display_order, is_featured, is_legacy
+    slug, title, category, short_description, full_description, hero_image_url, is_signature, is_featured, is_legacy, display_order
 ) VALUES
     (
         'vaagai',
         'Vaagai',
-        'Community',
-        'Connecting youth with elders through structured visits, skill-sharing, and companionship.',
-        NULL,
-        NULL,
-        'border-accent-gold/30',
-        1,
+        'Elder care',
+        'Ganesh Chaturthi celebrations in old age homes, so elderly residents share in the festival.',
+        'The VAAGAI project spreads joy and festive cheer by organising special events and activities in old age homes during Ganesh Chaturthi, creating a vibrant and inclusive environment where elderly residents can take part in cultural rituals.',
+        '/Vaagai.jpeg',
         true,
-        true
+        true,
+        true,
+        1
     ),
     (
-        'indru',
-        'INDRU',
-        'Professional',
-        'Delivering curated learning and knowledge culture among members and the community.',
-        NULL,
-        NULL,
-        'border-accent-teal/30',
-        2,
+        'vannangal',
+        'Vannangal',
+        'Orphanage outreach',
+        'Speakers bringing knowledge, skills and support to young people living in orphanages.',
+        'Through the VANNANGAL project, speakers make a meaningful difference in the lives of people living in orphanages, empowering them with the knowledge, skills and support to overcome obstacles and pursue their dreams with confidence and resilience.',
+        '/Vannangal.jpeg',
         true,
-        false
+        true,
+        false,
+        2
     ),
     (
-        'wishfit',
-        'WishFit',
-        'Community',
-        'Collecting and distributing quality clothing to families in need during festive seasons.',
-        NULL,
-        NULL,
-        'border-accent-red/30',
-        3,
+        'visil',
+        'Visil',
+        'Back to school days',
+        'Reviving classic school sports games to reignite the joy and camaraderie of childhood.',
+        'The "VISIL - Back to School Days" project aims to reignite the joy and camaraderie of childhood through the revival of classic school sports games, organising a series of events and activities that evoke nostalgia and fond memories of school days.',
+        '/visil.jpeg',
         true,
-        false
+        true,
+        false,
+        3
+    ),
+    (
+        'vawez',
+        'Vawez',
+        'Culture for clean water',
+        'A cultural dance showcase raising funds to fit water-saving taps in schools.',
+        'VAWEZ is a cultural dance showcase designed to highlight the talents of performers. The event raises funds for fitting water-saving taps in schools, promoting sustainability and responsible water usage among students and staff.',
+        '/Vawez.jpeg',
+        true,
+        true,
+        false,
+        4
+    ),
+    (
+        'peace',
+        'Peace',
+        'International service',
+        'Rotaractors worldwide sharing the peace symbol — one collective image of solidarity.',
+        'PEACE fosters global unity by showcasing solidarity through a simple but powerful act: Rotaractors worldwide sharing selfies with the peace symbol, creating a collective visual representation of our commitment to peace and unity.',
+        '/Peace.jpeg',
+        true,
+        true,
+        false,
+        5
     )
-ON CONFLICT (slug) DO NOTHING;
+ON CONFLICT (slug) DO UPDATE
+    SET is_signature     = EXCLUDED.is_signature,
+        display_order    = EXCLUDED.display_order,
+        hero_image_url   = EXCLUDED.hero_image_url,
+        category          = COALESCE(NULLIF(initiatives.category, ''), EXCLUDED.category),
+        short_description = COALESCE(NULLIF(initiatives.short_description, ''), EXCLUDED.short_description),
+        full_description  = COALESCE(NULLIF(initiatives.full_description, ''), EXCLUDED.full_description);
 
 -- Exactly one legacy flagship if none set
 UPDATE public.initiatives
